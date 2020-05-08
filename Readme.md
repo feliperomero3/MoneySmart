@@ -1,8 +1,7 @@
 # MoneySmart
 
+ASP.NET Core 2.2 Razor Pages Web Application.
 Get ready to manage your income and expenses the smart way!
-
-This is a ASP.NET Core 2.2 Application.
 
 ## Overview
 
