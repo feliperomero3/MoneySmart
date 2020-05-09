@@ -12,7 +12,7 @@ A very simple Web Application to capture ordinary everyday income and expenses.
 1.	Capture your daily income and expenses.
 2.	Manage multiple accounts to separate your transactions (e. g. home / work).
 3.	Classify your transactions in categories.
-4.	
+4.	...
 
 ## Requirements
 
