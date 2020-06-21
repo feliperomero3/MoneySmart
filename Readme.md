@@ -1,6 +1,7 @@
 # MoneySmart
 
 [![Build Status][build-status-badge]][build-status]
+[![Quality Gate Status][quality-gate-status-badge]][quality-gate-status]
 
 ASP.NET Core 2.2 Razor Pages Web Application.
 Get ready to manage your income and expenses the smart way!
@@ -27,3 +28,5 @@ File > Open > Project/Solution and hit F5!
 
 [build-status-badge]: https://dev.azure.com/feliperomeromx/Projects/_apis/build/status/feliperomero3.MoneySmart?branchName=master
 [build-status]: https://dev.azure.com/feliperomeromx/Projects/_build/latest?definitionId=9&branchName=master
+[quality-gate-status-badge]: https://sonarcloud.io/api/project_badges/measure?project=feliperomero3_MoneySmart&metric=alert_status
+[quality-gate-status]: https://sonarcloud.io/dashboard?id=feliperomero3_MoneySmart
