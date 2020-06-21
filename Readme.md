@@ -1,5 +1,7 @@
 # MoneySmart
 
+[![Build Status][build-status-badge]][build-status]
+
 ASP.NET Core 2.2 Razor Pages Web Application.
 Get ready to manage your income and expenses the smart way!
 
@@ -22,3 +24,6 @@ A very simple Web Application to capture ordinary everyday income and expenses.
 ## How to run
 
 File > Open > Project/Solution and hit F5!
+
+[build-status-badge]: https://dev.azure.com/feliperomeromx/Projects/_apis/build/status/feliperomero3.MoneySmart?branchName=master
+[build-status]: https://dev.azure.com/feliperomeromx/Projects/_build/latest?definitionId=9&branchName=master
