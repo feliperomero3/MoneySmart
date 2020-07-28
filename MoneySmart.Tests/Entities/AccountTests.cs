@@ -7,7 +7,7 @@ namespace MoneySmart.Tests.Entities
     public class AccountTests
     {
         [Fact]
-        public void Account_balance_should_reflect_acumulated_transactions_amount()
+        public void Account_balance_should_reflect_accumulated_transactions_amount()
         {
             // Arrange
             var date = DateTime.Parse("2020-05-08");
@@ -30,7 +30,7 @@ namespace MoneySmart.Tests.Entities
         // TODO
         // Account should keep every transaction recorded
         // Account should have a zero balance if not provided on creation
-        // Acount should...
+        // Account should...
 
     }
 }
