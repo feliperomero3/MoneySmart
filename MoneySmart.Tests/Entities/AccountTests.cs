@@ -29,7 +29,7 @@ namespace MoneySmart.Tests.Entities
 
         // TODO
         // Account should keep every transaction recorded
-        // Account should have a zero balance if not provided on creation
+        // Account should have a zero balance if no initial amount is provided on creation
         // Account should...
 
     }

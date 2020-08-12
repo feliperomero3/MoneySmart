@@ -5,7 +5,6 @@ namespace MoneySmart.Entities
 {
     public class Account : Entity
     {
-        public long AccountId { get; private set; }
         public string Name { get; private set; }
         public string Number { get; private set; }
         public decimal Balance => Transactions.Sum(t => t.Amount);

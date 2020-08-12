@@ -4,16 +4,18 @@ namespace MoneySmart.Entities
 {
     public class Transaction : Entity
     {
-        public long TransactionId { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime DateTime { get; private set; }
         public string Description { get; private set; }
-        public decimal Amount { get; set; }
-        public TransactionType TransactionType { get; set; }
+        public decimal Amount { get; private set; }
+        public TransactionType TransactionType { get; private set; }
+        public Account Account { get; private set; }
 
-        public Account Account { get; set; }
+        private Transaction()
+        {
+        }
 
         public Transaction(DateTime dateTime, string description, decimal amount, Account account,
-            TransactionType transactionType)
+            TransactionType transactionType) : this()
         {
             DateTime = dateTime;
             Description = description;

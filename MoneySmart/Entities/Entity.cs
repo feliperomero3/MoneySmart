@@ -2,15 +2,23 @@
 {
     public abstract class Entity
     {
-        public virtual long Id { get; }
+        public long Id { get; private set; }
 
-        protected virtual object Actual => this;
+        protected Entity()
+        {
+        }
+
+        protected Entity(long id)
+            : this()
+        {
+            Id = id;
+        }
+
+        protected object Actual => this;
 
         public override bool Equals(object obj)
         {
-            var other = obj as Entity;
-
-            if (other is null)
+            if (!(obj is Entity other))
                 return false;
 
             if (ReferenceEquals(this, other))
