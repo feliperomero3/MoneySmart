@@ -1,13 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace MoneySmart.Data
+﻿namespace MoneySmart.Data
 {
     public static class ApplicationDbInitializer
     {
         public static void Initialize(ApplicationDbContext context)
         {
-            context.Database.Migrate();
-
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
         }
     }
 }
