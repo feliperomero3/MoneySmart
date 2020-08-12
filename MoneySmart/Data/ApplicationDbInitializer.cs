@@ -4,8 +4,8 @@
     {
         public static void Initialize(ApplicationDbContext context)
         {
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+            //context.Database.EnsureDeleted();
+            //context.Database.EnsureCreated();
         }
     }
 }
