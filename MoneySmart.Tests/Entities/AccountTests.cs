@@ -13,24 +13,15 @@ namespace MoneySmart.Tests.Entities
             var date = DateTime.Parse("2020-05-08");
             var description = "Payment received";
             var amount = 10;
-            var account = new Account("TestAccount", null);
+            var sut = new Account("TestAccount", "5575");
             var transactionType = TransactionType.Income;
-
-            var newTransaction = new Transaction(date, account, description, transactionType, amount);
-
-            var sut = new Account("Test", null);
+            var transaction = new Transaction(date, sut, description, transactionType, amount);
 
             // Act
-            sut.AddTransaction(newTransaction);
+            sut.AddTransaction(transaction);
 
             // Assert
             Assert.Equal(10, sut.Balance);
         }
-
-        // TODO
-        // Account should keep every transaction recorded
-        // Account should have a zero balance if no initial amount is provided on creation
-        // Account should...
-
     }
 }

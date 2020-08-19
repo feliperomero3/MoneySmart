@@ -13,7 +13,7 @@ namespace MoneySmart.Tests.Entities
             var date = DateTime.Parse("2020-05-08");
             var description = "Payment";
             var amount = 10;
-            var account = new Account("TestAccount", null);
+            var account = new Account("TestAccount", "5575");
             var transactionType = TransactionType.Income;
 
             // Act
@@ -30,7 +30,7 @@ namespace MoneySmart.Tests.Entities
             var date = DateTime.Parse("2020-05-08");
             var description = "Payment";
             var amount = 10;
-            var account = new Account("TestAccount", null);
+            var account = new Account("TestAccount", "5575");
             var transactionType = TransactionType.Expense;
 
             // Act
