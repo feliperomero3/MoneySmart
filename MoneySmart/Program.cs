@@ -24,7 +24,7 @@ namespace MoneySmart
                     var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
 
                     ApplicationDbInitializer.Initialize(context);
-                    ApplicationDbSeedData.SeedAsync(userManager).GetAwaiter().GetResult();
+                    ApplicationDbSeedData.SeedAsync(context, userManager).GetAwaiter().GetResult();
                 }
                 catch (SqlException sqlException)
                 {

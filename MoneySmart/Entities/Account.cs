@@ -15,9 +15,10 @@ namespace MoneySmart.Entities
             Transactions = new List<Transaction>();
         }
 
-        public Account(string name) : this()
+        public Account(string name, string number) : this()
         {
             Name = name;
+            Number = number;
         }
 
         public void AddTransaction(Transaction transaction)
