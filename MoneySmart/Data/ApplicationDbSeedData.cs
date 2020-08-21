@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Internal;
 using MoneySmart.Entities;
 
 namespace MoneySmart.Data
@@ -18,6 +19,11 @@ namespace MoneySmart.Data
             {
                 user = new IdentityUser(AdminUser) { Email = AdminUser };
                 await userManager.CreateAsync(user, AdminPassword);
+            }
+
+            if (context.Accounts.Any())
+            {
+                return;
             }
 
             var account1 = new Account("Savings", "5221");

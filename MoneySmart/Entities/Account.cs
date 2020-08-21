@@ -25,5 +25,11 @@ namespace MoneySmart.Entities
         {
             Transactions.Add(transaction);
         }
+
+        public void EditAccount(Account account)
+        {
+            Number = account.Number;
+            Name = account.Name;
+        }
     }
 }
