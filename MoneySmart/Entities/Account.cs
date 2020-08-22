@@ -5,8 +5,8 @@ namespace MoneySmart.Entities
 {
     public class Account : Entity
     {
-        public string Name { get; private set; }
         public string Number { get; private set; }
+        public string Name { get; private set; }
         public decimal Balance => Transactions.Sum(t => t.Amount);
         public ICollection<Transaction> Transactions { get; private set; }
 
@@ -15,10 +15,10 @@ namespace MoneySmart.Entities
             Transactions = new List<Transaction>();
         }
 
-        public Account(string name, string number) : this()
+        public Account(string number, string name) : this()
         {
-            Name = name;
             Number = number;
+            Name = name;
         }
 
         public void AddTransaction(Transaction transaction)

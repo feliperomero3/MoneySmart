@@ -26,9 +26,9 @@ namespace MoneySmart.Data
                 return;
             }
 
-            var account1 = new Account("Savings", "5221");
-            var account2 = new Account("Checking", "7551");
-            var account3 = new Account("Money market", "8661");
+            var account1 = new Account("5221", "Savings");
+            var account2 = new Account("7551", "Checking");
+            var account3 = new Account("8661", "Money market");
 
             await context.Accounts.AddRangeAsync(account1, account2, account3);
 

@@ -98,7 +98,7 @@ namespace MoneySmart.Pages.Accounts
 
         public Account ToAccount()
         {
-            return new Account(Name, Number);
+            return new Account(Number, Name);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace MoneySmart.Tests.Entities
             var date = DateTime.Parse("2020-05-08");
             var description = "Payment received";
             var amount = 10;
-            var sut = new Account("TestAccount", "5575");
+            var sut = new Account("5575", "TestAccount");
             var transactionType = TransactionType.Income;
             var transaction = new Transaction(date, sut, description, transactionType, amount);
 
