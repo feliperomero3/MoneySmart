@@ -1,4 +1,6 @@
-﻿namespace MoneySmart.Entities
+﻿using System;
+
+namespace MoneySmart.Entities
 {
     public abstract class Entity
     {
@@ -14,8 +16,6 @@
             Id = id;
         }
 
-        protected object Actual => this;
-
         public override bool Equals(object obj)
         {
             if (!(obj is Entity other))
@@ -24,7 +24,7 @@
             if (ReferenceEquals(this, other))
                 return true;
 
-            if (Actual.GetType() != other.Actual.GetType())
+            if (GetRealType() != other.GetRealType())
                 return false;
 
             if (Id == 0 || other.Id == 0)
@@ -51,7 +51,14 @@
 
         public override int GetHashCode()
         {
-            return (Actual.GetType().ToString() + Id).GetHashCode();
+            return (GetRealType().ToString() + Id).GetHashCode();
+        }
+
+        private Type GetRealType()
+        {
+            var type = GetType();
+
+            return type.ToString().Contains("Castle.Proxies.") ? type.BaseType : type;
         }
     }
 }
