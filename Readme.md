@@ -4,7 +4,7 @@
 [![Quality Gate Status][quality-gate-status-badge]][quality-gate-status]
 [![Coverage Status][coverage-status-badge]][coverage-status]
 
-ASP.NET Core 2.2 Razor Pages Web Application.
+ASP.NET Core 2.2 Razor Pages Web Application with EF Core and ASP.NET Core Identity.
 
 Get ready to manage your income and expenses the smart way!
 
