@@ -1,0 +1,49 @@
+﻿@page
+@model MoneySmart.Pages.Transactions.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Transaction</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Transaction.DateTime" class="col-form-label"></label>
+                <input asp-for="Transaction.DateTime" class="form-control" />
+                <span asp-validation-for="Transaction.DateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.Description" class="col-form-label"></label>
+                <input asp-for="Transaction.Description" class="form-control" />
+                <span asp-validation-for="Transaction.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.TransactionType" class="col-form-label"></label>
+                <select asp-for="Transaction.TransactionType" class="form-control"></select>
+                <span asp-validation-for="Transaction.TransactionType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.Amount" class="col-form-label"></label>
+                <input asp-for="Transaction.Amount" class="form-control" />
+                <span asp-validation-for="Transaction.Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
