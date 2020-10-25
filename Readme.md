@@ -14,15 +14,16 @@ A very simple Web Application to capture everyday income and expenses.
 
 ### Features (WIP)
 
-1.	Capture your daily income and expenses.
-2.	Manage multiple accounts to separate your transactions (e. g. checking or savings).
-3.	Classify your transactions in categories.
-4.	...
+1. Capture your daily income and expenses.
+2. Manage multiple accounts to separate your transactions (e. g. checking or savings).
+3. Classify your transactions in categories.
+4. ...
 
-## Requirements
+## Prerequisites
 
-- ASP.NET Core 2.2
+- An Azure account with an active subscription
 - Visual Studio 2019
+- ASP.NET Core 2.2
 
 ## How to run
 
