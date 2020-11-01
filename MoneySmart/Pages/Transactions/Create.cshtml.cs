@@ -1,15 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MoneySmart.Data;
 using MoneySmart.Entities;
-using System.Threading.Tasks;
 
 namespace MoneySmart.Pages.Transactions
 {
     public class CreateModel : PageModel
     {
-        private readonly Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CreateModel(Data.ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -30,6 +31,7 @@ namespace MoneySmart.Pages.Transactions
             }
 
             _context.Transactions.Add(Transaction);
+
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
