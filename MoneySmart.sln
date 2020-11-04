@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneySmart", "MoneySmart\MoneySmart.csproj", "{FD0C9ABE-03E6-4A4E-89AE-BB5ED748885C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneySmart.Tests", "MoneySmart.Tests\MoneySmart.Tests.csproj", "{A7CCF47C-7211-4A45-9709-9C9609CB83E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneySmart.Tests", "MoneySmart.Tests\MoneySmart.Tests.csproj", "{A7CCF47C-7211-4A45-9709-9C9609CB83E9}"
+EndProject
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "AzureResourceGroup", "AzureResourceGroup\AzureResourceGroup.deployproj", "{56C5B57B-02AA-425B-ADBE-112B0951854F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A7CCF47C-7211-4A45-9709-9C9609CB83E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7CCF47C-7211-4A45-9709-9C9609CB83E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7CCF47C-7211-4A45-9709-9C9609CB83E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56C5B57B-02AA-425B-ADBE-112B0951854F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56C5B57B-02AA-425B-ADBE-112B0951854F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56C5B57B-02AA-425B-ADBE-112B0951854F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56C5B57B-02AA-425B-ADBE-112B0951854F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
