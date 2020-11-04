@@ -4,6 +4,9 @@
   "parameters": {
     "sqlAdministratorLogin": {
       "value": "MoneySmart"
+    },
+    "sqlAdministratorLoginPassword": {
+        "value": ""
     }
   }
 }
