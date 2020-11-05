@@ -55,6 +55,7 @@
   "variables": {
     "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
     "webSiteName": "[concat('webSite', uniqueString(resourceGroup().id))]",
+    "appInsightsName": "[concat('AppInsights', variables('webSiteName'))]",
     "sqlserverName": "[concat('sqlserver', uniqueString(resourceGroup().id))]",
     "databaseName": "moneysmart"
   },
@@ -128,7 +129,8 @@
       "type": "Microsoft.Web/sites",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[variables('hostingPlanName')]"
+        "[variables('hostingPlanName')]",
+        "[variables('appInsightsName')]"
       ],
       "tags": {
         "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName')))]": "empty",
@@ -136,7 +138,15 @@
       },
       "properties": {
         "name": "[variables('webSiteName')]",
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+        "siteConfig": {
+          "appSettings": [
+            {
+              "name": "ApplicationInsights:InstrumentationKey",
+              "value": "[reference(resourceId('Microsoft.Insights/components/', variables('appInsightsName')), '2020-02-02-preview').InstrumentationKey]"
+            }
+          ]
+        }
       },
       "resources": [
         {
@@ -157,18 +167,15 @@
     },
     {
       "apiVersion": "2020-02-02-preview",
-      "name": "[concat('AppInsights', variables('webSiteName'))]",
+      "name": "[variables('appInsightsName')]",
       "type": "Microsoft.Insights/components",
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[variables('webSiteName')]"
-      ],
       "tags": {
         "[concat('hidden-link:', resourceId('Microsoft.Web/sites', variables('webSiteName')))]": "Resource",
         "displayName": "AppInsightsComponent"
       },
       "properties": {
-        "ApplicationId": "[variables('webSiteName')]",
+        "ApplicationId": "[variables('appInsightsName')]",
         "Application_Type": "web"
       }
     }
