@@ -2,6 +2,7 @@
 
 Param(
     [string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
+    [securestring] [Parameter(Mandatory=$true)] $SqlAdministratorLoginPassword,
     [string] $ResourceGroupName = 'MoneySmart',
     [switch] $UploadArtifacts,
     [string] $StorageAccountName,
@@ -111,6 +112,7 @@ else {
                                        -ResourceGroupName $ResourceGroupName `
                                        -TemplateFile $TemplateFile `
                                        -TemplateParameterFile $TemplateParametersFile `
+                                       -sqlAdministratorLoginPassword $SqlAdministratorLoginPassword `
                                        @OptionalParameters `
                                        -Force -Verbose `
                                        -ErrorVariable ErrorMessages

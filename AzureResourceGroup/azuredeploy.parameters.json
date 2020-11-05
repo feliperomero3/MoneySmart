@@ -6,7 +6,7 @@
       "value": "MoneySmart"
     },
     "sqlAdministratorLoginPassword": {
-        "value": ""
+        "value": null
     }
   }
 }
