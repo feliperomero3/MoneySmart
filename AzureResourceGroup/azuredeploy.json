@@ -55,7 +55,7 @@
   "variables": {
     "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
     "webSiteName": "[concat('webSite', uniqueString(resourceGroup().id))]",
-    "appInsightsName": "[concat('AppInsights', variables('webSiteName'))]",
+    "appInsightsName": "[concat('appInsights', uniqueString(resourceGroup().id))]",
     "sqlserverName": "[concat('sqlserver', uniqueString(resourceGroup().id))]",
     "databaseName": "MoneySmart"
   },
