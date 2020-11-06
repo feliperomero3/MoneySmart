@@ -6,7 +6,10 @@
       "value": "MoneySmart"
     },
     "sqlAdministratorLoginPassword": {
-        "value": null
+      "value": "",
+      "metadata": {
+        "description": "Add parameter as empty string to pass VSCode's ARM template validation. This value is replaced by the parameter passed to the Deploy PowerShell script."
+      }
     }
   }
 }
