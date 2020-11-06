@@ -57,7 +57,7 @@
     "webSiteName": "[concat('webSite', uniqueString(resourceGroup().id))]",
     "appInsightsName": "[concat('AppInsights', variables('webSiteName'))]",
     "sqlserverName": "[concat('sqlserver', uniqueString(resourceGroup().id))]",
-    "databaseName": "moneysmart"
+    "databaseName": "MoneySmart"
   },
   "resources": [
     {
