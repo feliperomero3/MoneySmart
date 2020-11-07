@@ -183,7 +183,11 @@
     }
   ],
   "outputs": {
-    "webAppUrl": {
+    "webSiteName": {
+      "type": "string",
+      "value": "[variables('webSiteName')]"
+    },
+    "webSiteUrl": {
       "type": "string",
       "value": "[reference(concat('Microsoft.Web/sites/', variables('webSiteName'))).hostnames[0]]"
     },
