@@ -82,14 +82,16 @@
             "displayName": "Database"
           },
           "apiVersion": "2020-02-02-preview",
+          "sku": {
+            "name": "Basic",
+            "tier": "Basic"
+          },
           "dependsOn": [
             "[variables('sqlserverName')]"
           ],
           "properties": {
-            "edition": "Basic",
             "collation": "SQL_Latin1_General_CP1_CI_AS",
-            "maxSizeBytes": "1073741824",
-            "requestedServiceObjectiveName": "Basic"
+            "maxSizeBytes": "1073741824"
           }
         },
         {
