@@ -193,7 +193,8 @@
               "value": "1"
             }
           ]
-        }
+        },
+        "httpsOnly": true
       },
       "resources": [
         {
