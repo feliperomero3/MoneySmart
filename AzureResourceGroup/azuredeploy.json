@@ -236,10 +236,6 @@
       "type": "string",
       "value": "[reference(concat('Microsoft.Web/sites/', variables('webSiteName'))).hostnames[0]]"
     },
-    "sqlserverAdmin": {
-      "type": "string",
-      "value": "[reference(concat('Microsoft.Sql/servers/', variables('sqlserverName'))).administratorLogin]"
-    },
     "sqlserverFqdn": {
       "type": "string",
       "value": "[reference(concat('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName]"
