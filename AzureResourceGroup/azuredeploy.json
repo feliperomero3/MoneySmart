@@ -53,10 +53,11 @@
     }
   },
   "variables": {
-    "hostingPlanName": "[concat('hostingPlan', uniqueString(resourceGroup().id))]",
-    "webSiteName": "[concat('webSite', uniqueString(resourceGroup().id))]",
-    "appInsightsName": "[concat('appInsights', uniqueString(resourceGroup().id))]",
-    "sqlserverName": "[concat('sqlserver', uniqueString(resourceGroup().id))]",
+    "suffix": "[substring(uniqueString(resourceGroup().id), 0, 7)]",
+    "hostingPlanName": "[concat('hostingPlan', variables('suffix'))]",
+    "webSiteName": "[concat('webSite', variables('suffix'))]",
+    "appInsightsName": "[concat('appInsights', variables('suffix'))]",
+    "sqlserverName": "[concat('sqlserver', variables('suffix'))]",
     "databaseName": "MoneySmart"
   },
   "resources": [
