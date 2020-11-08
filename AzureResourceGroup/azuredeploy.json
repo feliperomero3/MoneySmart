@@ -145,6 +145,10 @@
         "siteConfig": {
           "appSettings": [
             {
+              "name": "WEBSITE_RUN_FROM_PACKAGE",
+              "value": "1"
+            },
+            {
               "name": "ApplicationInsights:InstrumentationKey",
               "value": "[reference(resourceId('Microsoft.Insights/components/', variables('appInsightsName')), '2020-02-02-preview').InstrumentationKey]"
             }
