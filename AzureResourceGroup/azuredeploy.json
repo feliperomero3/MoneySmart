@@ -161,6 +161,14 @@
               "value": "~2"
             },
             {
+              "name": "APPINSIGHTS_PROFILERFEATURE_VERSION",
+              "value": "1.0.0"
+            },
+            {
+              "name": "APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
+              "value": "1.0.0"
+            },
+            {
               "name": "DiagnosticServices_EXTENSION_VERSION",
               "value": "~3"
             },
@@ -175,6 +183,14 @@
             {
               "name": "XDT_MicrosoftApplicationInsights_BaseExtensions",
               "value": "~1"
+            },
+            {
+              "name": "XDT_MicrosoftApplicationInsights_Mode",
+              "value": "recommended"
+            },
+            {
+              "name": "XDT_MicrosoftApplicationInsights_PreemptSdk",
+              "value": "1"
             }
           ]
         }
