@@ -36,6 +36,8 @@ namespace MoneySmart
                     .RequireAuthenticatedUser()
                     .Build();
             });
+
+            services.AddHealthChecks();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -55,6 +57,8 @@ namespace MoneySmart
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseHealthChecks("/healthcheck");
 
             app.UseAuthentication();
             app.UseAuthorization();
