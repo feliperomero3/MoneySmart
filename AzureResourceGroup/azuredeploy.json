@@ -68,7 +68,7 @@
       "tags": {
         "displayName": "SqlServer"
       },
-      "apiVersion": "2020-02-02-preview",
+      "apiVersion": "2019-06-01-preview",
       "properties": {
         "administratorLogin": "[parameters('sqlAdministratorLogin')]",
         "administratorLoginPassword": "[parameters('sqlAdministratorLoginPassword')]",
@@ -82,7 +82,7 @@
           "tags": {
             "displayName": "Database"
           },
-          "apiVersion": "2020-02-02-preview",
+          "apiVersion": "2019-06-01-preview",
           "sku": {
             "name": "Basic",
             "tier": "Basic"
@@ -97,7 +97,7 @@
         },
         {
           "type": "firewallrules",
-          "apiVersion": "2020-02-02-preview",
+          "apiVersion": "2015-05-01-preview",
           "dependsOn": [
             "[variables('sqlserverName')]"
           ],
