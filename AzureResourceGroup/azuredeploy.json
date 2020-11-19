@@ -38,6 +38,9 @@
         "description": "Describes plan's instance count"
       }
     },
+    "databaseName": {
+      "type": "string"
+    },
     "sqlAdministratorLogin": {
       "type": "string",
       "metadata": {
@@ -62,8 +65,7 @@
     "suffix": "[substring(uniqueString(resourceGroup().id), 0, 7)]",
     "hostingPlanName": "[concat('hostingPlan', variables('suffix'))]",
     "appInsightsName": "[concat('appInsights', variables('suffix'))]",
-    "sqlserverName": "[concat('sqlserver', variables('suffix'))]",
-    "databaseName": "MoneySmart"
+    "sqlserverName": "[concat('sqlserver', variables('suffix'))]"
   },
   "resources": [
     {
@@ -81,7 +83,7 @@
       },
       "resources": [
         {
-          "name": "[variables('databaseName')]",
+          "name": "[parameters('databaseName')]",
           "type": "databases",
           "location": "[parameters('location')]",
           "tags": {
@@ -207,7 +209,7 @@
           ],
           "properties": {
             "DefaultConnection": {
-              "value": "[concat('Data Source=tcp:', reference(resourceId('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', variables('databaseName'), ';User Id=', parameters('sqlAdministratorLogin'), '@', reference(resourceId('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ';Password=', parameters('sqlAdministratorLoginPassword'), ';')]",
+              "value": "[concat('Data Source=tcp:', reference(resourceId('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('databaseName'), ';User Id=', parameters('sqlAdministratorLogin'), '@', reference(resourceId('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ';Password=', parameters('sqlAdministratorLoginPassword'), ';')]",
               "type": "SQLAzure"
             }
           }

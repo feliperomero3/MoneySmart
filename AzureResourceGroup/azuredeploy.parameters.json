@@ -5,6 +5,9 @@
     "webSiteName": {
       "value": "MoneySmart"
     },
+    "databaseName": {
+      "value": "MoneySmart"
+    },
     "sqlAdministratorLogin": {
       "value": "MoneySmart"
     },
