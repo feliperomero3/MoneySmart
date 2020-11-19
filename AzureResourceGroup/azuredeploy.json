@@ -2,6 +2,12 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "webSiteName": {
+      "type": "string",
+      "metadata": {
+        "description": "The website subdomain"
+      }
+    },
     "skuName": {
       "type": "string",
       "defaultValue": "F1",
@@ -55,7 +61,6 @@
   "variables": {
     "suffix": "[substring(uniqueString(resourceGroup().id), 0, 7)]",
     "hostingPlanName": "[concat('hostingPlan', variables('suffix'))]",
-    "webSiteName": "[concat('webSite', variables('suffix'))]",
     "appInsightsName": "[concat('appInsights', variables('suffix'))]",
     "sqlserverName": "[concat('sqlserver', variables('suffix'))]",
     "databaseName": "MoneySmart"
@@ -128,7 +133,7 @@
     },
     {
       "apiVersion": "2019-08-01",
-      "name": "[variables('webSiteName')]",
+      "name": "[parameters('webSiteName')]",
       "type": "Microsoft.Web/sites",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -140,7 +145,7 @@
         "displayName": "Website"
       },
       "properties": {
-        "name": "[variables('webSiteName')]",
+        "name": "[parameters('webSiteName')]",
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
         "siteConfig": {
           "appSettings": [
@@ -198,7 +203,7 @@
           "type": "config",
           "name": "connectionstrings",
           "dependsOn": [
-            "[variables('webSiteName')]"
+            "[parameters('webSiteName')]"
           ],
           "properties": {
             "DefaultConnection": {
@@ -216,7 +221,7 @@
       "location": "[parameters('location')]",
       "kind": "web",
       "tags": {
-        "[concat('hidden-link:', resourceId('Microsoft.Web/sites', variables('webSiteName')))]": "Resource",
+        "[concat('hidden-link:', resourceId('Microsoft.Web/sites', parameters('webSiteName')))]": "Resource",
         "displayName": "AppInsightsComponent"
       },
       "properties": {
@@ -227,11 +232,11 @@
   "outputs": {
     "webSiteName": {
       "type": "string",
-      "value": "[variables('webSiteName')]"
+      "value": "[parameters('webSiteName')]"
     },
     "webSiteUrl": {
       "type": "string",
-      "value": "[reference(concat('Microsoft.Web/sites/', variables('webSiteName'))).hostnames[0]]"
+      "value": "[reference(concat('Microsoft.Web/sites/', parameters('webSiteName'))).hostnames[0]]"
     },
     "sqlserverName": {
       "type": "string",
