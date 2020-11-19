@@ -214,12 +214,12 @@
       "name": "[variables('appInsightsName')]",
       "type": "Microsoft.Insights/components",
       "location": "[parameters('location')]",
+      "kind": "web",
       "tags": {
         "[concat('hidden-link:', resourceId('Microsoft.Web/sites', variables('webSiteName')))]": "Resource",
         "displayName": "AppInsightsComponent"
       },
       "properties": {
-        "ApplicationId": "[variables('appInsightsName')]",
         "Application_Type": "web"
       }
     }
