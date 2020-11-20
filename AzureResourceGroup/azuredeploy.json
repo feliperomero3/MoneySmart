@@ -86,9 +86,6 @@
       "name": "[variables('sqlserverName')]",
       "type": "Microsoft.Sql/servers",
       "location": "[parameters('location')]",
-      "tags": {
-        "displayName": "SqlServer"
-      },
       "apiVersion": "2019-06-01-preview",
       "properties": {
         "administratorLogin": "[parameters('sqlAdministratorLogin')]",
@@ -100,9 +97,6 @@
           "name": "[parameters('databaseName')]",
           "type": "databases",
           "location": "[parameters('location')]",
-          "tags": {
-            "displayName": "Database"
-          },
           "apiVersion": "2019-06-01-preview",
           "sku": {
             "name": "[parameters('databaseSkuName')]",
@@ -136,9 +130,6 @@
       "name": "[variables('hostingPlanName')]",
       "type": "Microsoft.Web/serverfarms",
       "location": "[parameters('location')]",
-      "tags": {
-        "displayName": "HostingPlan"
-      },
       "sku": {
         "name": "[parameters('skuName')]",
         "capacity": "[parameters('skuCapacity')]"
@@ -157,8 +148,7 @@
         "[variables('appInsightsName')]"
       ],
       "tags": {
-        "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName')))]": "empty",
-        "displayName": "Website"
+        "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName')))]": "empty"
       },
       "properties": {
         "name": "[parameters('webSiteName')]",
@@ -237,8 +227,7 @@
       "location": "[parameters('location')]",
       "kind": "web",
       "tags": {
-        "[concat('hidden-link:', resourceId('Microsoft.Web/sites', parameters('webSiteName')))]": "Resource",
-        "displayName": "AppInsightsComponent"
+        "[concat('hidden-link:', resourceId('Microsoft.Web/sites', parameters('webSiteName')))]": "Resource"
       },
       "properties": {
         "Application_Type": "web"
