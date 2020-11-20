@@ -91,15 +91,15 @@
           },
           "apiVersion": "2019-06-01-preview",
           "sku": {
-            "name": "Basic",
-            "tier": "Basic"
+            "name": "Free",
+            "tier": "Free"
           },
           "dependsOn": [
             "[variables('sqlserverName')]"
           ],
           "properties": {
             "collation": "SQL_Latin1_General_CP1_CI_AS",
-            "maxSizeBytes": 1073741824
+            "maxSizeBytes": 33554432
           }
         },
         {
