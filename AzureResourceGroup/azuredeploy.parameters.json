@@ -8,6 +8,18 @@
     "databaseName": {
       "value": "MoneySmart"
     },
+    "databaseSkuName": {
+      "value": "Free",
+      "metadata": {
+        "description": "The database pricing tier"
+      }
+    },
+    "databaseSkuTier": {
+      "value": "Free",
+      "metadata": {
+        "description": "The database pricing tier"
+      }
+    },
     "sqlAdministratorLogin": {
       "value": "MoneySmart"
     },

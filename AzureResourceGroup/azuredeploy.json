@@ -41,6 +41,20 @@
     "databaseName": {
       "type": "string"
     },
+    "databaseSkuName": {
+      "type": "string",
+      "defaultValue": "Free",
+      "metadata": {
+        "description": "The database pricing tier"
+      }
+    },
+    "databaseSkuTier": {
+      "type": "string",
+      "defaultValue": "Free",
+      "metadata": {
+        "description": "The database pricing tier"
+      }
+    },
     "sqlAdministratorLogin": {
       "type": "string",
       "metadata": {
@@ -91,8 +105,8 @@
           },
           "apiVersion": "2019-06-01-preview",
           "sku": {
-            "name": "Free",
-            "tier": "Free"
+            "name": "[parameters('databaseSkuName')]",
+            "tier": "[parameters('databaseSkuTier')]"
           },
           "dependsOn": [
             "[variables('sqlserverName')]"
