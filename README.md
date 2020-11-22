@@ -23,7 +23,7 @@ A very simple Web Application to capture everyday income and expenses.
 
 - An Azure account with an active subscription
 - Visual Studio 2019
-- ASP.NET Core 2.2
+- ASP.NET Core 3.1
 
 ## How to run
 
