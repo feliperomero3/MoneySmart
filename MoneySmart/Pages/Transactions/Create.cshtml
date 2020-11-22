@@ -14,24 +14,29 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Transaction.DateTime" class="col-form-label"></label>
-                <input asp-for="Transaction.DateTime" class="form-control" />
-                <span asp-validation-for="Transaction.DateTime" class="text-danger"></span>
+                <label asp-for="TransactionModel.DateTime" class="col-form-label"></label>
+                <input asp-for="TransactionModel.DateTime" class="form-control" />
+                <span asp-validation-for="TransactionModel.DateTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Transaction.Description" class="col-form-label"></label>
-                <input asp-for="Transaction.Description" class="form-control" />
-                <span asp-validation-for="Transaction.Description" class="text-danger"></span>
+                <label asp-for="TransactionModel.AccountId" class="col-form-label"></label>
+                <select asp-for="TransactionModel.AccountId" asp-items="Model.Accounts" class="form-control"></select>
+                <span asp-validation-for="TransactionModel.AccountId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Transaction.TransactionType" class="col-form-label"></label>
-                <select asp-for="Transaction.TransactionType" class="form-control"></select>
-                <span asp-validation-for="Transaction.TransactionType" class="text-danger"></span>
+                <label asp-for="TransactionModel.Description" class="col-form-label"></label>
+                <input asp-for="TransactionModel.Description" class="form-control" />
+                <span asp-validation-for="TransactionModel.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Transaction.Amount" class="col-form-label"></label>
-                <input asp-for="Transaction.Amount" class="form-control" />
-                <span asp-validation-for="Transaction.Amount" class="text-danger"></span>
+                <label asp-for="TransactionModel.TransactionTypeName" class="col-form-label"></label>
+                <select asp-for="TransactionModel.TransactionTypeName" asp-items="Model.TransactionTypes" class="form-control"></select>
+                <span asp-validation-for="TransactionModel.TransactionTypeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransactionModel.Amount" class="col-form-label"></label>
+                <input asp-for="TransactionModel.Amount" class="form-control" />
+                <span asp-validation-for="TransactionModel.Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
