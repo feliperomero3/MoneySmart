@@ -79,11 +79,11 @@
     "suffix": "[substring(uniqueString(resourceGroup().id), 0, 7)]",
     "hostingPlanName": "[concat(resourceGroup().name,'HostingPlan', variables('suffix'))]",
     "appInsightsName": "[concat(resourceGroup().name,'AppInsights', variables('suffix'))]",
-    "sqlserverName": "[concat(resourceGroup().name,'Sqlserver', variables('suffix'))]"
+    "sqlServerName": "[concat(resourceGroup().name,'SqlServer', variables('suffix'))]"
   },
   "resources": [
     {
-      "name": "[variables('sqlserverName')]",
+      "name": "[variables('sqlServerName')]",
       "type": "Microsoft.Sql/servers",
       "location": "[parameters('location')]",
       "apiVersion": "2019-06-01-preview",
@@ -103,7 +103,7 @@
             "tier": "[parameters('databaseSkuTier')]"
           },
           "dependsOn": [
-            "[variables('sqlserverName')]"
+            "[variables('sqlServerName')]"
           ],
           "properties": {
             "collation": "SQL_Latin1_General_CP1_CI_AS",
@@ -114,7 +114,7 @@
           "type": "firewallrules",
           "apiVersion": "2015-05-01-preview",
           "dependsOn": [
-            "[variables('sqlserverName')]"
+            "[variables('sqlServerName')]"
           ],
           "location": "[parameters('location')]",
           "name": "AllowAllWindowsAzureIps",
@@ -213,7 +213,7 @@
           ],
           "properties": {
             "DefaultConnection": {
-              "value": "[concat('Data Source=tcp:', reference(resourceId('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('databaseName'), ';User Id=', parameters('sqlAdministratorLogin'), '@', reference(resourceId('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ';Password=', parameters('sqlAdministratorLoginPassword'), ';')]",
+              "value": "[concat('Data Source=tcp:', reference(resourceId('Microsoft.Sql/servers/', variables('sqlServerName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('databaseName'), ';User Id=', parameters('sqlAdministratorLogin'), '@', reference(resourceId('Microsoft.Sql/servers/', variables('sqlServerName'))).fullyQualifiedDomainName, ';Password=', parameters('sqlAdministratorLoginPassword'), ';')]",
               "type": "SQLAzure"
             }
           }
@@ -243,13 +243,13 @@
       "type": "string",
       "value": "[reference(concat('Microsoft.Web/sites/', parameters('webSiteName'))).hostnames[0]]"
     },
-    "sqlserverName": {
+    "SqlServerName": {
       "type": "string",
-      "value": "[variables('sqlserverName')]"
+      "value": "[variables('sqlServerName')]"
     },
-    "sqlserverFqdn": {
+    "SqlServerFqdn": {
       "type": "string",
-      "value": "[reference(concat('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName]"
+      "value": "[reference(concat('Microsoft.Sql/servers/', variables('sqlServerName'))).fullyQualifiedDomainName]"
     }
   }
 }
