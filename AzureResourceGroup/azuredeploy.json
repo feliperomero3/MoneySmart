@@ -76,10 +76,9 @@
     }
   },
   "variables": {
-    "suffix": "[substring(uniqueString(resourceGroup().id), 0, 7)]",
-    "hostingPlanName": "[concat(resourceGroup().name,'HostingPlan', variables('suffix'))]",
-    "appInsightsName": "[concat(resourceGroup().name,'AppInsights', variables('suffix'))]",
-    "sqlServerName": "[concat(resourceGroup().name,'SqlServer', variables('suffix'))]"
+    "hostingPlanName": "[concat(resourceGroup().name,'HostingPlan')]",
+    "appInsightsName": "[concat(resourceGroup().name,'AppInsights')]",
+    "sqlServerName": "[concat(resourceGroup().name,'SqlServer')]"
   },
   "resources": [
     {
