@@ -84,8 +84,8 @@
     {
       "name": "[variables('sqlServerName')]",
       "type": "Microsoft.Sql/servers",
-      "location": "[parameters('location')]",
       "apiVersion": "2019-06-01-preview",
+      "location": "[parameters('location')]",
       "properties": {
         "administratorLogin": "[parameters('sqlAdministratorLogin')]",
         "administratorLoginPassword": "[parameters('sqlAdministratorLoginPassword')]",
@@ -95,28 +95,28 @@
         {
           "name": "[parameters('databaseName')]",
           "type": "databases",
-          "location": "[parameters('location')]",
           "apiVersion": "2019-06-01-preview",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[variables('sqlServerName')]"
+          ],
           "sku": {
             "name": "[parameters('databaseSkuName')]",
             "tier": "[parameters('databaseSkuTier')]"
           },
-          "dependsOn": [
-            "[variables('sqlServerName')]"
-          ],
           "properties": {
             "collation": "SQL_Latin1_General_CP1_CI_AS",
             "maxSizeBytes": 33554432
           }
         },
         {
+          "name": "AllowAllWindowsAzureIps",
           "type": "firewallrules",
           "apiVersion": "2015-05-01-preview",
+          "location": "[parameters('location')]",
           "dependsOn": [
             "[variables('sqlServerName')]"
           ],
-          "location": "[parameters('location')]",
-          "name": "AllowAllWindowsAzureIps",
           "properties": {
             "endIpAddress": "0.0.0.0",
             "startIpAddress": "0.0.0.0"
@@ -125,9 +125,9 @@
       ]
     },
     {
-      "apiVersion": "2019-08-01",
       "name": "[variables('hostingPlanName')]",
       "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2019-08-01",
       "location": "[parameters('location')]",
       "sku": {
         "name": "[parameters('skuName')]",
@@ -138,17 +138,17 @@
       }
     },
     {
-      "apiVersion": "2019-08-01",
       "name": "[parameters('webSiteName')]",
       "type": "Microsoft.Web/sites",
+      "apiVersion": "2019-08-01",
       "location": "[parameters('location')]",
+      "tags": {
+        "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName')))]": "empty"
+      },
       "dependsOn": [
         "[variables('hostingPlanName')]",
         "[variables('appInsightsName')]"
       ],
-      "tags": {
-        "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName')))]": "empty"
-      },
       "properties": {
         "name": "[parameters('webSiteName')]",
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
@@ -204,9 +204,10 @@
       },
       "resources": [
         {
-          "apiVersion": "2019-08-01",
-          "type": "config",
           "name": "connectionstrings",
+          "type": "config",
+          "apiVersion": "2019-08-01",
+          "location": "[parameters('location')]",
           "dependsOn": [
             "[parameters('webSiteName')]"
           ],
@@ -220,9 +221,9 @@
       ]
     },
     {
-      "apiVersion": "2020-02-02-preview",
       "name": "[variables('appInsightsName')]",
       "type": "Microsoft.Insights/components",
+      "apiVersion": "2020-02-02-preview",
       "location": "[parameters('location')]",
       "kind": "web",
       "tags": {
