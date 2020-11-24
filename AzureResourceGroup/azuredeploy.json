@@ -5,7 +5,7 @@
     "webSiteName": {
       "type": "string",
       "metadata": {
-        "description": "The website subdomain"
+        "description": "Unique name of the app to create or update."
       }
     },
     "skuName": {
@@ -35,24 +35,27 @@
       "minValue": 1,
       "maxValue": 3,
       "metadata": {
-        "description": "Describes plan's instance count"
+        "description": "Describes plan's instance count."
       }
     },
     "databaseName": {
-      "type": "string"
+      "type": "string",
+      "metadata": {
+        "description": "The name of the database."
+      }
     },
     "databaseSkuName": {
       "type": "string",
       "defaultValue": "Free",
       "metadata": {
-        "description": "The database pricing tier"
+        "description": "The name of the SKU, typically, a letter + Number code, e.g. P3."
       }
     },
     "databaseSkuTier": {
       "type": "string",
       "defaultValue": "Free",
       "metadata": {
-        "description": "The database pricing tier"
+        "description": "The tier or edition of the particular SKU, e.g. Basic, Premium."
       }
     },
     "databaseMaxSizeBytes": {
@@ -65,13 +68,13 @@
     "sqlAdministratorLogin": {
       "type": "string",
       "metadata": {
-        "description": "The admin user of the SQL Server"
+        "description": "Administrator username for the server."
       }
     },
     "sqlAdministratorLoginPassword": {
       "type": "securestring",
       "metadata": {
-        "description": "The password of the admin user of the SQL Server"
+        "description": "The administrator login password (required for server creation)."
       }
     },
     "location": {

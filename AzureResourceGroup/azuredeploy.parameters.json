@@ -3,21 +3,27 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "webSiteName": {
-      "value": "MoneySmart"
+      "value": "MoneySmart",
+      "metadata": {
+        "description": "Unique name of the app to create or update."
+      }
     },
     "databaseName": {
-      "value": "MoneySmart"
+      "value": "MoneySmart",
+      "metadata": {
+        "description": "The name of the database."
+      }
     },
     "databaseSkuName": {
       "value": "Free",
       "metadata": {
-        "description": "The database pricing tier"
+        "description": "The name of the SKU, typically, a letter + Number code, e.g. P3."
       }
     },
     "databaseSkuTier": {
       "value": "Free",
       "metadata": {
-        "description": "The database pricing tier"
+        "description": "The tier or edition of the particular SKU, e.g. Basic, Premium."
       }
     },
     "databaseMaxSizeBytes": {
@@ -27,7 +33,10 @@
       }
     },
     "sqlAdministratorLogin": {
-      "value": "MoneySmart"
+      "value": "MoneySmart",
+      "metadata": {
+        "description": "Administrator username for the server."
+      }
     },
     "sqlAdministratorLoginPassword": {
       "value": "",
