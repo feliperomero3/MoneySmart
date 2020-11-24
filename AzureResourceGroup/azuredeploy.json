@@ -55,6 +55,13 @@
         "description": "The database pricing tier"
       }
     },
+    "databaseMaxSizeBytes": {
+      "type": "int",
+      "defaultValue": 33554432,
+      "metadata": {
+        "description": "The max size of the database expressed in bytes."
+      }
+    },
     "sqlAdministratorLogin": {
       "type": "string",
       "metadata": {
@@ -106,7 +113,7 @@
           },
           "properties": {
             "collation": "SQL_Latin1_General_CP1_CI_AS",
-            "maxSizeBytes": 33554432
+            "maxSizeBytes": "[parameters('databaseMaxSizeBytes')]"
           }
         },
         {

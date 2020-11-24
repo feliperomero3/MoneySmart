@@ -20,6 +20,12 @@
         "description": "The database pricing tier"
       }
     },
+    "databaseMaxSizeBytes": {
+      "value": 33554432,
+      "metadata": {
+        "description": "The max size of the database expressed in bytes."
+      }
+    },
     "sqlAdministratorLogin": {
       "value": "MoneySmart"
     },
