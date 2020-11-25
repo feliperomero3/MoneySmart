@@ -18,7 +18,7 @@ namespace MoneySmart.IntegrationTests
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-            builder.UseEnvironment("Tests");
+            builder.UseEnvironment("Development");
 
             builder.ConfigureTestServices(services =>
             {
