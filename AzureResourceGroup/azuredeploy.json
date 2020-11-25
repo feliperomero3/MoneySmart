@@ -8,7 +8,7 @@
         "description": "Unique name of the app to create or update."
       }
     },
-    "skuName": {
+    "webSiteSkuName": {
       "type": "string",
       "defaultValue": "F1",
       "allowedValues": [
@@ -140,7 +140,7 @@
       "apiVersion": "2019-08-01",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "[parameters('skuName')]",
+        "name": "[parameters('webSiteSkuName')]",
         "capacity": "[parameters('skuCapacity')]"
       },
       "properties": {
