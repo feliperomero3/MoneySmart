@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
 using MoneySmart.Entities;
-using MoneySmart.Models;
 
 namespace MoneySmart.Pages.Transactions
 {
@@ -52,5 +52,25 @@ namespace MoneySmart.Pages.Transactions
 
             return RedirectToPage("./Index");
         }
+    }
+
+    public class TransactionInputModel
+    {
+        [Required]
+        public DateTime DateTime { get; set; }
+
+        [Required]
+        [Display(Name = "Account")]
+        public long AccountId { get; set; }
+
+        [Required]
+        public string Description { get; set; }
+
+        [Required]
+        [Display(Name = "Type")]
+        public string TransactionTypeName { get; set; }
+
+        [Required]
+        public decimal Amount { get; set; }
     }
 }
