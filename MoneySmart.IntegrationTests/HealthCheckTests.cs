@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
 
 namespace MoneySmart.IntegrationTests
 {
-    public class HealthCheckTests : IClassFixture<WebApplicationFactory<Startup>>
+    public class HealthCheckTests : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
         private readonly HttpClient _httpClient;
 
-        public HealthCheckTests(WebApplicationFactory<Startup> factory)
+        public HealthCheckTests(CustomWebApplicationFactory<Startup> factory)
         {
             _httpClient = factory.CreateDefaultClient(new Uri("https://localhost:5001"));
         }
