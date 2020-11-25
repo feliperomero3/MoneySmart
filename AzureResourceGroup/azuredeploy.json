@@ -29,7 +29,7 @@
         "description": "Describes plan's pricing tier and instance size."
       }
     },
-    "skuCapacity": {
+    "webSiteSkuCapacity": {
       "type": "int",
       "defaultValue": 1,
       "minValue": 1,
@@ -141,7 +141,7 @@
       "location": "[parameters('location')]",
       "sku": {
         "name": "[parameters('webSiteSkuName')]",
-        "capacity": "[parameters('skuCapacity')]"
+        "capacity": "[parameters('webSiteSkuCapacity')]"
       },
       "properties": {
         "name": "[variables('hostingPlanName')]"
