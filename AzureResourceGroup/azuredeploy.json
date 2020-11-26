@@ -28,13 +28,6 @@
         "description": "The name of the SKU, typically, a letter + Number code, e.g. P3."
       }
     },
-    "databaseSkuTier": {
-      "type": "string",
-      "defaultValue": "Free",
-      "metadata": {
-        "description": "The tier or edition of the particular SKU, e.g. Basic, Premium."
-      }
-    },
     "databaseMaxSizeBytes": {
       "type": "int",
       "defaultValue": 33554432,
@@ -88,8 +81,7 @@
             "[variables('sqlServerName')]"
           ],
           "sku": {
-            "name": "[parameters('databaseSkuName')]",
-            "tier": "[parameters('databaseSkuTier')]"
+            "name": "[parameters('databaseSkuName')]"
           },
           "properties": {
             "collation": "SQL_Latin1_General_CP1_CI_AS",
