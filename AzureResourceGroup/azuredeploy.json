@@ -15,15 +15,6 @@
         "description": "Describes plan's pricing tier and instance size."
       }
     },
-    "webSiteSkuCapacity": {
-      "type": "int",
-      "defaultValue": 1,
-      "minValue": 1,
-      "maxValue": 3,
-      "metadata": {
-        "description": "Describes plan's instance count."
-      }
-    },
     "databaseName": {
       "type": "string",
       "metadata": {
@@ -126,8 +117,7 @@
       "apiVersion": "2019-08-01",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "[parameters('webSiteSkuName')]",
-        "capacity": "[parameters('webSiteSkuCapacity')]"
+        "name": "[parameters('webSiteSkuName')]"
       },
       "properties": {
         "name": "[variables('hostingPlanName')]"
