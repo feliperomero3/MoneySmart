@@ -23,5 +23,14 @@ namespace MoneySmart.Entities
             TransactionType = transactionType;
             Amount = amount;
         }
+
+        public void EditTransaction(Transaction transaction)
+        {
+            DateTime = transaction.DateTime;
+            Account = transaction.Account;
+            Description = transaction.Description;
+            TransactionType = transaction.TransactionType;
+            Amount = transaction.Amount;
+        }
     }
 }
