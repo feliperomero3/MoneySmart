@@ -29,7 +29,7 @@ namespace MoneySmart.Pages.Transactions
         }
 
         [BindProperty]
-        public TransactionInputModel TransactionModel { get; set; }
+        public TransactionCreateModel TransactionCreateModel { get; set; }
         public SelectList Accounts { get; private set; }
 
         public async Task<IActionResult> OnPostAsync()
@@ -37,14 +37,14 @@ namespace MoneySmart.Pages.Transactions
             if (!ModelState.IsValid)
             {
                 Accounts = new SelectList(_context.Accounts.AsNoTracking().ToList(), "Id", "Name",
-                    TransactionModel.AccountId);
+                    TransactionCreateModel.AccountId);
 
                 return Page();
             }
 
-            var account = _context.Accounts.Find(TransactionModel.AccountId);
+            var account = _context.Accounts.Find(TransactionCreateModel.AccountId);
 
-            var transaction = TransactionModel.MapToTransaction(account);
+            var transaction = TransactionCreateModel.MapToTransaction(account);
 
             _context.Transactions.Add(transaction);
 
@@ -54,7 +54,7 @@ namespace MoneySmart.Pages.Transactions
         }
     }
 
-    public class TransactionInputModel
+    public class TransactionCreateModel
     {
         [Required]
         public DateTime DateTime { get; set; }
@@ -71,6 +71,7 @@ namespace MoneySmart.Pages.Transactions
         public string TransactionTypeName { get; set; }
 
         [Required]
+        [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
 
         public Transaction MapToTransaction(Account account)

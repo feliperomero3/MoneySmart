@@ -44,11 +44,11 @@ namespace MoneySmart.IntegrationTests.Pages
                 submit,
                 new Dictionary<string, string>
                 {
-                    ["TransactionModel.DateTime"] = "2020-11-28 11:00",
-                    ["TransactionModel.AccountId"] = "1",
-                    ["TransactionModel.Description"] = "Coffee",
-                    ["TransactionModel.TransactionTypeName"] = "Expense",
-                    ["TransactionModel.Amount"] = "5"
+                    ["TransactionCreateModel.DateTime"] = "2020-11-28 11:00",
+                    ["TransactionCreateModel.AccountId"] = "1",
+                    ["TransactionCreateModel.Description"] = "Coffee",
+                    ["TransactionCreateModel.TransactionTypeName"] = "Expense",
+                    ["TransactionCreateModel.Amount"] = "5"
                 });
 
             Assert.Equal(HttpStatusCode.OK, defaultPage.StatusCode);
