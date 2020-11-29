@@ -46,6 +46,7 @@ namespace MoneySmart.IntegrationTests
                     var context = provider.GetRequiredService<ApplicationDbContext>();
 
                     DatabaseHelper.InitializeTestDatabase(context);
+                    DatabaseHelper.SeedTestDatabase(context);
                 }
                 catch (SqlException sqlException)
                 {
