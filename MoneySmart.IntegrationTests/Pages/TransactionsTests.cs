@@ -79,11 +79,11 @@ namespace MoneySmart.IntegrationTests.Pages
             var response = await client.SendAsync(form, submit,
                 new Dictionary<string, string>
                 {
-                    ["TransactionModel.DateTime"] = "2020-11-28 10:00",
-                    ["TransactionModel.AccountId"] = "1",
-                    ["TransactionModel.Description"] = "Coffee",
-                    ["TransactionModel.TransactionTypeName"] = "Expense",
-                    ["TransactionModel.Amount"] = "4.5"
+                    ["TransactionEditModel.DateTime"] = "2020-11-28 10:00",
+                    ["TransactionEditModel.AccountId"] = "1",
+                    ["TransactionEditModel.Description"] = "Coffee",
+                    ["TransactionEditModel.TransactionTypeName"] = "Expense",
+                    ["TransactionEditModel.Amount"] = "4.5"
                 });
 
             Assert.Equal(HttpStatusCode.OK, defaultPage.StatusCode);

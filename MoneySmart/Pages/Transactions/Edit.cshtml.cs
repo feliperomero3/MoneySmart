@@ -22,7 +22,7 @@ namespace MoneySmart.Pages.Transactions
         }
 
         [BindProperty]
-        public TransactionEditModel TransactionModel { get; set; }
+        public TransactionEditModel TransactionEditModel { get; set; }
 
         public SelectList Accounts { get; private set; }
 
@@ -43,10 +43,10 @@ namespace MoneySmart.Pages.Transactions
                 return NotFound();
             }
 
-            TransactionModel = TransactionEditModel.MapFromTransaction(transaction);
+            TransactionEditModel = TransactionEditModel.MapFromTransaction(transaction);
 
             Accounts = new SelectList(await _context.Accounts.AsNoTracking().ToListAsync(), "Id", "Name",
-                TransactionModel.AccountId);
+                TransactionEditModel.AccountId);
 
             return Page();
         }
@@ -56,18 +56,18 @@ namespace MoneySmart.Pages.Transactions
             if (!ModelState.IsValid)
             {
                 Accounts = new SelectList(await _context.Accounts.AsNoTracking().ToListAsync(), "Id", "Name",
-                    TransactionModel.AccountId);
+                    TransactionEditModel.AccountId);
 
                 return Page();
             }
 
             var transaction = await _context.Transactions
                 .Include(t => t.Account)
-                .FirstOrDefaultAsync(t => t.Id == TransactionModel.Id);
+                .FirstOrDefaultAsync(t => t.Id == TransactionEditModel.Id);
 
-            var account = await _context.Accounts.FindAsync(TransactionModel.AccountId);
+            var account = await _context.Accounts.FindAsync(TransactionEditModel.AccountId);
 
-            var modifiedTransaction = TransactionModel.MapToTransaction(account);
+            var modifiedTransaction = TransactionEditModel.MapToTransaction(account);
 
             transaction.EditTransaction(modifiedTransaction);
 
@@ -77,7 +77,7 @@ namespace MoneySmart.Pages.Transactions
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TransactionExists(TransactionModel.Id))
+                if (!TransactionExists(TransactionEditModel.Id))
                 {
                     return NotFound();
                 }
