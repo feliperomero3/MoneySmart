@@ -33,12 +33,11 @@ namespace MoneySmart.IntegrationTests
 
                 var provider = scope.ServiceProvider;
 
+                var context = provider.GetRequiredService<ApplicationDbContext>();
+
                 try
                 {
-                    var context = provider.GetRequiredService<ApplicationDbContext>();
-
                     DatabaseHelper.InitializeTestDatabase(context);
-                    DatabaseHelper.SeedTestDatabase(context);
                 }
                 catch (SqlException sqlException)
                 {

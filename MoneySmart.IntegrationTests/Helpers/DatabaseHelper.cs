@@ -6,12 +6,26 @@ namespace MoneySmart.IntegrationTests.Helpers
 {
     public static class DatabaseHelper
     {
+        private static readonly object _lock = new object();
+        private static bool _databaseInitialized;
+
         public static void InitializeTestDatabase(ApplicationDbContext context)
         {
-            context.Database.EnsureCreated();
+            lock (_lock)
+            {
+                if (!_databaseInitialized)
+                {
+                    context.Database.EnsureDeleted();
+                    context.Database.EnsureCreated();
+
+                    SeedTestDatabase(context);
+
+                    _databaseInitialized = true;
+                }
+            }
         }
 
-        public static void SeedTestDatabase(ApplicationDbContext context)
+        private static void SeedTestDatabase(ApplicationDbContext context)
         {
             var account1 = new Account("5221", "Savings");
 
@@ -26,7 +40,6 @@ namespace MoneySmart.IntegrationTests.Helpers
 
         public static void ResetTestDatabase(ApplicationDbContext context)
         {
-            context.Database.EnsureDeleted();
             InitializeTestDatabase(context);
         }
     }
