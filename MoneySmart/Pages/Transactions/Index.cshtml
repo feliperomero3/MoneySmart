@@ -20,13 +20,13 @@
                 @Html.DisplayNameFor(model => model.Transactions[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Transactions[0].TransactionType)
+                @Html.DisplayNameFor(model => model.Transactions[0].TransactionTypeName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Transactions[0].Amount)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Transactions[0].Account)
+                @Html.DisplayNameFor(model => model.Transactions[0].AccountName)
             </th>
             <th></th>
         </tr>
@@ -42,13 +42,13 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TransactionType)
+                    @Html.DisplayFor(modelItem => item.TransactionTypeName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Amount)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Account.Name)
+                    @Html.DisplayFor(modelItem => item.AccountName)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

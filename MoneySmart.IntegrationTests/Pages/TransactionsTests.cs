@@ -21,6 +21,24 @@ namespace MoneySmart.IntegrationTests.Pages
         }
 
         [Fact]
+        public async Task Get_Index_Transaction_Returns_Transactions_collection()
+        {
+            var client = _factory.CreateClientWithAuthenticatedUser();
+
+            var response = await client.GetAsync("");
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            using var content = await HtmlHelper.GetDocumentAsync(response);
+
+            var table = content.QuerySelector("table");
+            var tableBody = table.QuerySelector("tbody");
+            var rows = tableBody.QuerySelectorAll("tr");
+
+            Assert.NotEmpty(rows);
+        }
+
+        [Fact]
         public async Task Get_Create_Transaction_Returns_Page()
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
