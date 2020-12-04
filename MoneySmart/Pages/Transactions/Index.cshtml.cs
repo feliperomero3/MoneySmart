@@ -16,11 +16,11 @@ namespace MoneySmart.Pages.Transactions
             _context = context;
         }
 
-        public IList<Transaction> Transaction { get; set; }
+        public IList<Transaction> Transactions { get; set; }
 
         public async Task OnGetAsync()
         {
-            Transaction = await _context.Transactions.ToListAsync();
+            Transactions = await _context.Transactions.ToListAsync();
         }
     }
 }
