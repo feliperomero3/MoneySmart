@@ -20,7 +20,7 @@ namespace MoneySmart.Pages.Transactions
 
         public async Task OnGetAsync()
         {
-            Transactions = await _context.Transactions.ToListAsync();
+            Transactions = await _context.Transactions.Include(t => t.Account).ToListAsync();
         }
     }
 }
