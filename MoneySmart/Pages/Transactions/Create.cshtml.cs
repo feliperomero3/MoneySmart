@@ -21,6 +21,8 @@ namespace MoneySmart.Pages.Transactions
             _context = context;
         }
 
+        public SelectList Accounts { get; private set; }
+
         public IActionResult OnGet()
         {
             Accounts = new SelectList(_context.Accounts.AsNoTracking().ToList(), "Id", "Name");
@@ -30,7 +32,6 @@ namespace MoneySmart.Pages.Transactions
 
         [BindProperty]
         public TransactionCreateModel TransactionCreateModel { get; set; }
-        public SelectList Accounts { get; private set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
