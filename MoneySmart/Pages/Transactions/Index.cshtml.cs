@@ -18,7 +18,7 @@ namespace MoneySmart.Pages.Transactions
             _context = context;
         }
 
-        public IList<TransactionModel> Transactions { get; set; }
+        public IReadOnlyList<TransactionModel> Transactions { get; private set; }
 
         public async Task OnGetAsync()
         {
