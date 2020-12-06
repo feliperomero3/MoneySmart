@@ -24,6 +24,7 @@ namespace MoneySmart.Pages.Transactions
         {
             Transactions = await _context.Transactions
                 .Include(t => t.Account)
+                .OrderByDescending(t => t.DateTime)
                 .Select(t => new TransactionModel
                 {
                     Id = t.Id,
