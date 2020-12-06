@@ -58,6 +58,7 @@ namespace MoneySmart.Pages.Transactions
     public class TransactionCreateModel
     {
         [Required]
+        [Display(Name = "Date")]
         public DateTime DateTime { get; set; }
 
         [Required]

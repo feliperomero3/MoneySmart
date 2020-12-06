@@ -102,6 +102,7 @@ namespace MoneySmart.Pages.Transactions
         public long Id { get; set; }
 
         [Required]
+        [Display(Name = "Date")]
         public DateTime DateTime { get; set; }
 
         [Required]
