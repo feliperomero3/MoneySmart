@@ -52,7 +52,6 @@ File > Open > Project/Solution and hit F5!
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
-
 [build-status-badge]: https://dev.azure.com/feliperomeromx/Projects/_apis/build/status/feliperomero3.MoneySmart?branchName=master
 [build-status]: https://dev.azure.com/feliperomeromx/Projects/_build/latest?definitionId=9&branchName=master
 [quality-gate-status-badge]: https://sonarcloud.io/api/project_badges/measure?project=feliperomero3_MoneySmart&metric=alert_status
