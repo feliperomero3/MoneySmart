@@ -6,8 +6,9 @@ namespace MoneySmart.Pages
     [AllowAnonymous]
     public class PrivacyModel : PageModel
     {
-        public void OnGet()
+        public PageResult OnGet()
         {
+            return Page();
         }
     }
 }
