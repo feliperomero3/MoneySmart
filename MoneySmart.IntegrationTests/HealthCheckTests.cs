@@ -19,7 +19,7 @@ namespace MoneySmart.IntegrationTests
         {
             var response = await _httpClient.GetAsync("/health");
 
-            response.EnsureSuccessStatusCode();
+            Assert.True(response.IsSuccessStatusCode);
         }
     }
 }
