@@ -17,7 +17,7 @@ namespace MoneySmart.IntegrationTests
         [Fact]
         public async Task HealthCheck_returns_success()
         {
-            var response = await _httpClient.GetAsync("/healthcheck");
+            var response = await _httpClient.GetAsync("/health");
 
             response.EnsureSuccessStatusCode();
         }

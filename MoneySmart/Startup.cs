@@ -58,7 +58,7 @@ namespace MoneySmart
 
             app.UseRouting();
 
-            app.UseHealthChecks("/healthcheck");
+            app.UseHealthChecks("/health");
 
             app.UseAuthentication();
             app.UseAuthorization();
