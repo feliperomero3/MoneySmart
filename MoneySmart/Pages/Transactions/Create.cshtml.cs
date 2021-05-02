@@ -14,7 +14,7 @@ namespace MoneySmart.Pages.Transactions
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        public readonly SelectList TransactionTypes = new SelectList(new[] { "Income", "Expense" });
+        public readonly SelectList TransactionTypes = new SelectList(new[] { "Income", "Expense" }, "Expense");
 
         public CreateModel(ApplicationDbContext context)
         {

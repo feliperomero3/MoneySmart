@@ -108,5 +108,19 @@ namespace MoneySmart.IntegrationTests.Pages
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
             Assert.Equal("/Transactions", response.Headers.Location.OriginalString);
         }
+
+        [Fact]
+        public async Task Get_Create_Transaction_Defaults_TransactionType_To_Expense()
+        {
+            var client = _factory.CreateClientWithAuthenticatedUser();
+            var createPage = await client.GetAsync("Create");
+            var content = await HtmlHelper.GetDocumentAsync(createPage);
+
+            var select = (IHtmlSelectElement)content.QuerySelector("#TransactionCreateModel_TransactionTypeName");
+
+            var selectedOption = select.Options[select.Options.SelectedIndex];
+
+            Assert.Equal("Expense", selectedOption.Value);
+        }
     }
 }
