@@ -176,7 +176,8 @@
               "name": "XDT_MicrosoftApplicationInsights_PreemptSdk",
               "value": "1"
             }
-          ]
+          ],
+          "ftpsState": "FtpsOnly"
         },
         "httpsOnly": true
       },
