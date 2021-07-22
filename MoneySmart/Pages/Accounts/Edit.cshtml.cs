@@ -22,14 +22,14 @@ namespace MoneySmart.Pages.Accounts
 
         private Account Account { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(string number)
         {
-            if (id == null)
+            if (number == null)
             {
                 return NotFound();
             }
 
-            Account = await _context.Accounts.FirstOrDefaultAsync(m => m.Id == id);
+            Account = await _context.Accounts.FirstOrDefaultAsync(m => m.Number == number);
 
             if (Account == null)
             {

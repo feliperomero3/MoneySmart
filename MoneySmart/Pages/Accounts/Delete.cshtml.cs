@@ -19,14 +19,14 @@ namespace MoneySmart.Pages.Accounts
         [BindProperty]
         public AccountModel Account { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(string number)
         {
-            if (id == null)
+            if (number == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FirstOrDefaultAsync(m => m.Id == id);
+            var account = await _context.Accounts.FirstOrDefaultAsync(m => m.Number == number);
 
             if (account == null)
             {
