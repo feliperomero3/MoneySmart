@@ -15,10 +15,10 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Account[0].Name)
+                    @Html.DisplayNameFor(model => model.Account[0].Number)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Account[0].Number)
+                    @Html.DisplayNameFor(model => model.Account[0].Name)
                 </th>
                 <th></th>
             </tr>
@@ -28,10 +28,10 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Name)
+                        @Html.DisplayFor(modelItem => item.Number)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Number)
+                        @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
                         <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
