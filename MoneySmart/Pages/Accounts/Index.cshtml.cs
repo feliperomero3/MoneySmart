@@ -22,7 +22,7 @@ namespace MoneySmart.Pages.Accounts
         public async Task OnGetAsync()
         {
             Account = await _context.Accounts
-                .OrderBy(a => a.Name)
+                .OrderBy(a => a.Number)
                 .ToListAsync();
         }
     }
