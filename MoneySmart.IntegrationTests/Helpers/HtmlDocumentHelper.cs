@@ -6,7 +6,7 @@ using AngleSharp.Html.Dom;
 
 namespace MoneySmart.IntegrationTests.Helpers
 {
-    public static class HtmlHelper
+    public static class HtmlDocumentHelper
     {
         public static async Task<IHtmlDocument> GetDocumentAsync(HttpResponseMessage response)
         {

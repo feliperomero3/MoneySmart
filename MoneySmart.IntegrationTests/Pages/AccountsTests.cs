@@ -75,7 +75,7 @@ namespace MoneySmart.IntegrationTests.Pages
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
             var defaultPage = await client.GetAsync("Edit?number=5221");
-            var content = await HtmlHelper.GetDocumentAsync(defaultPage);
+            var content = await HtmlDocumentHelper.GetDocumentAsync(defaultPage);
 
             var form = (IHtmlFormElement)content.QuerySelector("form");
             var submit = (IHtmlInputElement)content.QuerySelector("input[type='submit']");

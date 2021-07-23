@@ -29,7 +29,7 @@ namespace MoneySmart.IntegrationTests.Pages
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
-            using var content = await HtmlHelper.GetDocumentAsync(response);
+            using var content = await HtmlDocumentHelper.GetDocumentAsync(response);
 
             var table = content.QuerySelector("table");
             var tableBody = table.QuerySelector("tbody");
@@ -53,7 +53,7 @@ namespace MoneySmart.IntegrationTests.Pages
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
             var defaultPage = await client.GetAsync("Create");
-            var content = await HtmlHelper.GetDocumentAsync(defaultPage);
+            var content = await HtmlDocumentHelper.GetDocumentAsync(defaultPage);
 
             var form = (IHtmlFormElement)content.QuerySelector("form");
             var submit = (IHtmlInputElement)content.QuerySelector("input[type='submit']");
@@ -89,7 +89,7 @@ namespace MoneySmart.IntegrationTests.Pages
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
             var defaultPage = await client.GetAsync("Edit/?id=1");
-            var content = await HtmlHelper.GetDocumentAsync(defaultPage);
+            var content = await HtmlDocumentHelper.GetDocumentAsync(defaultPage);
 
             var form = (IHtmlFormElement)content.QuerySelector("form");
             var submit = (IHtmlInputElement)content.QuerySelector("input[type='submit']");
@@ -114,7 +114,7 @@ namespace MoneySmart.IntegrationTests.Pages
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
             var createPage = await client.GetAsync("Create");
-            var content = await HtmlHelper.GetDocumentAsync(createPage);
+            var content = await HtmlDocumentHelper.GetDocumentAsync(createPage);
 
             var select = (IHtmlSelectElement)content.QuerySelector("#TransactionCreateModel_TransactionTypeName");
 
