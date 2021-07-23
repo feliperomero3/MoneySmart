@@ -61,7 +61,7 @@ namespace MoneySmart.IntegrationTests.Pages
         }
 
         [Fact]
-        public async Task Get_Edit_Account_Returns_Account_Page()
+        public async Task Get_Edit_Account_Returns_Edit_Account_Page()
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
 
@@ -90,6 +90,16 @@ namespace MoneySmart.IntegrationTests.Pages
 
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
             Assert.Equal("/Accounts", response.Headers.Location.OriginalString);
+        }
+
+        [Fact]
+        public async Task Get_Delete_Account_Returns_Delete_Account_Page()
+        {
+            var client = _factory.CreateClientWithAuthenticatedUser();
+
+            var response = await client.GetAsync("Delete?number=5221");
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
     }
 }
