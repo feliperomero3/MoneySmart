@@ -234,11 +234,11 @@
       "type": "string",
       "value": "[reference(concat('Microsoft.Web/sites/', parameters('webSiteName'))).hostnames[0]]"
     },
-    "SqlServerName": {
+    "sqlServerName": {
       "type": "string",
       "value": "[variables('sqlServerName')]"
     },
-    "SqlServerFqdn": {
+    "sqlServerFqdn": {
       "type": "string",
       "value": "[reference(concat('Microsoft.Sql/servers/', variables('sqlServerName'))).fullyQualifiedDomainName]"
     }
