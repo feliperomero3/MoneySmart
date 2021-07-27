@@ -43,6 +43,18 @@
       "metadata": {
         "description": "Add parameter as empty string to pass VSCode's ARM template validation. This value is replaced by the parameter passed to the Deploy PowerShell script."
       }
+    },
+    "databaseUserLogin": {
+      "value": "MoneySmartUser",
+      "metadata": {
+        "description": "Database username to be used by the application."
+      }
+    },
+    "databaseUserPassword": {
+      "value": "",
+      "metadata": {
+        "description": "Database user password to be used by the application."
+      }
     }
   }
 }

@@ -47,6 +47,18 @@
         "description": "The administrator login password (required for server creation)."
       }
     },
+    "databaseUserLogin": {
+      "type": "string",
+      "metadata": {
+        "description": "description"
+      }
+    },
+    "databaseUserPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "description"
+      }
+    },
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
@@ -192,7 +204,7 @@
           ],
           "properties": {
             "DefaultConnection": {
-              "value": "[concat('Data Source=tcp:', reference(resourceId('Microsoft.Sql/servers/', variables('sqlServerName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('databaseName'), ';User Id=', parameters('sqlAdministratorLogin'), '@', reference(resourceId('Microsoft.Sql/servers/', variables('sqlServerName'))).fullyQualifiedDomainName, ';Password=', parameters('sqlAdministratorLoginPassword'), ';')]",
+              "value": "[concat('Data Source=tcp:', reference(resourceId('Microsoft.Sql/servers/', variables('sqlServerName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('databaseName'), ';User Id=', parameters('databaseUserLogin'), '@', reference(resourceId('Microsoft.Sql/servers/', variables('sqlServerName'))).fullyQualifiedDomainName, ';Password=', parameters('databaseUserPassword'), ';')]",
               "type": "SQLAzure"
             }
           }
