@@ -50,13 +50,13 @@
     "databaseUserLogin": {
       "type": "string",
       "metadata": {
-        "description": "description"
+        "description": "Database username to be used by the application."
       }
     },
     "databaseUserPassword": {
       "type": "securestring",
       "metadata": {
-        "description": "description"
+        "description": "Database user password to be used by the application."
       }
     },
     "location": {

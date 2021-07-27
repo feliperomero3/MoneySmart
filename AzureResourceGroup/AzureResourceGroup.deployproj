@@ -30,6 +30,7 @@
     </None>
     <Content Include="Deploy-AzureResourceGroup.ps1" />
     <Content Include="README.md" />
+    <Content Include="New-AzureSqlDatabaseUser.ps1" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>
