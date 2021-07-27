@@ -24,11 +24,11 @@ try
         WHERE name = '$UserLogin'
     )
     BEGIN
-        CREATE USER MoneySmartUser WITH PASSWORD = '$UserPassword';
+        CREATE USER $UserLogin WITH PASSWORD = '$UserPassword';
     END;
-    ALTER ROLE db_datareader ADD member MoneySmartUser;
-    ALTER ROLE db_datawriter ADD member MoneySmartUser;"
-    $command = New-Object -TypeName System.Data.SqlClient.SqlCommand($ddlstmt, $conn)       
+    ALTER ROLE db_datareader ADD member $UserLogin;
+    ALTER ROLE db_datawriter ADD member $UserLogin;"
+    $command = New-Object -TypeName System.Data.SqlClient.SqlCommand($ddlstmt, $conn)
     Write-host "SQL script executed successfully"
     $command.ExecuteNonQuery() | Out-Null
     $conn.Close()
