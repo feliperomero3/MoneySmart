@@ -25,7 +25,7 @@
       "type": "string",
       "defaultValue": "Free",
       "metadata": {
-        "description": "The name of the SKU, typically, a letter + Number code, e.g. P3."
+        "description": "The name of the SKU."
       }
     },
     "databaseMaxSizeBytes": {
