@@ -1,22 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using MoneySmart.Entities;
-using System.Threading.Tasks;
+using MoneySmart.Data;
 
 namespace MoneySmart.Pages.Transactions
 {
     public class DeleteModel : PageModel
     {
-        private readonly Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DeleteModel(Data.ApplicationDbContext context)
+        public DeleteModel(ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Transaction Transaction { get; set; }
+        public TransactionModel Transaction { get; set; }
 
         public async Task<IActionResult> OnGetAsync(long? id)
         {
@@ -25,12 +25,17 @@ namespace MoneySmart.Pages.Transactions
                 return NotFound();
             }
 
-            Transaction = await _context.Transactions.FirstOrDefaultAsync(m => m.Id == id);
+            var transaction = await _context.Transactions
+                .Include(t => t.Account)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Transaction == null)
+            if (transaction == null)
             {
                 return NotFound();
             }
+
+            Transaction = TransactionModel.MapFromTransaction(transaction);
+
             return Page();
         }
 
@@ -41,11 +46,12 @@ namespace MoneySmart.Pages.Transactions
                 return NotFound();
             }
 
-            Transaction = await _context.Transactions.FindAsync(id);
+            var transaction = await _context.Transactions.FindAsync(id);
 
-            if (Transaction != null)
+            if (transaction != null)
             {
-                _context.Transactions.Remove(Transaction);
+                _context.Transactions.Remove(transaction);
+
                 await _context.SaveChangesAsync();
             }
 

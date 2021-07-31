@@ -15,6 +15,9 @@
         <thead>
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.Transactions[0].Id)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Transactions[0].DateTime)
                 </th>
                 <th>
@@ -36,6 +39,9 @@
             @foreach (var item in Model.Transactions)
             {
                 <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DateTime)
                     </td>

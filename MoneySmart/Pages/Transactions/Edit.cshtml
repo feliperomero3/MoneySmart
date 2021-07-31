@@ -13,6 +13,7 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TransactionEditModel.Id" />
             <div class="form-group">
                 <label asp-for="TransactionEditModel.DateTime" class="col-form-label"></label>
                 <input asp-for="TransactionEditModel.DateTime" class="form-control" />
@@ -38,7 +39,6 @@
                 <input asp-for="TransactionEditModel.Amount" class="form-control" />
                 <span asp-validation-for="TransactionEditModel.Amount" class="text-danger"></span>
             </div>
-            <input type="hidden" asp-for="TransactionEditModel.Id" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

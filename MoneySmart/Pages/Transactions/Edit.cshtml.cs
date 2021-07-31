@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -99,6 +100,7 @@ namespace MoneySmart.Pages.Transactions
     public class TransactionEditModel
     {
         [Required]
+        [DisplayName("Number")]
         public long Id { get; set; }
 
         [Required]

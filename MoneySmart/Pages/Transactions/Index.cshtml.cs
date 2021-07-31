@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
+using MoneySmart.Entities;
 
 namespace MoneySmart.Pages.Transactions
 {
@@ -40,6 +42,7 @@ namespace MoneySmart.Pages.Transactions
 
     public class TransactionModel
     {
+        [DisplayName("Number")]
         public long Id { get; set; }
 
         [Display(Name = "Date")]
@@ -53,7 +56,24 @@ namespace MoneySmart.Pages.Transactions
         [Display(Name = "Type")]
         public string TransactionTypeName { get; set; }
 
+        [Display(Name = "Type")]
+        public TransactionType TransactionType { get; set; }
+
         [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
+
+        public static TransactionModel MapFromTransaction(Transaction transaction)
+        {
+            return new TransactionModel
+            {
+                Id = transaction.Id,
+                DateTime = transaction.DateTime,
+                AccountName = transaction.Account.Name,
+                Description = transaction.Description,
+                TransactionTypeName = transaction.TransactionType.ToString(),
+                TransactionType = transaction.TransactionType,
+                Amount = transaction.Amount
+            };
+        }
     }
 }
