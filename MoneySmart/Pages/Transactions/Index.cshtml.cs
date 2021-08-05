@@ -25,6 +25,7 @@ namespace MoneySmart.Pages.Transactions
         public async Task OnGetAsync()
         {
             Transactions = await _context.Transactions
+                .AsNoTracking()
                 .Include(t => t.Account)
                 .OrderByDescending(t => t.DateTime)
                 .Select(t => new TransactionModel

@@ -22,6 +22,7 @@ namespace MoneySmart.Pages.Accounts
         public async Task OnGetAsync()
         {
             Account = await _context.Accounts
+                .AsNoTracking()
                 .OrderBy(a => a.Number)
                 .ToListAsync();
         }
