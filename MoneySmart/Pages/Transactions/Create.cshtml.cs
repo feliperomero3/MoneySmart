@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -62,14 +63,14 @@ namespace MoneySmart.Pages.Transactions
         public DateTime DateTime { get; set; }
 
         [Required]
-        [Display(Name = "Account")]
+        [DisplayName("Account")]
         public long AccountId { get; set; }
 
         [Required]
         public string Description { get; set; }
 
         [Required]
-        [Display(Name = "Type")]
+        [DisplayName("Type")]
         public string TransactionTypeName { get; set; }
 
         [Required]

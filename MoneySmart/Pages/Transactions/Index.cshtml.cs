@@ -46,18 +46,18 @@ namespace MoneySmart.Pages.Transactions
         [DisplayName("Number")]
         public long Id { get; set; }
 
-        [Display(Name = "Date")]
+        [DisplayName("Date")]
         public DateTime DateTime { get; set; }
 
-        [Display(Name = "Account")]
+        [DisplayName("Account")]
         public string AccountName { get; set; }
 
         public string Description { get; set; }
 
-        [Display(Name = "Type")]
+        [DisplayName("Type")]
         public string TransactionTypeName { get; set; }
 
-        [Display(Name = "Type")]
+        [DisplayName("Type")]
         public TransactionType TransactionType { get; set; }
 
         [DataType(DataType.Currency)]
