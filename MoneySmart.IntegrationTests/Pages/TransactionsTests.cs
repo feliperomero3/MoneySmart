@@ -79,7 +79,7 @@ namespace MoneySmart.IntegrationTests.Pages
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
 
-            var response = await client.GetAsync("Edit/?id=1");
+            var response = await client.GetAsync("Edit/1");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
@@ -88,7 +88,7 @@ namespace MoneySmart.IntegrationTests.Pages
         public async Task Post_Edit_Transaction_Redirects_To_Index_Page_On_Success()
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
-            var defaultPage = await client.GetAsync("Edit/?id=1");
+            var defaultPage = await client.GetAsync("Edit/1");
             var content = await HtmlDocumentHelper.GetDocumentAsync(defaultPage);
 
             var form = (IHtmlFormElement)content.QuerySelector("form");

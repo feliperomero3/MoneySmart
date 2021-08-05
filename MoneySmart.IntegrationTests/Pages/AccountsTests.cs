@@ -35,7 +35,7 @@ namespace MoneySmart.IntegrationTests.Pages
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
 
-            var response = await client.GetAsync("Details?number=5221");
+            var response = await client.GetAsync("Details/5221");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
@@ -45,7 +45,7 @@ namespace MoneySmart.IntegrationTests.Pages
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
 
-            var response = await client.GetAsync("Details?number=0000");
+            var response = await client.GetAsync("Details/0000");
 
             Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
         }
@@ -65,7 +65,7 @@ namespace MoneySmart.IntegrationTests.Pages
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
 
-            var response = await client.GetAsync("Edit?number=5221");
+            var response = await client.GetAsync("Edit/5221");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
@@ -74,7 +74,7 @@ namespace MoneySmart.IntegrationTests.Pages
         public async Task Post_Edit_Account_Redirects_To_Index_Page_On_Success()
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
-            var defaultPage = await client.GetAsync("Edit?number=5221");
+            var defaultPage = await client.GetAsync("Edit/5221");
             var content = await HtmlDocumentHelper.GetDocumentAsync(defaultPage);
 
             var form = (IHtmlFormElement)content.QuerySelector("form");
@@ -97,7 +97,7 @@ namespace MoneySmart.IntegrationTests.Pages
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
 
-            var response = await client.GetAsync("Delete?number=5221");
+            var response = await client.GetAsync("Delete/5221");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
