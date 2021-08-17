@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
-using MoneySmart.Entities;
 
 namespace MoneySmart.Pages.Accounts
 {
@@ -17,14 +16,16 @@ namespace MoneySmart.Pages.Accounts
             _context = context;
         }
 
-        public IReadOnlyList<Account> Account { get; set; }
+        public IReadOnlyList<AccountModel> Accounts { get; set; }
 
         public async Task OnGetAsync()
         {
-            Account = await _context.Accounts
+            var accounts = await _context.Accounts
                 .AsNoTracking()
                 .OrderBy(a => a.Number)
                 .ToListAsync();
+
+            Accounts = accounts.ConvertAll(AccountModel.FromAccount);
         }
     }
 }
