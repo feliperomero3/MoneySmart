@@ -47,6 +47,7 @@ namespace MoneySmart.Pages.Transactions
         public long Id { get; set; }
 
         [DisplayName("Date")]
+        [DisplayFormat(DataFormatString = "{0:g}")]
         public DateTime DateTime { get; set; }
 
         [DisplayName("Account")]
