@@ -24,9 +24,12 @@ A very simple Web Application to capture everyday income and expenses.
 - Visual Studio 2019
 - ASP.NET Core 3.1
 
-## How to run
+## Getting started
 
-File > Open > Project/Solution and hit F5!
+1. Clone the project.
+2. Open the solution file `MoneySmart.sln`.
+3. Press F5 to start the build and run the application.
+4. Wait for your default browser to be automatically launched into <https://localhost:44360>
 
 ## License
 
