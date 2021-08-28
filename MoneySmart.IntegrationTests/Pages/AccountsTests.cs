@@ -21,6 +21,16 @@ namespace MoneySmart.IntegrationTests.Pages
         }
 
         [Fact]
+        public async Task Get_Index_Account_Returns_Accounts()
+        {
+            var client = _factory.CreateClientWithAuthenticatedUser();
+
+            var response = await client.GetAsync("");
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
         public async Task Get_Create_Account_Returns_Page()
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
