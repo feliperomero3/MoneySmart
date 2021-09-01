@@ -16,8 +16,8 @@ namespace MoneySmart
         {
             var host = CreateHostBuilder(args).Build();
 
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture("en-US");
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-UK");
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture("en-UK");
 
             using (var scope = host.Services.CreateScope())
             {
