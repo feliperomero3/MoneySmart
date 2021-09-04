@@ -72,4 +72,7 @@
     <Build Include="dbo\Tables\Accounts.sql" />
     <Build Include="dbo\Tables\Transactions.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="MoneySmart.Database.publish.xml" />
+  </ItemGroup>
 </Project>
