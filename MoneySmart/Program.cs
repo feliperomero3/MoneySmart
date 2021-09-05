@@ -28,7 +28,6 @@ namespace MoneySmart
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
 
-                    ApplicationDbInitializer.Initialize(context);
                     ApplicationDbSeedData.SeedAsync(context, userManager).GetAwaiter().GetResult();
                 }
                 catch (SqlException sqlException)
