@@ -21,7 +21,6 @@ namespace MoneySmart.Data
                 a.Property(p => p.Id).HasColumnName("AccountId");
                 a.Property(p => p.Name).HasMaxLength(255).IsRequired();
                 a.Property(p => p.Number).HasMaxLength(255).IsRequired();
-                a.HasMany(p => p.Transactions).WithOne(t => t.Account);
             });
 
             builder.Entity<Transaction>(t =>
@@ -32,7 +31,9 @@ namespace MoneySmart.Data
                 t.Property(p => p.Description).HasMaxLength(255).IsRequired();
                 t.Property(p => p.TransactionType).HasConversion<string>().HasMaxLength(7);
                 t.Property(p => p.Amount).HasColumnType("decimal(8, 2)").IsRequired();
-                t.HasOne(p => p.Account).WithMany(p => p.Transactions);
+                t.HasIndex("AccountId");
+                t.HasOne(p => p.Account).WithMany(p => p.Transactions)
+                    .HasForeignKey("AccountId").OnDelete(DeleteBehavior.Restrict);
             });
 
             base.OnModelCreating(builder);
