@@ -157,16 +157,8 @@
               "value": "~2"
             },
             {
-              "name": "APPINSIGHTS_PROFILERFEATURE_VERSION",
-              "value": "1.0.0"
-            },
-            {
               "name": "APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
               "value": "1.0.0"
-            },
-            {
-              "name": "DiagnosticServices_EXTENSION_VERSION",
-              "value": "~3"
             },
             {
               "name": "InstrumentationEngine_EXTENSION_VERSION",
