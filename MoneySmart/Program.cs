@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-using System.Threading;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,9 +13,6 @@ namespace MoneySmart
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-UK");
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture("en-UK");
 
             using (var scope = host.Services.CreateScope())
             {
