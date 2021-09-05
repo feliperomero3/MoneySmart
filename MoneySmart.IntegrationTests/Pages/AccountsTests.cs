@@ -111,5 +111,25 @@ namespace MoneySmart.IntegrationTests.Pages
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
+
+        [Fact]
+        public async Task Post_Delete_Account_Redirects_To_Index_Page_On_Success()
+        {
+            var client = _factory.CreateClientWithAuthenticatedUser();
+            var defaultPage = await client.GetAsync("Delete/2152");
+            var content = await HtmlDocumentHelper.GetDocumentAsync(defaultPage);
+
+            var form = (IHtmlFormElement)content.QuerySelector("form");
+            var submit = (IHtmlInputElement)content.QuerySelector("input[type='submit']");
+
+            var response = await client.SendAsync(form, submit,
+                new Dictionary<string, string>
+                {
+                    ["AccountModel.Id"] = "2"
+                });
+
+            Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
+            Assert.Equal("/Accounts", response.Headers.Location.OriginalString);
+        }
     }
 }

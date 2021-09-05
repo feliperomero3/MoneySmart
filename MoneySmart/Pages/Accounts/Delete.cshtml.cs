@@ -38,21 +38,18 @@ namespace MoneySmart.Pages.Accounts
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(long? id)
+        public async Task<IActionResult> OnPostAsync()
         {
-            if (id == null)
+            var account = await _context.Accounts.FindAsync(Account.Id);
+
+            if (account == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
+            _context.Accounts.Remove(account);
 
-            if (account != null)
-            {
-                _context.Accounts.Remove(account);
-
-                await _context.SaveChangesAsync();
-            }
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
