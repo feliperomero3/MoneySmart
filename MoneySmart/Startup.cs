@@ -37,7 +37,7 @@ namespace MoneySmart
                     .Build();
             });
 
-            services.AddHealthChecks().AddDbContextCheck<ApplicationDbContext>();
+            services.AddHealthChecks();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
