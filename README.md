@@ -14,9 +14,9 @@ A very simple Web Application to capture everyday income and expenses.
 
 ### Features (WIP)
 
-1. Capture your daily income and expenses.
-2. Manage multiple accounts to separate your transactions (e. g. checking or savings).
-3. Classify your transactions in categories.
+1. [x] Capture your daily income and expenses.
+2. [x] Manage multiple accounts to separate your transactions (e. g. checking or savings).
+3. [ ] Classify your transactions in categories.
 4. ...
 
 ## Prerequisites
