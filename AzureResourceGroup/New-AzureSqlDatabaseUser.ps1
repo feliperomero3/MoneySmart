@@ -29,8 +29,8 @@ try
     ALTER ROLE db_datareader ADD member $UserLogin;
     ALTER ROLE db_datawriter ADD member $UserLogin;"
     $command = New-Object -TypeName System.Data.SqlClient.SqlCommand($ddlstmt, $conn)
-    Write-host "SQL script executed successfully"
     $command.ExecuteNonQuery() | Out-Null
+    Write-host "SQL script executed successfully"
     $conn.Close()
 }
 catch [Exception]
