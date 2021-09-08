@@ -11,7 +11,7 @@ Param(
 
 Write-Host "Create SQL connection string"
 $conn = New-Object System.Data.SqlClient.SQLConnection 
-$conn.ConnectionString = "Data Source=$SQLServerName.database.windows.net;Initial Catalog=$DatabaseName;User ID=$AdminLogin;Password=$AdminPassword;Connect Timeout=30"
+$conn.ConnectionString = "Data Source=$SQLServerName.database.windows.net,1433;Initial Catalog=$DatabaseName;User ID=$AdminLogin;Password=$AdminPassword;Connect Timeout=30"
 Write-host "Connect to database and execute SQL script"
 
 try
