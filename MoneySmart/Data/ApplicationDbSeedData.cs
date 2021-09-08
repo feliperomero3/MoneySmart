@@ -13,7 +13,7 @@ namespace MoneySmart.Data
 
         public static async Task SeedAsync(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
-            var user = await userManager.FindByIdAsync(AdminUser);
+            var user = await userManager.FindByEmailAsync(AdminUser);
 
             if (user == null)
             {
