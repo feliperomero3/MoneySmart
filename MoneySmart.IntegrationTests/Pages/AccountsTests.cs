@@ -93,7 +93,6 @@ namespace MoneySmart.IntegrationTests.Pages
             var response = await client.SendAsync(form, submit,
                 new Dictionary<string, string>
                 {
-                    ["AccountModel.Id"] = "1",
                     ["AccountModel.Number"] = "5221",
                     ["AccountModel.Name"] = "New Name"
                 });
@@ -125,7 +124,7 @@ namespace MoneySmart.IntegrationTests.Pages
             var response = await client.SendAsync(form, submit,
                 new Dictionary<string, string>
                 {
-                    ["AccountModel.Id"] = "2"
+                    ["AccountModel.Number"] = "2152"
                 });
 
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);

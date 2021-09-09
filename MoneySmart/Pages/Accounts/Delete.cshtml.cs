@@ -38,9 +38,14 @@ namespace MoneySmart.Pages.Accounts
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string number)
         {
-            var account = await _context.Accounts.FindAsync(Account.Id);
+            if (number == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Accounts.FirstOrDefaultAsync(a => string.Equals(a.Number, number));
 
             if (account == null)
             {
@@ -65,7 +70,6 @@ namespace MoneySmart.Pages.Accounts
         {
             return new AccountModel
             {
-                Id = account.Id,
                 Number = account.Number,
                 Name = account.Name
             };
