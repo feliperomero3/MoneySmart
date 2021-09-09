@@ -30,7 +30,6 @@ namespace MoneySmart.IntegrationTests.Extensions
                 }
             }
 
-            //var submit = form.GetSubmission(submitButton);
             var submit = form.GetSubmission();
             var target = (Uri)submit.Target;
 
