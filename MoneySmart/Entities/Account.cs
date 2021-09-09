@@ -8,7 +8,7 @@ namespace MoneySmart.Entities
         public string Number { get; private set; }
         public string Name { get; private set; }
         public decimal Balance => Transactions.Sum(t => t.Amount);
-        public ICollection<Transaction> Transactions { get; private set; }
+        public ICollection<Transaction> Transactions { get; }
 
         private Account()
         {
