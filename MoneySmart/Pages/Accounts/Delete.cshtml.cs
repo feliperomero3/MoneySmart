@@ -16,7 +16,6 @@ namespace MoneySmart.Pages.Accounts
             _context = context;
         }
 
-        [BindProperty]
         public AccountModel Account { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string number)

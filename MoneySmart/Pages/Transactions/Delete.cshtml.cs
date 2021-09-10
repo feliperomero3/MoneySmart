@@ -15,7 +15,6 @@ namespace MoneySmart.Pages.Transactions
             _context = context;
         }
 
-        [BindProperty]
         public TransactionModel Transaction { get; set; }
 
         public async Task<IActionResult> OnGetAsync(long? id)
