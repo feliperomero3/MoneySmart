@@ -9,9 +9,7 @@ namespace MoneySmart.Data
     public static class ApplicationDbSeedData
     {
         private const string AdminUser = "admin@example.com";
-#pragma warning disable S2068
-        private const string AdminPassword = "Secret123$";
-#pragma warning restore S2068
+        private const string AdminPassword = "admin@example.com";
 
         public static async Task SeedAsync(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
