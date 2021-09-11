@@ -6,4 +6,5 @@
 );
 GO
 
-CREATE INDEX [IX_Accounts_Number] ON [dbo].[Accounts] ([Number])
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Accounts_Number]
+    ON [dbo].[Accounts]([Number] ASC);
