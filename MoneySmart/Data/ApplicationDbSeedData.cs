@@ -9,7 +9,7 @@ namespace MoneySmart.Data
     public static class ApplicationDbSeedData
     {
         private const string AdminUser = "admin@example.com";
-        private const string AdminPassword = "admin@example.com";
+        private const string AdminPassword = "Secret123$";
 
         public static async Task SeedAsync(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
