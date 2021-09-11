@@ -158,27 +158,23 @@
             },
             {
               "name": "APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
-              "value": "1.0.0"
+              "value": "disabled"
             },
             {
               "name": "InstrumentationEngine_EXTENSION_VERSION",
-              "value": "~1"
+              "value": "disabled"
             },
             {
               "name": "SnapshotDebugger_EXTENSION_VERSION",
-              "value": "~1"
+              "value": "disabled"
             },
             {
               "name": "XDT_MicrosoftApplicationInsights_BaseExtensions",
-              "value": "~1"
+              "value": "disabled"
             },
             {
               "name": "XDT_MicrosoftApplicationInsights_Mode",
-              "value": "recommended"
-            },
-            {
-              "name": "XDT_MicrosoftApplicationInsights_PreemptSdk",
-              "value": "1"
+              "value": "disabled"
             }
           ],
           "connectionStrings": [
