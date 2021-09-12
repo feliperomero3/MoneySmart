@@ -28,14 +28,13 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Number)
+                        <a asp-page="./Details" asp-route-number="@item.Number">@Html.DisplayFor(modelItem => item.Number)</a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
                         <a asp-page="./Edit" asp-route-number="@item.Number">Edit</a> |
-                        <a asp-page="./Details" asp-route-number="@item.Number">Details</a> |
                         <a asp-page="./Delete" asp-route-number="@item.Number">Delete</a>
                     </td>
                 </tr>
