@@ -41,14 +41,14 @@ namespace MoneySmart.Pages.Accounts
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string number)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            Account = await _context.Accounts.FindAsync(AccountModel.Id);
+            Account = await _context.Accounts.FirstOrDefaultAsync(a => string.Equals(a.Number, number));
 
             if (Account == null)
             {
@@ -82,7 +82,6 @@ namespace MoneySmart.Pages.Accounts
 
     public class AccountEditModel
     {
-        public long Id { get; set; }
         public string Number { get; set; }
         public string Name { get; set; }
 
@@ -90,7 +89,6 @@ namespace MoneySmart.Pages.Accounts
         {
             return new AccountEditModel
             {
-                Id = account.Id,
                 Number = account.Number,
                 Name = account.Name
             };
