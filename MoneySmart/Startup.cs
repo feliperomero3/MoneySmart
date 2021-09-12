@@ -38,6 +38,7 @@ namespace MoneySmart
             });
 
             services.AddHealthChecks().AddDbContextCheck<ApplicationDbContext>();
+            services.AddApplicationInsightsTelemetry();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
