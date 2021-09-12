@@ -17,7 +17,7 @@ A very simple Web Application to capture everyday income and expenses.
 1. [x] Capture your daily income and expenses.
 2. [x] Manage multiple accounts to separate your transactions (e. g. checking or savings).
 3. [ ] Classify your transactions in categories.
-4. ...
+4. [ ] More to come...
 
 ## Prerequisites
 
