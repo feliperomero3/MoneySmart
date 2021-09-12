@@ -1,3 +1,4 @@
+using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +40,10 @@ namespace MoneySmart
 
             services.AddHealthChecks().AddDbContextCheck<ApplicationDbContext>();
             services.AddApplicationInsightsTelemetry();
+            services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, _) =>
+            {
+                module.EnableSqlCommandTextInstrumentation = true;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
