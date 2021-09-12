@@ -40,7 +40,7 @@
             {
                 <tr>
                     <td>
-                        <a asp-page="./Details" asp-route-id="@item.Id">@item.Id</a>
+                        <a asp-page="./Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Id)</a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DateTime)
