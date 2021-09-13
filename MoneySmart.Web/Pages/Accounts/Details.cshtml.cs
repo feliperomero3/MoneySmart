@@ -18,7 +18,7 @@ namespace MoneySmart.Pages.Accounts
 
         public Account Account { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string number)
+        public async Task<IActionResult> OnGetAsync(long? number)
         {
             if (number == null)
             {

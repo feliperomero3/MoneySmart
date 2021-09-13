@@ -48,7 +48,7 @@ namespace MoneySmart.Pages.Accounts
 
     public class AccountInputModel
     {
-        public string Number { get; set; }
+        public long Number { get; set; }
         public string Name { get; set; }
 
         public Account ToAccount()

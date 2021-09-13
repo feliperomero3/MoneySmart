@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -22,7 +23,7 @@ namespace MoneySmart.Pages.Accounts
 
         private Account Account { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string number)
+        public async Task<IActionResult> OnGetAsync(long? number)
         {
             if (number == null)
             {
@@ -41,14 +42,14 @@ namespace MoneySmart.Pages.Accounts
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string number)
+        public async Task<IActionResult> OnPostAsync(long number)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            Account = await _context.Accounts.FirstOrDefaultAsync(a => string.Equals(a.Number, number));
+            Account = await _context.Accounts.FirstOrDefaultAsync(a => a.Number == number);
 
             if (Account == null)
             {
@@ -82,7 +83,10 @@ namespace MoneySmart.Pages.Accounts
 
     public class AccountEditModel
     {
-        public string Number { get; set; }
+        [Required]
+        public long Number { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         public static AccountEditModel FromAccount(Account account)

@@ -27,8 +27,8 @@ namespace MoneySmart.IntegrationTests.Helpers
 
         private static void SeedTestDatabase(ApplicationDbContext context)
         {
-            var account1 = new Account("5221", "Savings");
-            var account2 = new Account("2152", "Expenses");
+            var account1 = new Account(5221, "Savings");
+            var account2 = new Account(2152, "Expenses");
 
             var transaction1 = new Transaction(DateTime.Parse("2020-08-08T10:00:00"), account1, "First Deposit",
                 TransactionType.Income, 1000);

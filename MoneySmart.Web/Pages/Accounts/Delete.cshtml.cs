@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,7 @@ namespace MoneySmart.Pages.Accounts
 
         public AccountModel Account { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string number)
+        public async Task<IActionResult> OnGetAsync(long? number)
         {
             if (number == null)
             {
@@ -37,14 +38,14 @@ namespace MoneySmart.Pages.Accounts
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string number)
+        public async Task<IActionResult> OnPostAsync(long? number)
         {
             if (number == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FirstOrDefaultAsync(a => string.Equals(a.Number, number));
+            var account = await _context.Accounts.FirstOrDefaultAsync(a => a.Number == number);
 
             if (account == null)
             {
@@ -61,8 +62,10 @@ namespace MoneySmart.Pages.Accounts
 
     public class AccountModel
     {
-        public long Id { get; set; }
-        public string Number { get; set; }
+        [Required]
+        public long Number { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         public static AccountModel FromAccount(Account account)
