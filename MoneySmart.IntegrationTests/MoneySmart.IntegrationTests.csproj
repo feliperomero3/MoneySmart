@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MoneySmart\MoneySmart.csproj" />
+    <ProjectReference Include="..\MoneySmart.Web\MoneySmart.csproj" />
   </ItemGroup>
 
 	<Target Name="CopyDepsJsonFiles" AfterTargets="Publish">

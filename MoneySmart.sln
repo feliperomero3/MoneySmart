@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneySmart", "MoneySmart\MoneySmart.csproj", "{FD0C9ABE-03E6-4A4E-89AE-BB5ED748885C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneySmart", "MoneySmart.Web\MoneySmart.csproj", "{FD0C9ABE-03E6-4A4E-89AE-BB5ED748885C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneySmart.Tests", "MoneySmart.Tests\MoneySmart.Tests.csproj", "{A7CCF47C-7211-4A45-9709-9C9609CB83E9}"
 EndProject
