@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
-using MoneySmart.Entities;
 
 namespace MoneySmart.Pages.Accounts
 {
@@ -16,7 +15,7 @@ namespace MoneySmart.Pages.Accounts
             _context = context;
         }
 
-        public Account Account { get; set; }
+        public AccountModel Account { get; set; }
 
         public async Task<IActionResult> OnGetAsync(long? number)
         {
@@ -25,12 +24,14 @@ namespace MoneySmart.Pages.Accounts
                 return NotFound();
             }
 
-            Account = await _context.Accounts.FirstOrDefaultAsync(m => m.Number == number);
+            var account = await _context.Accounts.FirstOrDefaultAsync(m => m.Number == number);
 
-            if (Account == null)
+            if (account == null)
             {
                 return NotFound();
             }
+
+            Account = AccountModel.FromAccount(account);
 
             return Page();
         }
