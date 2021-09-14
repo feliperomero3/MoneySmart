@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MoneySmart.Data;
@@ -40,7 +39,7 @@ namespace MoneySmart.Pages.Accounts
 
             await _context.SaveChangesAsync();
 
-            _telemetryClient.TrackEvent(new EventTelemetry("AccountCreatedSuccessfuly"));
+            _telemetryClient.TrackEvent("AccountCreatedSuccessfuly");
 
             return RedirectToPage("./Index");
         }
