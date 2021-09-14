@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,8 +16,8 @@ namespace MoneySmart.Pages.Transactions
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        public readonly SelectList TransactionTypes = new SelectList(new[] { "Income", "Expense" }, "Expense");
         private readonly TelemetryClient _telemetryClient;
+        public readonly SelectList TransactionTypes = new SelectList(new[] { "Income", "Expense" }, "Expense");
 
         public CreateModel(ApplicationDbContext context, TelemetryClient telemetryClient)
         {
@@ -56,7 +55,7 @@ namespace MoneySmart.Pages.Transactions
 
             await _context.SaveChangesAsync();
 
-            _telemetryClient.TrackEvent(new EventTelemetry("TransactionCreatedSuccessful"));
+            _telemetryClient.TrackEvent("TransactionCreatedSuccessful");
 
             return RedirectToPage("./Index");
         }
