@@ -54,7 +54,26 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - MoneySmart - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <div class="row">
+                <div class="col-sm-11">
+                    &copy; 2020 - MoneySmart - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                </div>
+                <div class="col-sm-auto">
+                    @{
+                        @using System.Reflection
+
+                        var attribute = (AssemblyInformationalVersionAttribute)Assembly
+                            .GetExecutingAssembly()
+                            .GetCustomAttributes(typeof(AssemblyInformationalVersionAttribute), false)
+                            .FirstOrDefault();
+
+                        if (attribute != null)
+                        {
+                            @(attribute.InformationalVersion)
+                        }
+                    }
+                </div>
+            </div>
         </div>
     </footer>
 
