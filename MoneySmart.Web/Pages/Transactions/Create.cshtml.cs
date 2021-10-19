@@ -47,7 +47,7 @@ namespace MoneySmart.Pages.Transactions
                 return Page();
             }
 
-            var account = _context.Accounts.Find(TransactionCreateModel.AccountId);
+            var account = await _context.Accounts.FindAsync(TransactionCreateModel.AccountId);
 
             var transaction = TransactionCreateModel.MapToTransaction(account);
 
