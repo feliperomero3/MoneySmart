@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 namespace MoneySmart.TagHelpers
 {
     /// <summary>
-    /// Renders the executing assembly information version value
+    /// Renders the executing assembly information version value.
     /// </summary>
     [HtmlTargetElement("AssemblyInformationalVersion", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class VersionTagHelper : TagHelper
