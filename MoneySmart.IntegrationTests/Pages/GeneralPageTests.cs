@@ -18,7 +18,6 @@ namespace MoneySmart.IntegrationTests.Pages
         [Theory]
         [InlineData("")]
         [InlineData("Index")]
-        [InlineData("Privacy")]
         public async Task Get_EndpointsReturnSuccessAndExpectedContentType(string path)
         {
             var client = _factory.CreateClient();
