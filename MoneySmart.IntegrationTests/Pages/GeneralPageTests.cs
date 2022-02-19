@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using MoneySmart.IntegrationTests.Extensions;
 using Xunit;
 
 namespace MoneySmart.IntegrationTests.Pages
@@ -19,26 +20,13 @@ namespace MoneySmart.IntegrationTests.Pages
         [Theory]
         [InlineData("")]
         [InlineData("Index")]
-        public async Task Get_EndpointsReturnSuccessAndExpectedContentType(string path)
+        public async Task Get_Index_Page_Returns_Success(string path)
         {
-            var client = _factory.CreateClient();
+            var client = _factory.CreateClientWithAuthenticatedUser();
 
             var response = await client.GetAsync(path);
 
-            response.EnsureSuccessStatusCode();
-
-            Assert.Equal("text/html; charset=utf-8",
-                response.Content.Headers.ContentType.ToString());
-        }
-
-        [Fact]
-        public async Task Get_Register_Page_Returns_Redirect_For_Unauthenticated_User()
-        {
-            var client = _factory.CreateClient();
-
-            var response = await client.GetAsync("Identity/Account/Register");
-
-            Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
     }
 }

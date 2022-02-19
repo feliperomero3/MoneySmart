@@ -5,11 +5,11 @@ using Xunit;
 
 namespace MoneySmart.IntegrationTests.Identity
 {
-    public class LoginTests : IClassFixture<CustomWebApplicationFactory<Startup>>
+    public class RegisterTests : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
         private readonly CustomWebApplicationFactory<Startup> _factory;
 
-        public LoginTests(CustomWebApplicationFactory<Startup> factory)
+        public RegisterTests(CustomWebApplicationFactory<Startup> factory)
         {
             _factory = factory;
             _factory.ClientOptions.AllowAutoRedirect = false;
@@ -17,13 +17,13 @@ namespace MoneySmart.IntegrationTests.Identity
         }
 
         [Fact]
-        public async Task Get_Login_Page_Returns_Success()
+        public async Task Get_Register_Page_Returns_Redirect_For_Unauthenticated_User()
         {
             var client = _factory.CreateClient();
 
-            var response = await client.GetAsync("Identity/Account/Login");
+            var response = await client.GetAsync("Identity/Account/Register");
 
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
         }
     }
 }
