@@ -58,9 +58,11 @@ namespace MoneySmart.Entities
 
         private Type GetRealType()
         {
+            const string EfCoreProxyPrefix = "Castle.Proxies.";
+
             var type = GetType();
 
-            return type.ToString().Contains("Castle.Proxies.") ? type.BaseType : type;
+            return type.ToString().Contains(EfCoreProxyPrefix) ? type.BaseType : type;
         }
     }
 }
