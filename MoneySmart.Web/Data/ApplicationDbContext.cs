@@ -21,7 +21,7 @@ namespace MoneySmart.Data
                 a.ToTable("Accounts").HasKey(k => k.Id);
                 a.Property(p => p.Id).HasColumnName("AccountId");
                 a.Property(p => p.Name).HasMaxLength(255).IsRequired();
-                a.Property(p => p.Number).HasMaxLength(255).IsRequired();
+                a.Property(p => p.Number).IsRequired();
             });
 
             builder.Entity<Transaction>(t =>
