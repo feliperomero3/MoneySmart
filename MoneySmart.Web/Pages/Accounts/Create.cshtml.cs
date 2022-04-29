@@ -39,7 +39,7 @@ namespace MoneySmart.Pages.Accounts
 
             await _context.SaveChangesAsync();
 
-            _telemetryClient.TrackEvent("AccountCreatedSuccessfuly");
+            _telemetryClient.TrackEvent("AccountCreatedSuccessfully");
 
             return RedirectToPage("./Index");
         }

@@ -55,7 +55,7 @@ namespace MoneySmart.Pages.Transactions
 
             await _context.SaveChangesAsync();
 
-            _telemetryClient.TrackEvent("TransactionCreatedSuccessfuly");
+            _telemetryClient.TrackEvent("TransactionCreatedSuccessfully");
 
             return RedirectToPage("./Index");
         }
