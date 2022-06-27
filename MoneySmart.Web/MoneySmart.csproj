@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>6ef9bf26-3265-49fb-b48f-8996eb20e2ad</UserSecretsId>
-		<VersionPrefix>0.1.2</VersionPrefix>
+		<VersionPrefix>0.1.3</VersionPrefix>
 		<VersionSuffix Condition="'$(BuildNumber)' == ''">preview</VersionSuffix>
 		<VersionSuffix Condition="'$(BuildNumber)' != ''">preview-$(BuildNumber)</VersionSuffix>
     <PreserveCompilationContext>true</PreserveCompilationContext>
