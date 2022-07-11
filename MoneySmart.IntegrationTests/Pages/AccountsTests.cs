@@ -81,6 +81,27 @@ namespace MoneySmart.IntegrationTests.Pages
         }
 
         [Fact]
+        public async Task Post_Create_Account_Redirects_To_Index_Page_On_Success()
+        {
+            var client = _factory.CreateClientWithAuthenticatedUser();
+            var defaultPage = await client.GetAsync("Create");
+            var content = await HtmlDocumentHelper.GetDocumentAsync(defaultPage);
+
+            var form = (IHtmlFormElement)content.QuerySelector("form");
+            var submit = (IHtmlInputElement)content.QuerySelector("input[type='submit']");
+
+            var response = await client.SendAsync(form, submit,
+                new Dictionary<string, string>
+                {
+                    ["Account.Number"] = "1221",
+                    ["Account.Name"] = "New Account"
+                });
+
+            Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
+            Assert.Equal("/Accounts", response.Headers.Location.OriginalString);
+        }
+
+        [Fact]
         public async Task Post_Edit_Account_Redirects_To_Index_Page_On_Success()
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
