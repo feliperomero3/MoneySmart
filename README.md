@@ -21,8 +21,8 @@ A very simple Web Application to capture everyday income and expenses.
 
 ## Prerequisites
 
-- Visual Studio 2019
-- ASP.NET Core 3.1
+- Visual Studio 2022
+- ASP.NET Core 6
 
 ## Getting started
 
@@ -32,7 +32,7 @@ A very simple Web Application to capture everyday income and expenses.
 4. In the Publish dialog click "Load Profile..." and select the `MoneySmart.Database.publish.xml` file.
 5. Confirm the loaded connection string matches your target instance ((localdb)\MSSQLLocalDB by default).
 6. Press F5 to start the build and run the application.
-7. Wait for your default browser to be automatically launched into <https://localhost:44360>
+7. Wait for your default browser to be automatically launched into <https://localhost:5000>
 
 ## License
 

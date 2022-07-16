@@ -13,17 +13,17 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Account.Number" class="col-form-label"></label>
+            <div class="mb-3">
+                <label asp-for="Account.Number" class="form-label"></label>
                 <input asp-for="Account.Number" class="form-control" />
                 <span asp-validation-for="Account.Number" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Account.Name" class="col-form-label"></label>
+            <div class="mb-3">
+                <label asp-for="Account.Name" class="form-label"></label>
                 <input asp-for="Account.Name" class="form-control" />
                 <span asp-validation-for="Account.Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
