@@ -28,15 +28,7 @@ namespace MoneySmart.Pages.Transactions
                 .AsNoTracking()
                 .Include(t => t.Account)
                 .OrderByDescending(t => t.DateTime)
-                .Select(t => new TransactionModel
-                {
-                    Id = t.Id,
-                    DateTime = t.DateTime,
-                    AccountName = t.Account.Name,
-                    Description = t.Description,
-                    TransactionTypeName = t.TransactionType.ToString(),
-                    Amount = t.Amount
-                })
+                .Select(t => TransactionModel.MapFromTransaction(t))
                 .ToListAsync();
         }
     }

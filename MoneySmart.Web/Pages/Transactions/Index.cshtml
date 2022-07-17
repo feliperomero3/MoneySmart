@@ -15,9 +15,6 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Transactions[0].Id)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.Transactions[0].DateTime)
                 </th>
                 <th>
@@ -26,7 +23,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Transactions[0].TransactionTypeName)
                 </th>
-                <th class="text-right">
+                <th>
                     @Html.DisplayNameFor(model => model.Transactions[0].Amount)
                 </th>
                 <th>
@@ -40,10 +37,7 @@
             {
                 <tr>
                     <td>
-                        <a asp-page="./Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Id)</a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateTime)
+                        <a asp-page="./Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.DateTime)</a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)
@@ -51,7 +45,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.TransactionTypeName)
                     </td>
-                    <td class="text-right">
+                    <td class="text-end">
                         @Html.DisplayFor(modelItem => item.Amount)
                     </td>
                     <td>
