@@ -43,6 +43,7 @@ namespace MoneySmart
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseAzureAppServices();
                 });
     }
 }
