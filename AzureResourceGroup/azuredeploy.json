@@ -184,7 +184,8 @@
               "type": "SQLAzure"
             }
           ],
-          "ftpsState": "FtpsOnly"
+          "ftpsState": "FtpsOnly",
+          "netFrameworkVersion": "v6.0"
         },
         "httpsOnly": true
       }
