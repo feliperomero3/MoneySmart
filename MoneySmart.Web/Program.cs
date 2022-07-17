@@ -29,7 +29,7 @@ namespace MoneySmart
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
 
-                    logger.LogError(sqlException, "An error occurred creating the Database.");
+                    logger.LogError(sqlException, "An error occurred while connecting to the database.");
 
                     throw;
                 }
