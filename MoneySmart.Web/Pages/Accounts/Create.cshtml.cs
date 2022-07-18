@@ -3,7 +3,7 @@ using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MoneySmart.Data;
-using MoneySmart.Entities;
+using MoneySmart.Domain;
 
 namespace MoneySmart.Pages.Accounts
 {

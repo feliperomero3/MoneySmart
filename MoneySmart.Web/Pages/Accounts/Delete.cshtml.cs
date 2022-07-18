@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
-using MoneySmart.Entities;
+using MoneySmart.Domain;
 
 namespace MoneySmart.Pages.Accounts
 {

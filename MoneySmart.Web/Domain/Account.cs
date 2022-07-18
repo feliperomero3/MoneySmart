@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace MoneySmart.Entities
+namespace MoneySmart.Domain
 {
     public class Account : Entity
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MoneySmart.Entities
+namespace MoneySmart.Domain
 {
     public class Transaction : Entity
     {

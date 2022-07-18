@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using MoneySmart.Entities;
+using MoneySmart.Domain;
 
 namespace MoneySmart.Data
 {

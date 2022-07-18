@@ -1,4 +1,4 @@
-﻿namespace MoneySmart.Entities
+﻿namespace MoneySmart.Domain
 {
     public enum TransactionType
     {

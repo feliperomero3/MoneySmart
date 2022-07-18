@@ -1,6 +1,6 @@
 ﻿using System;
 using MoneySmart.Data;
-using MoneySmart.Entities;
+using MoneySmart.Domain;
 
 namespace MoneySmart.IntegrationTests.Helpers
 {

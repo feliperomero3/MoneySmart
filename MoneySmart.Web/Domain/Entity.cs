@@ -2,7 +2,7 @@
 
 using System;
 
-namespace MoneySmart.Entities
+namespace MoneySmart.Domain
 {
     public abstract class Entity
     {

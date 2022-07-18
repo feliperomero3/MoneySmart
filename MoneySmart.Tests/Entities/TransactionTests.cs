@@ -1,5 +1,5 @@
 ﻿using System;
-using MoneySmart.Entities;
+using MoneySmart.Domain;
 using Xunit;
 
 namespace MoneySmart.Tests.Entities

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using MoneySmart.Entities;
+using MoneySmart.Domain;
 
 namespace MoneySmart.Data
 {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
-using MoneySmart.Entities;
+using MoneySmart.Domain;
 
 namespace MoneySmart.Pages.Transactions
 {

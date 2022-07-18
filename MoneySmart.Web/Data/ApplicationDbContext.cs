@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MoneySmart.Entities;
+using MoneySmart.Domain;
 
 namespace MoneySmart.Data
 {
