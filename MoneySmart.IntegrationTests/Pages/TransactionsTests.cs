@@ -65,7 +65,7 @@ namespace MoneySmart.IntegrationTests.Pages
                     ["TransactionCreateModel.DateTime"] = "2020-11-28 11:00",
                     ["TransactionCreateModel.AccountId"] = "1",
                     ["TransactionCreateModel.Description"] = "Coffee",
-                    ["TransactionCreateModel.TransactionTypeName"] = "Expense",
+                    ["TransactionCreateModel.TransactionType"] = "Expense",
                     ["TransactionCreateModel.Amount"] = "5"
                 });
 
@@ -100,7 +100,7 @@ namespace MoneySmart.IntegrationTests.Pages
                     ["TransactionEditModel.DateTime"] = "2020-11-28 10:00",
                     ["TransactionEditModel.AccountId"] = "1",
                     ["TransactionEditModel.Description"] = "Coffee",
-                    ["TransactionEditModel.TransactionTypeName"] = "Expense",
+                    ["TransactionEditModel.TransactionType"] = "Expense",
                     ["TransactionEditModel.Amount"] = "4.5"
                 });
 
@@ -116,7 +116,7 @@ namespace MoneySmart.IntegrationTests.Pages
             var createPage = await client.GetAsync("Create");
             var content = await HtmlDocumentHelper.GetDocumentAsync(createPage);
 
-            var select = (IHtmlSelectElement)content.QuerySelector("#TransactionCreateModel_TransactionTypeName");
+            var select = (IHtmlSelectElement)content.QuerySelector("#TransactionCreateModel_TransactionType");
 
             var selectedOption = select.Options[select.Options.SelectedIndex];
 

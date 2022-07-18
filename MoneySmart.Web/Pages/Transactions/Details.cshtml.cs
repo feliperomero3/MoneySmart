@@ -25,6 +25,7 @@ namespace MoneySmart.Pages.Transactions
             }
 
             var transaction = await _context.Transactions
+                .AsNoTracking()
                 .Include(t => t.Account)
                 .FirstOrDefaultAsync(t => t.Id == id);
 

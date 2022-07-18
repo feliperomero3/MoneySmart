@@ -21,7 +21,7 @@
                     @Html.DisplayNameFor(model => model.Transactions[0].Description)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Transactions[0].TransactionTypeName)
+                    @Html.DisplayNameFor(model => model.Transactions[0].TransactionType)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Transactions[0].Amount)
@@ -43,7 +43,7 @@
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.TransactionTypeName)
+                        @Html.DisplayFor(modelItem => item.TransactionType)
                     </td>
                     <td class="text-end">
                         @Html.DisplayFor(modelItem => item.Amount)

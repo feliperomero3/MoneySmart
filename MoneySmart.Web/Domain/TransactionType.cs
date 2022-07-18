@@ -1,8 +1,46 @@
-﻿namespace MoneySmart.Domain
+﻿using System;
+
+namespace MoneySmart.Domain;
+
+public class TransactionType
 {
-    public enum TransactionType
+    public static readonly TransactionType Expense = new(_expense);
+    public static readonly TransactionType Income = new(_income);
+
+    private readonly string _type;
+    private const string _expense = "Expense";
+    private const string _income= "Income";
+
+    private TransactionType(string type)
     {
-        Income = 1,
-        Expense = 2
+        if (string.IsNullOrWhiteSpace(type))
+        {
+            throw new ArgumentException($"'{nameof(type)}' cannot be null or whitespace.", nameof(type));
+        }
+
+        if (type is not (_expense or _income))
+        {
+            throw new ArgumentException($"'{nameof(type)}' must be {_expense} or {_income}.", nameof(type));
+        }
+
+        _type = type;
     }
+
+    public static explicit operator TransactionType(string type)
+    {
+        if (type == _expense)
+        {
+            return Expense;
+        }
+        if (type == _income)
+        {
+            return Income;
+        }
+
+        throw new ArgumentException($"'{nameof(type)}' must be {_expense} or {_income}.", nameof(type));
+    }
+
+    public static explicit operator string(TransactionType type) => type.ToString();
+
+    public override string ToString() => _type;
 }

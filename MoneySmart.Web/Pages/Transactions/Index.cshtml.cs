@@ -45,13 +45,11 @@ namespace MoneySmart.Pages.Transactions
         [DisplayName("Account")]
         public string AccountName { get; set; }
 
+        [DisplayName("Description")]
         public string Description { get; set; }
 
         [DisplayName("Type")]
-        public string TransactionTypeName { get; set; }
-
-        [DisplayName("Type")]
-        public TransactionType TransactionType { get; set; }
+        public string TransactionType { get; set; }
 
         [DataType(DataType.Currency)]
         public decimal Amount { get; set; }
@@ -64,8 +62,7 @@ namespace MoneySmart.Pages.Transactions
                 DateTime = transaction.DateTime,
                 AccountName = transaction.Account.Name,
                 Description = transaction.Description,
-                TransactionTypeName = transaction.TransactionType.ToString(),
-                TransactionType = transaction.TransactionType,
+                TransactionType = transaction.TransactionType.ToString(),
                 Amount = transaction.Amount
             };
         }

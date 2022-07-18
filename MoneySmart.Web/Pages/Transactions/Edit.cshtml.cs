@@ -112,11 +112,12 @@ namespace MoneySmart.Pages.Transactions
         public long AccountId { get; set; }
 
         [Required]
+        [DisplayName("Description")]
         public string Description { get; set; }
 
         [Required]
         [DisplayName("Type")]
-        public string TransactionTypeName { get; set; }
+        public string TransactionType { get; set; }
 
         [Required]
         [DataType(DataType.Currency)]
@@ -130,7 +131,7 @@ namespace MoneySmart.Pages.Transactions
                 DateTime = transaction.DateTime,
                 AccountId = transaction.Account.Id,
                 Description = transaction.Description,
-                TransactionTypeName = transaction.TransactionType.ToString(),
+                TransactionType = transaction.TransactionType.ToString(),
                 Amount = transaction.Amount
             };
         }
@@ -138,7 +139,7 @@ namespace MoneySmart.Pages.Transactions
         public Transaction MapToTransaction(Account account)
         {
             return new Transaction(DateTime, account, Description,
-                (TransactionType)Enum.Parse(typeof(TransactionType), TransactionTypeName), Amount);
+                (TransactionType)TransactionType, Amount);
         }
     }
 }

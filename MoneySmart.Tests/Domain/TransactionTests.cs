@@ -2,7 +2,7 @@
 using MoneySmart.Domain;
 using Xunit;
 
-namespace MoneySmart.Tests.Entities
+namespace MoneySmart.Tests.Domain
 {
     public class TransactionTests
     {

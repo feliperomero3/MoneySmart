@@ -29,9 +29,9 @@
                 <span asp-validation-for="TransactionCreateModel.Description" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransactionCreateModel.TransactionTypeName" class="form-label"></label>
-                <select asp-for="TransactionCreateModel.TransactionTypeName" asp-items="Model.TransactionTypes" class="form-select"></select>
-                <span asp-validation-for="TransactionCreateModel.TransactionTypeName" class="text-danger"></span>
+                <label asp-for="TransactionCreateModel.TransactionType" class="form-label"></label>
+                <select asp-for="TransactionCreateModel.TransactionType" asp-items="Model.TransactionTypes" class="form-select"></select>
+                <span asp-validation-for="TransactionCreateModel.TransactionType" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="TransactionCreateModel.Amount" class="form-label"></label>
