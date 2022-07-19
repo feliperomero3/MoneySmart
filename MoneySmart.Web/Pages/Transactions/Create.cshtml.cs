@@ -29,7 +29,7 @@ namespace MoneySmart.Pages.Transactions
 
         public IActionResult OnGet()
         {
-            Accounts = new SelectList(_context.Accounts.AsNoTracking().ToList(), "Id", "Name");
+            Accounts = new SelectList(_context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToList(), "Id", "Name");
 
             return Page();
         }
@@ -41,7 +41,7 @@ namespace MoneySmart.Pages.Transactions
         {
             if (!ModelState.IsValid)
             {
-                Accounts = new SelectList(_context.Accounts.AsNoTracking().ToList(), "Id", "Name",
+                Accounts = new SelectList(_context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToList(), "Id", "Name",
                     TransactionCreateModel.AccountId);
 
                 return Page();
