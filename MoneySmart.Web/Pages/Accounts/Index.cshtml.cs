@@ -22,7 +22,7 @@ namespace MoneySmart.Pages.Accounts
         {
             var accounts = await _context.Accounts
                 .AsNoTracking()
-                .OrderBy(a => a.Number)
+                .OrderBy(a => a.Name)
                 .ToListAsync();
 
             Accounts = accounts.ConvertAll(AccountModel.FromAccount);
