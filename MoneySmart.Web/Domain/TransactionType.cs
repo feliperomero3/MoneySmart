@@ -9,22 +9,9 @@ public class TransactionType
 
     private readonly string _type;
     private const string _expense = "Expense";
-    private const string _income= "Income";
+    private const string _income = "Income";
 
-    private TransactionType(string type)
-    {
-        if (string.IsNullOrWhiteSpace(type))
-        {
-            throw new ArgumentException($"'{nameof(type)}' cannot be null or whitespace.", nameof(type));
-        }
-
-        if (type is not (_expense or _income))
-        {
-            throw new ArgumentException($"'{nameof(type)}' must be {_expense} or {_income}.", nameof(type));
-        }
-
-        _type = type;
-    }
+    private TransactionType(string type) => _type = type;
 
     public static explicit operator TransactionType(string type)
     {

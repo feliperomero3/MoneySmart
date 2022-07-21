@@ -1,10 +1,19 @@
-﻿using MoneySmart.Domain;
+﻿using System;
+using MoneySmart.Domain;
 using Xunit;
 
 namespace MoneySmart.Tests.Domain;
 
 public class TransactionTypeTests
 {
+    [Fact]
+    public void TransactionType_throws_when_casting_parameter_is_null_or_empty_string()
+    {
+        var func = () => (TransactionType)string.Empty;
+
+        Assert.Throws<ArgumentException>(func);
+    }
+
     [Fact]
     public void TransactionType_does_expected_equality()
     {
@@ -24,7 +33,7 @@ public class TransactionTypeTests
     }
 
     [Fact]
-    public void TransactionType_converts_to_string()
+    public void TransactionType_casting_to_string()
     {
         var transactionType = TransactionType.Expense;
 
@@ -34,7 +43,7 @@ public class TransactionTypeTests
     }
 
     [Fact]
-    public void TransactionType_converts_from_string()
+    public void TransactionType_casting_from_string()
     {
         var type = "Income";
 
