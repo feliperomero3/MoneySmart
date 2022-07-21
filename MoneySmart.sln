@@ -11,8 +11,6 @@ Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "AzureResourceGroup", "Azure
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneySmart.IntegrationTests", "MoneySmart.IntegrationTests\MoneySmart.IntegrationTests.csproj", "{E4FAFB54-2344-4F8D-BB6B-EF968DBA3729}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MoneySmart.Database", "MoneySmart.Database\MoneySmart.Database.sqlproj", "{DAC2757A-C106-4064-BF11-924B71BD4925}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,10 +32,6 @@ Global
 		{E4FAFB54-2344-4F8D-BB6B-EF968DBA3729}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4FAFB54-2344-4F8D-BB6B-EF968DBA3729}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4FAFB54-2344-4F8D-BB6B-EF968DBA3729}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DAC2757A-C106-4064-BF11-924B71BD4925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DAC2757A-C106-4064-BF11-924B71BD4925}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{DAC2757A-C106-4064-BF11-924B71BD4925}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DAC2757A-C106-4064-BF11-924B71BD4925}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
