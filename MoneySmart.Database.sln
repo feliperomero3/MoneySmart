@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MoneySmart.Database", "MoneySmart.Database\MoneySmart.Database.sqlproj", "{DAC2757A-C106-4064-BF11-924B71BD4925}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAC2757A-C106-4064-BF11-924B71BD4925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC2757A-C106-4064-BF11-924B71BD4925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC2757A-C106-4064-BF11-924B71BD4925}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DAC2757A-C106-4064-BF11-924B71BD4925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC2757A-C106-4064-BF11-924B71BD4925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAC2757A-C106-4064-BF11-924B71BD4925}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {652B1CDE-145B-40FB-9147-01FB2BCDD7B9}
+	EndGlobalSection
+EndGlobal
