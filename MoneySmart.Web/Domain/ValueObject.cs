@@ -43,6 +43,11 @@ namespace MoneySmart.Domain
             return _cachedHashCode.Value;
         }
 
+        public int CompareTo(ValueObject other)
+        {
+            return CompareTo(other as object);
+        }
+
         public int CompareTo(object obj)
         {
             var thisType = GetUnproxiedType(this);
@@ -77,18 +82,10 @@ namespace MoneySmart.Domain
             if (object2 is null)
                 return 1;
 
-            var component1 = object1 as IComparable;
-            var component2 = object2 as IComparable;
-
-            if (component1 == null || component2 == null)
+            if (object1 is not IComparable component1 || object2 is not IComparable component2)
                 throw new InvalidOperationException($"Not all components in {GetUnproxiedType(this)} implement IComparable");
 
             return component1.CompareTo(component2);
-        }
-
-        public int CompareTo(ValueObject other)
-        {
-            return CompareTo(other as object);
         }
 
         public static bool operator ==(ValueObject a, ValueObject b)
