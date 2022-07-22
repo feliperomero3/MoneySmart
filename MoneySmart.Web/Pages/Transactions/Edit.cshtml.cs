@@ -46,7 +46,7 @@ namespace MoneySmart.Pages.Transactions
 
             TransactionEditModel = TransactionEditModel.MapFromTransaction(transaction);
 
-            Accounts = new SelectList(await _context.Accounts.AsNoTracking().ToListAsync(), "Id", "Name",
+            Accounts = new SelectList(await _context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToListAsync(), "Id", "Name",
                 TransactionEditModel.AccountId);
 
             return Page();
@@ -56,7 +56,7 @@ namespace MoneySmart.Pages.Transactions
         {
             if (!ModelState.IsValid)
             {
-                Accounts = new SelectList(await _context.Accounts.AsNoTracking().ToListAsync(), "Id", "Name",
+                Accounts = new SelectList(await _context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToListAsync(), "Id", "Name",
                     TransactionEditModel.AccountId);
 
                 return Page();
