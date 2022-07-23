@@ -17,7 +17,6 @@ namespace MoneySmart.Pages.Transactions
     {
         private readonly ApplicationDbContext _context;
         private readonly TelemetryClient _telemetryClient;
-        public readonly SelectList TransactionTypes = new SelectList(new[] { "Income", "Expense" }, "Expense");
 
         public CreateModel(ApplicationDbContext context, TelemetryClient telemetryClient)
         {
@@ -26,6 +25,7 @@ namespace MoneySmart.Pages.Transactions
         }
 
         public SelectList Accounts { get; private set; }
+        public SelectList TransactionTypes => new SelectList(new[] { "Income", "Expense" }, "Expense");
 
         public IActionResult OnGet()
         {

@@ -15,7 +15,6 @@ namespace MoneySmart.Pages.Transactions
     public class EditModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        public readonly SelectList TransactionTypes = new SelectList(new[] { "Income", "Expense" });
 
         public EditModel(ApplicationDbContext context)
         {
@@ -26,6 +25,7 @@ namespace MoneySmart.Pages.Transactions
         public TransactionEditModel TransactionEditModel { get; set; }
 
         public SelectList Accounts { get; private set; }
+        public SelectList TransactionTypes => new SelectList(new[] { "Income", "Expense" });
 
         public async Task<IActionResult> OnGetAsync(long? id)
         {
