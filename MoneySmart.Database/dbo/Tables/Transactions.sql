@@ -5,8 +5,10 @@
     [Description] NVARCHAR(255) NOT NULL,
     [TransactionType] NVARCHAR(7) NOT NULL,
     [Amount] DECIMAL(8, 2) NOT NULL,
+    [TransferId] BIGINT NULL, 
     CONSTRAINT [PK_Transactions] PRIMARY KEY ([TransactionId]),
-    CONSTRAINT [FK_Transactions_Accounts_AccountId] FOREIGN KEY ([AccountId]) REFERENCES [Accounts] ([AccountId]) ON DELETE NO ACTION
+    CONSTRAINT [FK_Transactions_Accounts_AccountId] FOREIGN KEY ([AccountId]) REFERENCES [Accounts] ([AccountId]) ON DELETE NO ACTION, 
+    CONSTRAINT [FK_Transactions_Transfers_TransferId] FOREIGN KEY ([TransferId]) REFERENCES [Transfers] ([TransferId]) ON DELETE NO ACTION
 );
 GO
 CREATE INDEX [IX_Transactions_AccountId] ON [Transactions] ([AccountId]);

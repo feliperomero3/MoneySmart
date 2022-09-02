@@ -29,12 +29,12 @@ namespace MoneySmart.IntegrationTests.Helpers
         {
             var account1 = new Account(5221, "Savings");
             var account2 = new Account(2152, "Expenses");
+            var account3 = new Account(9999, "Throwaway");
 
             var transaction1 = new Transaction(DateTime.Parse("2020-08-08T10:00:00"), account1, "First Deposit",
                 TransactionType.Income, 1000);
 
-            context.Accounts.Add(account1);
-            context.Accounts.Add(account2);
+            context.Accounts.AddRange(account1, account2, account3);
             context.Transactions.Add(transaction1);
 
             context.SaveChanges();

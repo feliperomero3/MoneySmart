@@ -21,11 +21,6 @@ namespace MoneySmart.Domain
             Name = name;
         }
 
-        public void AddTransaction(Transaction transaction)
-        {
-            Transactions.Add(transaction);
-        }
-
         public void EditAccount(Account account)
         {
             Number = account.Number;

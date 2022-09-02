@@ -1,0 +1,59 @@
+﻿@page
+@model MoneySmart.Pages.Transfers.IndexModel
+@{
+    ViewData["Title"] = "Create Transfer";
+}
+
+<h1>Create</h1>
+
+<h4>Transfer</h4>
+<hr />
+<div class="row">
+    <div class="col-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="TransferModel.DateTime" class="form-label"></label>
+                <input asp-for="TransferModel.DateTime" class="form-control" />
+                <span asp-validation-for="TransferModel.DateTime" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="TransferModel.SourceAccountId" class="form-label"></label>
+                <select asp-for="TransferModel.SourceAccountId" asp-items="Model.SourceAccounts" class="form-select"></select>
+                <span asp-validation-for="TransferModel.SourceAccountId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="TransferModel.DestinationAccountId" class="form-label"></label>
+                <select asp-for="TransferModel.DestinationAccountId" asp-items="Model.DestinationAccounts" class="form-select"></select>
+                <span asp-validation-for="TransferModel.DestinationAccountId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="TransferModel.Description" class="form-label"></label>
+                <input asp-for="TransferModel.Description" class="form-control" />
+                <span asp-validation-for="TransferModel.Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="TransferModel.Amount" class="form-label"></label>
+                <input asp-for="TransferModel.Amount" class="form-control" />
+                <span asp-validation-for="TransferModel.Amount" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="TransferModel.Notes" class="form-label"></label>
+                <input asp-for="TransferModel.Notes" class="form-control" />
+                <span asp-validation-for="TransferModel.Notes" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div class="mb-3">
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

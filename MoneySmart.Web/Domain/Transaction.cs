@@ -9,19 +9,21 @@ namespace MoneySmart.Domain
         public string Description { get; private set; }
         public TransactionType TransactionType { get; private set; }
         public decimal Amount { get; private set; }
+        public Transfer Transfer { get; private set; }
 
         private Transaction()
         {
         }
 
         public Transaction(DateTime dateTime, Account account, string description,
-            TransactionType transactionType, decimal amount) : this()
+            TransactionType transactionType, decimal amount, Transfer transfer = null) : this()
         {
             DateTime = dateTime;
             Account = account;
             Description = description;
             TransactionType = transactionType;
             Amount = amount;
+            Transfer = transfer;
         }
 
         public void EditTransaction(Transaction transaction)

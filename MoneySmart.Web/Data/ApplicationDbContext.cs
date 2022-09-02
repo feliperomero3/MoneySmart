@@ -37,6 +37,15 @@ namespace MoneySmart.Data
                 t.HasIndex("AccountId");
                 t.HasOne(p => p.Account).WithMany(p => p.Transactions)
                     .HasForeignKey("AccountId").OnDelete(DeleteBehavior.Restrict);
+                t.HasOne(p => p.Transfer).WithMany(p => p.Transactions)
+                    .HasForeignKey("TransferId").OnDelete(DeleteBehavior.Restrict);
+            });
+
+            builder.Entity<Transfer>(t =>
+            {
+                t.ToTable("Transfers").HasKey(k => k.Id);
+                t.Property(p => p.Id).HasColumnName("TransferId");
+                t.Property(p => p.Notes).HasMaxLength(4096);
             });
 
             base.OnModelCreating(builder);

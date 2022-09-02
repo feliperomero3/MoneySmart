@@ -136,7 +136,7 @@ namespace MoneySmart.IntegrationTests.Pages
         public async Task Post_Delete_Account_Redirects_To_Index_Page_On_Success()
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
-            var defaultPage = await client.GetAsync("Delete/2152");
+            var defaultPage = await client.GetAsync("Delete/9999");
             var content = await HtmlDocumentHelper.GetDocumentAsync(defaultPage);
 
             var form = (IHtmlFormElement)content.QuerySelector("form");
@@ -145,7 +145,7 @@ namespace MoneySmart.IntegrationTests.Pages
             var response = await client.SendAsync(form, submit,
                 new Dictionary<string, string>
                 {
-                    ["AccountModel.Number"] = "2152"
+                    ["AccountModel.Number"] = "9999"
                 });
 
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
