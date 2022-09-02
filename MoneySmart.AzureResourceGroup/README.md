@@ -1,8 +1,7 @@
 # Provision a web app with a SQL Database
 
-This template creates a free Azure Web App with Application Insights and SQL Database at the "Free" service level.
-
-The template can also support other tiers of service through the use of parameters.
+This template creates a free Azure Web App with Application Insights and Azure SQL Database at the "Free" service level. 
+Supports other tiers of service through the use of parameters.
 
 List available SKUs (DTU and vCores) for Azure SQL Database for a specified Azure region.
 
