@@ -197,6 +197,10 @@
               "value": "true"
             },
             {
+              "name": "WEBSITE_RUN_FROM_PACKAGE",
+              "value": "1"
+            },
+            {
               "name": "XDT_MicrosoftApplicationInsights_BaseExtensions",
               "value": "disabled"
             },
