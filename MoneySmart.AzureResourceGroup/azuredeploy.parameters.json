@@ -73,6 +73,12 @@
       "metadata": {
         "description": "Database user password to be used by the application."
       }
+    },
+    "sqlMinimumTlsVersion": {
+      "value": "1.2",
+      "metadata": {
+        "description": "Minimal TLS version."
+      }
     }
   }
 }

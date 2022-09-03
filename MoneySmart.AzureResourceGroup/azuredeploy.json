@@ -86,6 +86,13 @@
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+    "sqlMinimalTlsVersion": {
+      "type": "string",
+      "defaultValue": "1.2",
+      "metadata": {
+        "description": "Minimal TLS version."
+      }
     }
   },
   "variables": {
@@ -100,6 +107,7 @@
       "apiVersion": "2019-06-01-preview",
       "location": "[parameters('location')]",
       "properties": {
+        "minimalTlsVersion": "[parameters('sqlMinimalTlsVersion')]",
         "administratorLogin": "[parameters('sqlAdministratorLogin')]",
         "administratorLoginPassword": "[parameters('sqlAdministratorLoginPassword')]",
         "version": "12.0"
