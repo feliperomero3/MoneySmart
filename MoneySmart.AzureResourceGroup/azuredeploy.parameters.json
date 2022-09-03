@@ -21,13 +21,31 @@
       }
     },
     "databaseSkuName": {
-      "value": "Free",
+      "value": "GP_S_Gen5_1",
       "metadata": {
         "description": "The name of the SKU, typically, a letter + Number code, e.g. P3."
       }
     },
+    "databaseTier": {
+      "value": "GeneralPurpose",
+      "metadata": {
+        "description": "The tier or edition of the particular SKU, e.g. Basic, Premium."
+      }
+    },
+    "databaseMinCapacity": {
+      "value": "0.5",
+      "metadata": {
+        "description": "Minimal capacity that database will always have allocated, if not paused."
+      }
+    },
+    "databaseAutoPauseDelay": {
+      "value": "120",
+      "metadata": {
+        "description": "Time in minutes after which database is automatically paused."
+      }
+    },
     "databaseMaxSizeBytes": {
-      "value": 33554432,
+      "value": 1073741824,
       "metadata": {
         "description": "The max size of the database expressed in bytes."
       }

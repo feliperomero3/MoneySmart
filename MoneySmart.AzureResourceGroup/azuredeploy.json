@@ -28,6 +28,27 @@
         "description": "The name of the SKU."
       }
     },
+    "databaseTier": {
+      "type": "string",
+      "defaultValue": "Free",
+      "metadata": {
+        "description": "The tier or edition of the particular SKU, e.g. Basic, Premium."
+      }
+    },
+    "databaseMinCapacity": {
+      "type": "string",
+      "defaultValue": "0.5",
+      "metadata": {
+        "description": "Minimal capacity that database will always have allocated, if not paused."
+      }
+    },
+    "databaseAutoPauseDelay": {
+      "type": "string",
+      "defaultValue": "120",
+      "metadata": {
+        "description": "Time in minutes after which database is automatically paused."
+      }
+    },
     "databaseMaxSizeBytes": {
       "type": "int",
       "defaultValue": 33554432,
@@ -93,11 +114,14 @@
             "[variables('sqlServerName')]"
           ],
           "sku": {
-            "name": "[parameters('databaseSkuName')]"
+            "name": "[parameters('databaseSkuName')]",
+            "tier": "[parameters('databaseTier')]"
           },
           "properties": {
             "collation": "SQL_Latin1_General_CP1_CI_AS",
-            "maxSizeBytes": "[parameters('databaseMaxSizeBytes')]"
+            "maxSizeBytes": "[parameters('databaseMaxSizeBytes')]",
+            "minCapacity": "[parameters('databaseMinCapacity')]",
+            "autoPauseDelay": "[parameters('databaseAutoPauseDelay')]"
           }
         },
         {

@@ -1,8 +1,8 @@
 #Requires -Version 3.0
 
 Param(
-    [string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
-    [securestring] [Parameter(Mandatory=$true)] $SqlAdministratorLoginPassword,
+    [string] [Parameter(Mandatory = $true)] $ResourceGroupLocation,
+    [securestring] [Parameter(Mandatory = $true)] $SqlAdministratorLoginPassword,
     [string] $ResourceGroupName = 'MoneySmart',
     [string] $TemplateFile = 'azuredeploy.json',
     [string] $TemplateParametersFile = 'azuredeploy.parameters.json',
@@ -10,8 +10,9 @@ Param(
 )
 
 try {
-    [Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent("VSAzureTools-$UI$($host.name)".replace(' ','_'), '3.0.0')
-} catch { }
+    [Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent("VSAzureTools-$UI$($host.name)".replace(' ', '_'), '3.0.0')
+}
+catch { }
 
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version 3
@@ -46,7 +47,8 @@ else {
         -TemplateFile $TemplateFile `
         -TemplateParameterFile $TemplateParametersFile `
         -sqlAdministratorLoginPassword $SqlAdministratorLoginPassword `
-        -Force -Verbose `
+        -Force `
+        -Verbose `
         -ErrorVariable ErrorMessages
     if ($ErrorMessages) {
         Write-Output '', 'Template deployment returned the following errors:', @(@($ErrorMessages) | ForEach-Object { $_.Exception.Message.TrimEnd("`r`n") })
