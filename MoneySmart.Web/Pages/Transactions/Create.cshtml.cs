@@ -3,22 +3,22 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
 using MoneySmart.Domain;
+using MoneySmart.Telemetry;
 
 namespace MoneySmart.Pages.Transactions
 {
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        private readonly TelemetryClient _telemetryClient;
+        private readonly ITelemetryService _telemetryClient;
 
-        public CreateModel(ApplicationDbContext context, TelemetryClient telemetryClient)
+        public CreateModel(ApplicationDbContext context, ITelemetryService telemetryClient)
         {
             _context = context;
             _telemetryClient = telemetryClient;

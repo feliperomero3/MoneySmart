@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MoneySmart.Data;
+using MoneySmart.Telemetry;
 
 namespace MoneySmart
 {
@@ -43,6 +44,8 @@ namespace MoneySmart
             {
                 module.EnableSqlCommandTextInstrumentation = true;
             });
+
+            services.AddSingleton<ITelemetryService, ApplicationTelemetry>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
