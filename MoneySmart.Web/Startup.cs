@@ -1,12 +1,15 @@
+using System;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
 using MoneySmart.Data;
 using MoneySmart.Telemetry;
 
@@ -61,7 +64,26 @@ namespace MoneySmart
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+
+            if (env.IsDevelopment())
+            {
+                app.UseStaticFiles();
+            }
+            else
+            {
+                app.UseStaticFiles(new StaticFileOptions
+                {
+                    OnPrepareResponse = response =>
+                    {
+                        response.Context.Response.GetTypedHeaders().CacheControl =
+                            new CacheControlHeaderValue
+                            {
+                                Public = true,
+                                MaxAge = TimeSpan.FromSeconds(31536000)
+                            };
+                    }
+                });
+            }
 
             app.UseRouting();
 
