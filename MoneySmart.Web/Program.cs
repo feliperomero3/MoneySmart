@@ -18,20 +18,25 @@ namespace MoneySmart
             {
                 var services = scope.ServiceProvider;
 
-                try
+                var environment = services.GetRequiredService<IWebHostEnvironment>();
+
+                if (environment.IsDevelopment())
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
 
-                    ApplicationDbSeedData.SeedAsync(context, userManager).GetAwaiter().GetResult();
-                }
-                catch (SqlException sqlException)
-                {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    try
+                    {
+                        ApplicationDbSeedData.SeedAsync(context, userManager).GetAwaiter().GetResult();
+                    }
+                    catch (SqlException sqlException)
+                    {
+                        var logger = services.GetRequiredService<ILogger<Program>>();
 
-                    logger.LogError(sqlException, "An error occurred while connecting to the database.");
+                        logger.LogError(sqlException, "An error occurred while connecting to the database.");
 
-                    throw;
+                        throw;
+                    }
                 }
             }
 
