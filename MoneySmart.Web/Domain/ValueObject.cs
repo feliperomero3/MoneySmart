@@ -54,7 +54,9 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
         var otherType = GetUnproxiedType(obj);
 
         if (thisType != otherType)
-            return string.Compare(thisType.ToString(), otherType.ToString(), StringComparison.Ordinal);
+        {
+            return string.Compare(this.ToString(), obj.ToString());
+        }
 
         var other = (ValueObject)obj;
 

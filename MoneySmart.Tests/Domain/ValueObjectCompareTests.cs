@@ -73,19 +73,30 @@ public class ValueObjectCompareTests
     [Fact]
     public void Sorting_value_objects_throws_if_one_of_properties_doesnt_implement_IComparable()
     {
-        var vo1 = new VOWithObjectProperty(new object());
-        var vo2 = new VOWithObjectProperty(new object());
+        var vo1 = new ValueObjectWithObjectProperty(new object());
+        var vo2 = new ValueObjectWithObjectProperty(new object());
 
         var func = () => new[] { vo1, vo2 }.OrderBy(x => x).ToArray();
 
         Assert.Throws<InvalidOperationException>(() => func());
     }
 
-    private class VOWithObjectProperty : ValueObject
+    [Fact]
+    public void Compare_value_objects_with_different_types_uses_to_string()
+    {
+        var number = new Number(1);
+        var name = new Name("1", "1", new NameSuffix(1));
+
+        var result = number.CompareTo(name);
+
+        Assert.Equal(-1, result);
+    }
+
+    private class ValueObjectWithObjectProperty : ValueObject
     {
         public object SomeProperty { get; }
 
-        public VOWithObjectProperty(object someProperty)
+        public ValueObjectWithObjectProperty(object someProperty)
         {
             SomeProperty = someProperty;
         }
@@ -109,6 +120,11 @@ public class ValueObjectCompareTests
         {
             yield return Value;
         }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 
     private class Name : ValueObject
@@ -129,6 +145,31 @@ public class ValueObjectCompareTests
             yield return First;
             yield return Last;
             yield return Suffix;
+        }
+
+        public override string ToString()
+        {
+            return $"{First} {Last} {Suffix}";
+        }
+    }
+
+    private class Number : ValueObject
+    {
+        public int Value { get; }
+
+        public Number(int value)
+        {
+            Value = value;
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Value;
+        }
+
+        public override string ToString()
+        {
+            return Value.ToString();
         }
     }
 }
