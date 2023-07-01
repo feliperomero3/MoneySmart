@@ -42,8 +42,8 @@ namespace MoneySmart.Tests.Domain
         [Fact]
         public void Comparing_value_objects_of_different_types_returns_false()
         {
-            var vo1 = new VO1("1");
-            var vo2 = new VO2("1");
+            var vo1 = new ValueObject1("1");
+            var vo2 = new ValueObject2("1");
 
             Assert.False(vo1.Equals(vo2));
         }
@@ -51,8 +51,8 @@ namespace MoneySmart.Tests.Domain
         [Fact]
         public void Comparing_value_objects_of_different_values_returns_false()
         {
-            var emailAddress1 = new VO1("1");
-            var emailAddress2 = new VO1("2");
+            var emailAddress1 = new ValueObject1("1");
+            var emailAddress2 = new ValueObject1("2");
 
             Assert.False(emailAddress1.Equals(emailAddress2));
         }
@@ -60,8 +60,8 @@ namespace MoneySmart.Tests.Domain
         [Fact]
         public void Comparing_value_objects_with_different_collections_returns_false()
         {
-            var vo1 = new VOWithCollection("one", "two");
-            var vo2 = new VOWithCollection("one", "three");
+            var vo1 = new ValueObjectWithCollection("one", "two");
+            var vo2 = new ValueObjectWithCollection("one", "three");
 
             var result1 = vo1.Equals(vo2);
             var result2 = vo2.Equals(vo1);
@@ -73,8 +73,8 @@ namespace MoneySmart.Tests.Domain
         [Fact]
         public void Comparing_value_objects_with_collections_of_different_size_returns_false()
         {
-            var vo1 = new VOWithCollection("one", "two");
-            var vo2 = new VOWithCollection("one", "two", "three");
+            var vo1 = new ValueObjectWithCollection("one", "two");
+            var vo2 = new ValueObjectWithCollection("one", "two", "three");
 
             var result1 = vo1.Equals(vo2);
             var result2 = vo2.Equals(vo1);
@@ -83,11 +83,11 @@ namespace MoneySmart.Tests.Domain
             Assert.False(result2);
         }
 
-        private class VOWithCollection : ValueObject
+        private class ValueObjectWithCollection : ValueObject
         {
             private readonly string[] _components;
 
-            public VOWithCollection(params string[] components)
+            public ValueObjectWithCollection(params string[] components)
             {
                 _components = components;
             }
@@ -98,11 +98,11 @@ namespace MoneySmart.Tests.Domain
             }
         }
 
-        public class VO1 : ValueObject
+        public class ValueObject1 : ValueObject
         {
             public string Value { get; }
 
-            public VO1(string value)
+            public ValueObject1(string value)
             {
                 Value = value;
             }
@@ -113,11 +113,11 @@ namespace MoneySmart.Tests.Domain
             }
         }
 
-        public class VO2 : ValueObject
+        public class ValueObject2 : ValueObject
         {
             public string Value { get; }
 
-            public VO2(string value)
+            public ValueObject2(string value)
             {
                 Value = value;
             }

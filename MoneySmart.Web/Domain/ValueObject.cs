@@ -104,6 +104,26 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
         return !(a == b);
     }
 
+    public static bool operator > (ValueObject a, ValueObject b)
+    {
+        return a.CompareTo(b) > 0;
+    }
+
+    public static bool operator < (ValueObject a, ValueObject b)
+    {
+        return a.CompareTo(b) < 0;
+    }
+
+    public static bool operator >= (ValueObject a, ValueObject b)
+    {
+        return a.CompareTo(b) >= 0;
+    }
+
+    public static bool operator <= (ValueObject a, ValueObject b)
+    {
+        return a.CompareTo(b) <= 0;
+    }
+
     internal static Type GetUnproxiedType(object obj)
     {
         const string EFCoreProxyPrefix = "Castle.Proxies.";
