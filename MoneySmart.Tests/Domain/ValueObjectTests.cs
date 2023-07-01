@@ -58,6 +58,59 @@ namespace MoneySmart.Tests.Domain
         }
 
         [Fact]
+        public void Comparing_value_objects_of_the_same_type_and_value_returns_true()
+        {
+            var emailAddress1 = new ValueObject1("1");
+            var emailAddress2 = new ValueObject1("1");
+
+            Assert.True(emailAddress1.Equals(emailAddress2));
+        }
+
+        [Fact]
+        public void Comparing_value_objects_with_null_returns_false()
+        {
+            var emailAddress = new ValueObject1("1");
+
+            Assert.False(emailAddress.Equals(null));
+        }
+
+        [Fact]
+        public void Comparing_value_object_greater_than()
+        {
+            var vo1 = new ValueObject1("1");
+            var vo2 = new ValueObject1("2");
+
+            Assert.True(vo2 > vo1);
+        }
+
+        [Fact]
+        public void Comparing_value_object_greater_or_equal()
+        {
+            var vo1 = new ValueObject1("1");
+            var vo2 = new ValueObject1("2");
+
+            Assert.True(vo2 >= vo1);
+        }
+
+        [Fact]
+        public void Comparing_value_object_less_than()
+        {
+            var vo1 = new ValueObject1("1");
+            var vo2 = new ValueObject1("2");
+
+            Assert.True(vo1 < vo2);
+        }
+
+        [Fact]
+        public void Comparing_value_object_less_or_equal()
+        {
+            var vo1 = new ValueObject1("1");
+            var vo2 = new ValueObject1("2");
+
+            Assert.True(vo1 <= vo2);
+        }
+
+        [Fact]
         public void Comparing_value_objects_with_different_collections_returns_false()
         {
             var vo1 = new ValueObjectWithCollection("one", "two");
