@@ -2,67 +2,66 @@
 
 using System;
 
-namespace MoneySmart.Domain
+namespace MoneySmart.Domain;
+
+public abstract class Entity
 {
-    public abstract class Entity
+    public long Id { get; }
+
+    protected Entity()
     {
-        public long Id { get; }
+    }
 
-        protected Entity()
-        {
-        }
+    protected Entity(long id)
+        : this()
+    {
+        Id = id;
+    }
 
-        protected Entity(long id)
-            : this()
-        {
-            Id = id;
-        }
+    public override bool Equals(object obj)
+    {
+        if (!(obj is Entity other))
+            return false;
 
-        public override bool Equals(object obj)
-        {
-            if (!(obj is Entity other))
-                return false;
+        if (ReferenceEquals(this, other))
+            return true;
 
-            if (ReferenceEquals(this, other))
-                return true;
+        if (GetRealType() != other.GetRealType())
+            return false;
 
-            if (GetRealType() != other.GetRealType())
-                return false;
+        if (Id == 0 || other.Id == 0)
+            return false;
 
-            if (Id == 0 || other.Id == 0)
-                return false;
+        return Id == other.Id;
+    }
 
-            return Id == other.Id;
-        }
+    public static bool operator ==(Entity a, Entity b)
+    {
+        if (a is null && b is null)
+            return true;
 
-        public static bool operator ==(Entity a, Entity b)
-        {
-            if (a is null && b is null)
-                return true;
+        if (a is null || b is null)
+            return false;
 
-            if (a is null || b is null)
-                return false;
+        return a.Equals(b);
+    }
 
-            return a.Equals(b);
-        }
+    public static bool operator !=(Entity a, Entity b)
+    {
+        return !(a == b);
+    }
 
-        public static bool operator !=(Entity a, Entity b)
-        {
-            return !(a == b);
-        }
+    public override int GetHashCode()
+    {
+        return (GetRealType().ToString() + Id).GetHashCode();
+    }
 
-        public override int GetHashCode()
-        {
-            return (GetRealType().ToString() + Id).GetHashCode();
-        }
+    private Type GetRealType()
+    {
+        const string EfCoreProxyPrefix = "Castle.Proxies.";
 
-        private Type GetRealType()
-        {
-            const string EfCoreProxyPrefix = "Castle.Proxies.";
+        var type = GetType();
 
-            var type = GetType();
-
-            return type.ToString().Contains(EfCoreProxyPrefix) ? type.BaseType : type;
-        }
+        return type.ToString().Contains(EfCoreProxyPrefix) ? type.BaseType : type;
     }
 }
