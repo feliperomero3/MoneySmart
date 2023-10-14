@@ -15,9 +15,10 @@ A very simple Web Application to capture everyday income and expenses.
 ### Features (WIP)
 
 1. [x] Capture your daily income and expenses.
-2. [x] Manage multiple accounts to separate your transactions (e. g. checking or savings).
-3. [ ] Classify your transactions in categories.
-4. [ ] More to come...
+1. [x] Manage multiple accounts to separate your transactions (e. g. checking or savings).
+1. [x] Transfer money between accounts.
+1. [ ] Classify your transactions in categories.
+1. [ ] More to come...
 
 ## Prerequisites
 
@@ -30,7 +31,7 @@ A very simple Web Application to capture everyday income and expenses.
 1. Open the solution file `MoneySmart.Database.sln` on Visual Studio.
 1. In the Solution Explorer right-click the `MoneySmart.Database` project and click "Publish..."
 1. In the Publish dialog click "Load Profile..." and select the `MoneySmart.Database.publish.xml` file.
-1. Confirm the loaded connection string matches your target instance (`(localdb)\MSSQLLocalDB` by default) and click "Publish".
+1. Confirm the loaded connection string matches your target instance e. g. `(localdb)\MSSQLLocalDB` and click "Publish".
 1. Open the solution file `MoneySmart.sln` on Visual Studio.
 1. Press F5 to build and run the web application.
 1. Wait for your default browser to be automatically launched into <https://localhost:5000>
@@ -39,7 +40,7 @@ A very simple Web Application to capture everyday income and expenses.
 
     MIT License
 
-    Copyright (c) 2022 Felipe Romero
+    Copyright (c) 2023 Felipe Romero
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
