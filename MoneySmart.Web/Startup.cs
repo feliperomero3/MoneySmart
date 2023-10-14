@@ -1,4 +1,5 @@
 using System;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -91,6 +92,19 @@ namespace MoneySmart
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.Use(async (context, next) =>
+            {
+                var key = "User";
+                var value = context.User.Identity.IsAuthenticated
+                    ? context.User.Identity.Name
+                    : "Anonymous";
+                var requestTelemetry = context.Features.Get<RequestTelemetry>();
+
+                requestTelemetry?.Properties.Add(key, value);
+
+                await next.Invoke();
+            });
 
             app.UseEndpoints(endpoints =>
             {
