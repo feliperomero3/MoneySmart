@@ -240,7 +240,9 @@
         "[concat('hidden-link:', resourceId('Microsoft.Web/sites', parameters('webSiteName')))]": "Resource"
       },
       "properties": {
-        "Application_Type": "web"
+        "Application_Type": "web",
+        "ApplicationId": "[parameters('webSiteName')]",
+        "DisableIpMasking": false
       }
     }
   ],
