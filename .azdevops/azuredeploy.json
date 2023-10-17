@@ -242,7 +242,7 @@
       "properties": {
         "Application_Type": "web",
         "ApplicationId": "[parameters('webSiteName')]",
-        "DisableIpMasking": false
+        "DisableIpMasking": true
       }
     }
   ],
