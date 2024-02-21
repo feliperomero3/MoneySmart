@@ -25,7 +25,7 @@ namespace MoneySmart.Pages.Transactions
         public TransactionEditModel TransactionEditModel { get; set; }
 
         public SelectList Accounts { get; private set; }
-        public SelectList TransactionTypes => new SelectList(new[] { "Income", "Expense" });
+        public SelectList TransactionTypes => new(new[] { "Expense", "Income" });
 
         public async Task<IActionResult> OnGetAsync(long? id)
         {

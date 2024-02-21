@@ -25,7 +25,7 @@ namespace MoneySmart.Pages.Transactions
         }
 
         public SelectList Accounts { get; private set; }
-        public SelectList TransactionTypes => new SelectList(new[] { "Income", "Expense" }, "Expense");
+        public SelectList TransactionTypes => new(new[] { "Expense", "Income" }, "Expense");
 
         public IActionResult OnGet()
         {
