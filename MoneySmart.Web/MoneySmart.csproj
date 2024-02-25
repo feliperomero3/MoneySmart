@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>6ef9bf26-3265-49fb-b48f-8996eb20e2ad</UserSecretsId>
-    <VersionPrefix>0.4.4</VersionPrefix>
-    <VersionSuffix Condition="'$(BuildNumber)' == ''">preview</VersionSuffix>
-    <VersionSuffix Condition="'$(BuildNumber)' != ''">preview-$(BuildNumber)</VersionSuffix>
+    <VersionPrefix>0.4.4-preview</VersionPrefix>
+    <VersionSuffix Condition="'$(BuildNumber)' == ''"></VersionSuffix>
+    <VersionSuffix Condition="'$(BuildNumber)' != ''">$(BuildNumber)</VersionSuffix>
     <PreserveCompilationContext>true</PreserveCompilationContext>
   </PropertyGroup>
 
