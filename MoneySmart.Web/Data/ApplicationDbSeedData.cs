@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -32,16 +33,16 @@ namespace MoneySmart.Data
 
             await context.Accounts.AddRangeAsync(account1, account2, account3);
 
-            var transaction1 = new Transaction(DateTime.Parse("2020-08-08T10:00:00"), account1, "First Deposit",
+            var transaction1 = new Transaction(DateTime.Parse("2020-08-08T10:00:00", CultureInfo.InvariantCulture), account1, "First Deposit",
                 TransactionType.Income, 1000);
 
-            var transaction2 = new Transaction(DateTime.Parse("2020-08-08T10:00:00"), account2, "First Deposit (C)",
+            var transaction2 = new Transaction(DateTime.Parse("2020-08-08T10:00:00", CultureInfo.InvariantCulture), account2, "First Deposit (C)",
                 TransactionType.Income, 10000);
 
-            var transaction3 = new Transaction(DateTime.Parse("2020-08-10T12:00:00"), account1, "Groceries",
+            var transaction3 = new Transaction(DateTime.Parse("2020-08-10T12:00:00", CultureInfo.InvariantCulture), account1, "Groceries",
                 TransactionType.Expense, 64);
 
-            var transaction4 = new Transaction(DateTime.Parse("2020-08-15T16:00:00"), account2, "Car Payment",
+            var transaction4 = new Transaction(DateTime.Parse("2020-08-15T16:00:00", CultureInfo.InvariantCulture), account2, "Car Payment",
                 TransactionType.Expense, 250);
 
             await context.Transactions.AddRangeAsync(transaction1, transaction2, transaction3, transaction4);
