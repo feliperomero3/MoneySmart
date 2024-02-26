@@ -3,16 +3,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
+using MoneySmart.Telemetry;
 
 namespace MoneySmart.Pages.Transactions
 {
     public class DeleteModel : PageModel
     {
         private readonly ApplicationDbContext _context;
+        private readonly ITelemetryService _telemetry;
 
-        public DeleteModel(ApplicationDbContext context)
+        public DeleteModel(ApplicationDbContext context, ITelemetryService telemetry)
         {
             _context = context;
+            _telemetry = telemetry;
         }
 
         public TransactionModel Transaction { get; set; }
@@ -53,6 +56,8 @@ namespace MoneySmart.Pages.Transactions
                 _context.Transactions.Remove(transaction);
 
                 await _context.SaveChangesAsync();
+
+                _telemetry.TrackEvent("TransactionDeletedSuccessfully");
             }
 
             return RedirectToPage("./Index");
