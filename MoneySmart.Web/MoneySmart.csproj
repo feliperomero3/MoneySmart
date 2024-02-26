@@ -34,4 +34,14 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <ResolveStaticWebAssetsInputsDependsOn>RemoveIdentityAssets</ResolveStaticWebAssetsInputsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="RemoveIdentityAssets">
+    <ItemGroup>
+      <StaticWebAsset Remove="@(StaticWebAsset)" Condition="%(SourceId) == 'Microsoft.AspNetCore.Identity.UI'" />
+    </ItemGroup>
+  </Target>
+
 </Project>
