@@ -49,7 +49,8 @@ namespace MoneySmart
                 module.EnableSqlCommandTextInstrumentation = true;
             });
 
-            services.AddSingleton<ITelemetryService, ApplicationTelemetry>();
+            services.AddSingleton<ITelemetryService, ApplicationTelemetry>()
+                    .AddSingleton<UserTelemetryMiddleware>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -93,18 +94,7 @@ namespace MoneySmart
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.Use(async (context, next) =>
-            {
-                var key = "User";
-                var value = context.User.Identity.IsAuthenticated
-                    ? context.User.Identity.Name
-                    : "Anonymous";
-                var requestTelemetry = context.Features.Get<RequestTelemetry>();
-
-                requestTelemetry?.Properties.Add(key, value);
-
-                await next.Invoke();
-            });
+            app.UseUserTelemetry();
 
             app.UseEndpoints(endpoints =>
             {
