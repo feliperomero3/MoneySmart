@@ -1,7 +1,8 @@
-﻿namespace MoneySmart.Telemetry
+﻿using System.Collections.Generic;
+
+namespace MoneySmart.Telemetry;
+
+public interface ITelemetryService
 {
-    public interface ITelemetryService
-    {
-        void TrackEvent(string eventName);
-    }
+    void TrackEvent(string eventName, IDictionary<string, string> properties = null);
 }

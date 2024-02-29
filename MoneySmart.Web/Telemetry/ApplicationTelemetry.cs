@@ -1,4 +1,6 @@
-﻿using Microsoft.ApplicationInsights;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.ApplicationInsights;
 
 namespace MoneySmart.Telemetry;
 
@@ -8,11 +10,11 @@ public class ApplicationTelemetry : ITelemetryService
 
     public ApplicationTelemetry(TelemetryClient telemetryClient)
     {
-        _telemetryClient = telemetryClient ?? throw new System.ArgumentNullException(nameof(telemetryClient));
+        _telemetryClient = telemetryClient ?? throw new ArgumentNullException(nameof(telemetryClient));
     }
 
-    public void TrackEvent(string eventName)
+    public void TrackEvent(string eventName, IDictionary<string, string> properties = null)
     {
-        _telemetryClient.TrackEvent(eventName);
+        _telemetryClient.TrackEvent(eventName, properties); _telemetryClient.Context.User.Id = "123";
     }
 }
