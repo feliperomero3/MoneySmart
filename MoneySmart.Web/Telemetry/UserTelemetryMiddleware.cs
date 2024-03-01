@@ -5,6 +5,13 @@ using Microsoft.AspNetCore.Http;
 
 namespace MoneySmart.Telemetry;
 
+/// <summary>
+/// Add an application-defined property for the signed-in user.
+/// </summary>
+/// <remarks>
+/// It defines a User property which will be used to store the user's identity in the telemetry.
+/// If the user is authenticated, it sets the value to the user's name; otherwise, it sets the value to Anonymous.
+/// </remarks>
 public class UserTelemetryMiddleware : IMiddleware
 {
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)

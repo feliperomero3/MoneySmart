@@ -15,6 +15,6 @@ public class ApplicationTelemetry : ITelemetryService
 
     public void TrackEvent(string eventName, IDictionary<string, string> properties = null)
     {
-        _telemetryClient.TrackEvent(eventName, properties); _telemetryClient.Context.User.Id = "123";
+        _telemetryClient.TrackEvent(eventName, properties);
     }
 }
