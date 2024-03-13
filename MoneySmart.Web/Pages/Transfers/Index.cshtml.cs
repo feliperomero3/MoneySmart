@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,16 +9,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
 using MoneySmart.Domain;
+using MoneySmart.Telemetry;
 
 namespace MoneySmart.Pages.Transfers
 {
     public class IndexModel : PageModel
     {
         private readonly ApplicationDbContext _context;
+        private readonly ITelemetryService _telemetry;
 
-        public IndexModel(ApplicationDbContext context)
+        public IndexModel(ApplicationDbContext context, ITelemetryService telemetry)
         {
             _context = context;
+            _telemetry = telemetry;
         }
 
         public SelectList SourceAccounts { get; private set; }
@@ -76,6 +80,8 @@ namespace MoneySmart.Pages.Transfers
 
             _context.Transactions.AddRange(transaction1, transaction2);
             _context.SaveChanges();
+
+            _telemetry.TrackEvent("TransferCreatedSuccessfully", new Dictionary<string, string>() { { "User", User.Identity.Name } });
 
             return RedirectToPage("../Transactions/Index");
         }
