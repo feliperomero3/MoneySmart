@@ -44,9 +44,9 @@
     },
     "databaseAutoPauseDelay": {
       "type": "string",
-      "defaultValue": "120",
+      "defaultValue": "-1",
       "metadata": {
-        "description": "Time in minutes after which database is automatically paused."
+        "description": "Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled."
       }
     },
     "databaseMaxSizeBytes": {
