@@ -93,6 +93,13 @@
       "metadata": {
         "description": "Minimal TLS version."
       }
+    },
+    "workspaceResourceId": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Resource Id of the log analytics workspace which the data will be ingested to."
+      }
     }
   },
   "variables": {
@@ -242,7 +249,8 @@
       "properties": {
         "Application_Type": "web",
         "ApplicationId": "[parameters('webSiteName')]",
-        "DisableIpMasking": true
+        "DisableIpMasking": true,
+        "WorkspaceResourceId": "[parameters('workspaceResourceId')]"
       }
     }
   ],

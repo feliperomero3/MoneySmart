@@ -79,6 +79,12 @@
       "metadata": {
         "description": "Minimal TLS version."
       }
+    },
+    "workspaceResourceId": {
+      "value": "",
+      "metadata": {
+        "description": "Resource Id of the log analytics workspace which the data will be ingested to."
+      }
     }
   }
 }
