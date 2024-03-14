@@ -8,7 +8,7 @@ List available SKUs (DTU and vCores) for Azure SQL Database for a given Azure re
 PowerShell
 
 ```pwsh
- Get-AzSqlServerServiceObjective -Location 'South Central US'
+Get-AzSqlServerServiceObjective -Location 'South Central US'
 ```
 
 More info at <https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlserverserviceobjective>
