@@ -1,0 +1,14 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-page="/Accounts/Index">Accounts</a>
+    </li>
+    <li>
+        <a class="nav-link text-dark" asp-area="" asp-page="/Transactions/Index">Transactions</a>
+    </li>
+    <li>
+        <a class="nav-link text-dark" asp-area="" asp-page="/Transfers/Index">Transfers</a>
+    </li>
+}
