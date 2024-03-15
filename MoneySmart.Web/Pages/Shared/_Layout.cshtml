@@ -29,16 +29,13 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
-                        <partial name="_LoginPartial" />
-                    </ul>
-                    <ul class="navbar-nav flex-grow-1">
-                        <partial name="_MenuPartial" />
-                    </ul>
+                    <partial name="_LoginPartial" />
+                    <partial name="_MenuPartial" />
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main">
             @RenderBody()
