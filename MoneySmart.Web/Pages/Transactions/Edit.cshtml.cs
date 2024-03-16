@@ -1,14 +1,10 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
-using MoneySmart.Domain;
 
 namespace MoneySmart.Pages.Transactions
 {
@@ -94,52 +90,6 @@ namespace MoneySmart.Pages.Transactions
         private bool TransactionExists(long id)
         {
             return _context.Transactions.Any(t => t.Id == id);
-        }
-    }
-
-    public class TransactionEditModel
-    {
-        [Required]
-        [DisplayName("Number")]
-        public long Id { get; set; }
-
-        [Required]
-        [DisplayName("Date")]
-        public DateTime DateTime { get; set; }
-
-        [Required]
-        [DisplayName("Account")]
-        public long AccountId { get; set; }
-
-        [Required]
-        [DisplayName("Description")]
-        public string Description { get; set; }
-
-        [Required]
-        [DisplayName("Type")]
-        public string TransactionType { get; set; }
-
-        [Required]
-        [DataType(DataType.Currency)]
-        public decimal Amount { get; set; }
-
-        public static TransactionEditModel MapFromTransaction(Transaction transaction)
-        {
-            return new TransactionEditModel
-            {
-                Id = transaction.Id,
-                DateTime = transaction.DateTime,
-                AccountId = transaction.Account.Id,
-                Description = transaction.Description,
-                TransactionType = transaction.TransactionType.ToString(),
-                Amount = transaction.Amount
-            };
-        }
-
-        public Transaction MapToTransaction(Account account)
-        {
-            return new Transaction(DateTime, account, Description,
-                (TransactionType)TransactionType, Amount);
         }
     }
 }
