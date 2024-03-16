@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -57,7 +58,7 @@ namespace MoneySmart.Pages.Transactions
 
                 await _context.SaveChangesAsync();
 
-                _telemetry.TrackEvent("TransactionDeletedSuccessfully");
+                _telemetry.TrackEvent("TransactionDeletedSuccessfully", new Dictionary<string, string>() { { "User", User.Identity.Name } });
             }
 
             return RedirectToPage("./Index");
