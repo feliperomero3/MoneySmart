@@ -81,7 +81,12 @@ namespace MoneySmart
                             new CacheControlHeaderValue
                             {
                                 Public = true,
-                                MaxAge = TimeSpan.FromSeconds(31536000)
+                                MaxAge = TimeSpan.FromSeconds(31536000),
+                                SharedMaxAge = TimeSpan.FromSeconds(31536000),
+                                Extensions =
+                                {
+                                    new NameValueHeaderValue("immutable")
+                                }
                             };
                     }
                 });
