@@ -25,7 +25,7 @@
             </div>
             <div class="mb-3">
                 <label asp-for="TransactionEditModel.AccountId" class="form-label"></label>
-                <select asp-for="TransactionEditModel.AccountId" asp-items="Model.Accounts" class="form-select"></select>
+                <select asp-for="TransactionEditModel.AccountId" asp-items="Model.Accounts" class="form-control"></select>
                 <span asp-validation-for="TransactionEditModel.AccountId" class="text-danger"></span>
             </div>
             <div class="mb-3">
@@ -35,7 +35,7 @@
             </div>
             <div class="mb-3">
                 <label asp-for="TransactionEditModel.TransactionType" class="form-label"></label>
-                <select asp-for="TransactionEditModel.TransactionType" asp-items="Model.TransactionTypes" class="form-select"></select>
+                <select asp-for="TransactionEditModel.TransactionType" asp-items="Model.TransactionTypes" class="form-control"></select>
                 <span asp-validation-for="TransactionEditModel.TransactionType" class="text-danger"></span>
             </div>
             <div class="mb-3">

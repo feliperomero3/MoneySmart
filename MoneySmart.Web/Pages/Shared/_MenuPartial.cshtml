@@ -2,15 +2,32 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <ul class="navbar-nav flex-grow-1">
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-page="/Accounts/Index">Accounts</a>
-        </li>
-        <li>
-            <a class="nav-link text-dark" asp-area="" asp-page="/Transactions/Index">Transactions</a>
-        </li>
-        <li>
-            <a class="nav-link text-dark" asp-area="" asp-page="/Transfers/Index">Transfers</a>
-        </li>
-    </ul>
+   <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column">
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-page="/Transactions/Index">
+                    <i class="nav-icon fas fa-circle"></i>
+                    <p>
+                        Transactions
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-page="/Accounts/Index">
+                    <i class="nav-icon fas fa-circle"></i>
+                    <p>
+                        Accounts
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-page="/Transfers/Index">
+                    <i class="nav-icon fas fa-circle"></i>
+                    <p>
+                        Transfers
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </nav>
 }

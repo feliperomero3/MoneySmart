@@ -19,12 +19,12 @@
             </div>
             <div class="mb-3">
                 <label asp-for="TransferModel.SourceAccountId" class="form-label"></label>
-                <select asp-for="TransferModel.SourceAccountId" asp-items="Model.SourceAccounts" class="form-select"></select>
+                <select asp-for="TransferModel.SourceAccountId" asp-items="Model.SourceAccounts" class="form-control"></select>
                 <span asp-validation-for="TransferModel.SourceAccountId" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="TransferModel.DestinationAccountId" class="form-label"></label>
-                <select asp-for="TransferModel.DestinationAccountId" asp-items="Model.DestinationAccounts" class="form-select"></select>
+                <select asp-for="TransferModel.DestinationAccountId" asp-items="Model.DestinationAccounts" class="form-control"></select>
                 <span asp-validation-for="TransferModel.DestinationAccountId" class="text-danger"></span>
             </div>
             <div class="mb-3">
