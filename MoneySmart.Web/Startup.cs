@@ -1,5 +1,4 @@
 using System;
-using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.DependencyCollector;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
