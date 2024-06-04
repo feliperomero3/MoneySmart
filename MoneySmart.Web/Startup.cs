@@ -66,30 +66,23 @@ namespace MoneySmart
 
             app.UseHttpsRedirection();
 
-            if (env.IsDevelopment())
+            app.UseStaticFiles(new StaticFileOptions
             {
-                app.UseStaticFiles();
-            }
-            else
-            {
-                app.UseStaticFiles(new StaticFileOptions
+                OnPrepareResponse = response =>
                 {
-                    OnPrepareResponse = response =>
-                    {
-                        response.Context.Response.GetTypedHeaders().CacheControl =
-                            new CacheControlHeaderValue
+                    response.Context.Response.GetTypedHeaders().CacheControl =
+                        new CacheControlHeaderValue
+                        {
+                            Public = true,
+                            MaxAge = TimeSpan.FromSeconds(31536000),
+                            SharedMaxAge = TimeSpan.FromSeconds(31536000),
+                            Extensions =
                             {
-                                Public = true,
-                                MaxAge = TimeSpan.FromSeconds(31536000),
-                                SharedMaxAge = TimeSpan.FromSeconds(31536000),
-                                Extensions =
-                                {
-                                    new NameValueHeaderValue("immutable")
-                                }
-                            };
-                    }
-                });
-            }
+                                new NameValueHeaderValue("immutable")
+                            }
+                        };
+                }
+            });
 
             app.UseRouting();
 
