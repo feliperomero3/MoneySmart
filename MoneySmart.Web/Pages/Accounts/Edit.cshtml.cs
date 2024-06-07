@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -78,29 +77,6 @@ namespace MoneySmart.Pages.Accounts
         private bool AccountExists(long id)
         {
             return _context.Accounts.Any(e => e.Id == id);
-        }
-    }
-
-    public class AccountEditModel
-    {
-        [Required]
-        public long Number { get; set; }
-
-        [Required]
-        public string Name { get; set; }
-
-        public static AccountEditModel FromAccount(Account account)
-        {
-            return new AccountEditModel
-            {
-                Number = account.Number,
-                Name = account.Name
-            };
-        }
-
-        public Account ToAccount()
-        {
-            return new Account(Number, Name);
         }
     }
 }
