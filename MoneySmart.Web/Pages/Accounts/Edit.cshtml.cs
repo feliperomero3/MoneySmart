@@ -30,7 +30,7 @@ namespace MoneySmart.Pages.Accounts
                 return NotFound();
             }
 
-            Account = await _context.Accounts.FirstOrDefaultAsync(m => m.Number == number);
+            Account = await _context.Accounts.AsNoTracking().FirstOrDefaultAsync(m => m.Number == number);
 
             if (Account == null)
             {

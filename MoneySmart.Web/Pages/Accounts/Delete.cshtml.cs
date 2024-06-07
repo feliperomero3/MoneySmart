@@ -26,7 +26,7 @@ namespace MoneySmart.Pages.Accounts
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FirstOrDefaultAsync(m => m.Number == number);
+            var account = await _context.Accounts.AsNoTracking().FirstOrDefaultAsync(m => m.Number == number);
 
             if (account == null)
             {
