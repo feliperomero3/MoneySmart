@@ -1,10 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
-using MoneySmart.Domain;
 
 namespace MoneySmart.Pages.Accounts
 {
@@ -57,24 +55,6 @@ namespace MoneySmart.Pages.Accounts
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
-        }
-    }
-
-    public class AccountModel
-    {
-        [Required]
-        public long Number { get; set; }
-
-        [Required]
-        public string Name { get; set; }
-
-        public static AccountModel FromAccount(Account account)
-        {
-            return new AccountModel
-            {
-                Number = account.Number,
-                Name = account.Name
-            };
         }
     }
 }
