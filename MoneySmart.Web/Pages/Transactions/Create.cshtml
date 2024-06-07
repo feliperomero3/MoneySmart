@@ -14,27 +14,27 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3">
-                <label asp-for="TransactionCreateModel.DateTime" class="form-label"></label>
+                <label asp-for="TransactionCreateModel.DateTime"></label>
                 <input asp-for="TransactionCreateModel.DateTime" class="form-control" />
                 <span asp-validation-for="TransactionCreateModel.DateTime" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransactionCreateModel.AccountId" class="form-label"></label>
+                <label asp-for="TransactionCreateModel.AccountId"></label>
                 <select asp-for="TransactionCreateModel.AccountId" asp-items="Model.Accounts" class="form-control"></select>
                 <span asp-validation-for="TransactionCreateModel.AccountId" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransactionCreateModel.Description" class="form-label"></label>
+                <label asp-for="TransactionCreateModel.Description"></label>
                 <input asp-for="TransactionCreateModel.Description" class="form-control" />
                 <span asp-validation-for="TransactionCreateModel.Description" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransactionCreateModel.TransactionType" class="form-label"></label>
+                <label asp-for="TransactionCreateModel.TransactionType"></label>
                 <select asp-for="TransactionCreateModel.TransactionType" asp-items="Model.TransactionTypes" class="form-control"></select>
                 <span asp-validation-for="TransactionCreateModel.TransactionType" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransactionCreateModel.Amount" class="form-label"></label>
+                <label asp-for="TransactionCreateModel.Amount"></label>
                 <input asp-for="TransactionCreateModel.Amount" class="form-control" />
                 <span asp-validation-for="TransactionCreateModel.Amount" class="text-danger"></span>
             </div>

@@ -15,31 +15,31 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="TransactionEditModel.Id" />
             <div class="mb-3">
-                <label asp-for="TransactionEditModel.Id" class="form-label"></label>
+                <label asp-for="TransactionEditModel.Id"></label>
                 <input asp-for="TransactionEditModel.Id" class="form-control" disabled />
             </div>
             <div class="mb-3">
-                <label asp-for="TransactionEditModel.DateTime" class="form-label"></label>
+                <label asp-for="TransactionEditModel.DateTime"></label>
                 <input asp-for="TransactionEditModel.DateTime" class="form-control" />
                 <span asp-validation-for="TransactionEditModel.DateTime" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransactionEditModel.AccountId" class="form-label"></label>
+                <label asp-for="TransactionEditModel.AccountId"></label>
                 <select asp-for="TransactionEditModel.AccountId" asp-items="Model.Accounts" class="form-control"></select>
                 <span asp-validation-for="TransactionEditModel.AccountId" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransactionEditModel.Description" class="form-label"></label>
+                <label asp-for="TransactionEditModel.Description"></label>
                 <input asp-for="TransactionEditModel.Description" class="form-control" />
                 <span asp-validation-for="TransactionEditModel.Description" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransactionEditModel.TransactionType" class="form-label"></label>
+                <label asp-for="TransactionEditModel.TransactionType"></label>
                 <select asp-for="TransactionEditModel.TransactionType" asp-items="Model.TransactionTypes" class="form-control"></select>
                 <span asp-validation-for="TransactionEditModel.TransactionType" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransactionEditModel.Amount" class="form-label"></label>
+                <label asp-for="TransactionEditModel.Amount"></label>
                 <input asp-for="TransactionEditModel.Amount" class="form-control" />
                 <span asp-validation-for="TransactionEditModel.Amount" class="text-danger"></span>
             </div>

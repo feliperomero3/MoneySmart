@@ -13,32 +13,32 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <form method="post">
             <div class="mb-3">
-                <label asp-for="TransferModel.DateTime" class="form-label"></label>
+                <label asp-for="TransferModel.DateTime"></label>
                 <input asp-for="TransferModel.DateTime" class="form-control" />
                 <span asp-validation-for="TransferModel.DateTime" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransferModel.SourceAccountId" class="form-label"></label>
+                <label asp-for="TransferModel.SourceAccountId"></label>
                 <select asp-for="TransferModel.SourceAccountId" asp-items="Model.SourceAccounts" class="form-control"></select>
                 <span asp-validation-for="TransferModel.SourceAccountId" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransferModel.DestinationAccountId" class="form-label"></label>
+                <label asp-for="TransferModel.DestinationAccountId"></label>
                 <select asp-for="TransferModel.DestinationAccountId" asp-items="Model.DestinationAccounts" class="form-control"></select>
                 <span asp-validation-for="TransferModel.DestinationAccountId" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransferModel.Description" class="form-label"></label>
+                <label asp-for="TransferModel.Description"></label>
                 <input asp-for="TransferModel.Description" class="form-control" />
                 <span asp-validation-for="TransferModel.Description" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransferModel.Amount" class="form-label"></label>
+                <label asp-for="TransferModel.Amount"></label>
                 <input asp-for="TransferModel.Amount" class="form-control" />
                 <span asp-validation-for="TransferModel.Amount" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="TransferModel.Notes" class="form-label"></label>
+                <label asp-for="TransferModel.Notes"></label>
                 <input asp-for="TransferModel.Notes" class="form-control" />
                 <span asp-validation-for="TransferModel.Notes" class="text-danger"></span>
             </div>
