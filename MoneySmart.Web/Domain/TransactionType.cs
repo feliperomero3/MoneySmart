@@ -5,8 +5,8 @@ namespace MoneySmart.Domain;
 
 public class TransactionType
 {
-    public static readonly TransactionType Expense = new(_expense);
-    public static readonly TransactionType Income = new(_income);
+    public static readonly TransactionType Expense = new(ExpenseValue);
+    public static readonly TransactionType Income = new(IncomeValue);
 
     public static IEnumerable<TransactionType> Values
     {
@@ -18,23 +18,23 @@ public class TransactionType
     }
 
     private readonly string _type;
-    private const string _expense = "Expense";
-    private const string _income = "Income";
+    private const string ExpenseValue = "Expense";
+    private const string IncomeValue = "Income";
 
     private TransactionType(string type) => _type = type;
 
     public static explicit operator TransactionType(string type)
     {
-        if (type == _expense)
+        if (type == ExpenseValue)
         {
             return Expense;
         }
-        if (type == _income)
+        if (type == IncomeValue)
         {
             return Income;
         }
 
-        throw new ArgumentException($"'{nameof(type)}' must be {_expense} or {_income}.", nameof(type));
+        throw new ArgumentException($"'{nameof(type)}' must be {ExpenseValue} or {IncomeValue}.", nameof(type));
     }
 
     public static explicit operator string(TransactionType type) => type.ToString();
