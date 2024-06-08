@@ -31,9 +31,8 @@ namespace MoneySmart.IntegrationTests.Pages
 
             using var content = await HtmlDocumentHelper.GetDocumentAsync(response);
 
-            var table = content.QuerySelector("table");
-            var tableBody = table.QuerySelector("tbody");
-            var rows = tableBody.QuerySelectorAll("tr");
+            var transactions = content.QuerySelector("#Transactions");
+            var rows = transactions.QuerySelectorAll(".row");
 
             Assert.NotEmpty(rows);
         }
