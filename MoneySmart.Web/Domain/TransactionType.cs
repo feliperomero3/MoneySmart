@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MoneySmart.Domain;
 
@@ -6,6 +7,15 @@ public class TransactionType
 {
     public static readonly TransactionType Expense = new(_expense);
     public static readonly TransactionType Income = new(_income);
+
+    public static IEnumerable<TransactionType> Values
+    {
+        get
+        {
+            yield return Expense;
+            yield return Income;
+        }
+    }
 
     private readonly string _type;
     private const string _expense = "Expense";

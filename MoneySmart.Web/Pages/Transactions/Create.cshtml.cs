@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
+using MoneySmart.Domain;
 using MoneySmart.Telemetry;
 
 namespace MoneySmart.Pages.Transactions
@@ -22,7 +23,7 @@ namespace MoneySmart.Pages.Transactions
         }
 
         public SelectList Accounts { get; private set; }
-        public SelectList TransactionTypes => new(new[] { "Expense", "Income" }, "Expense");
+        public SelectList TransactionTypes => new(TransactionType.Values);
 
         public async Task<IActionResult> OnGet()
         {
