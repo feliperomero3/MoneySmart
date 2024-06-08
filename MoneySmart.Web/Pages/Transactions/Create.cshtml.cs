@@ -24,9 +24,9 @@ namespace MoneySmart.Pages.Transactions
         public SelectList Accounts { get; private set; }
         public SelectList TransactionTypes => new(new[] { "Expense", "Income" }, "Expense");
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGet()
         {
-            Accounts = new SelectList(_context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToList(), "Id", "Name");
+            Accounts = new SelectList(await _context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToListAsync(), "Id", "Name");
 
             return Page();
         }
