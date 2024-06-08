@@ -9,11 +9,11 @@ namespace MoneySmart.Tests.Domain
         public void Create_account()
         {
             // Arrange
-            const int Number = 5575;
-            const string Name = "TestAccount";
+            const int number = 5575;
+            const string name = "TestAccount";
 
             // Act
-            var sut = new Account(Number, Name);
+            var sut = new Account(number, name);
 
             // Assert
             Assert.NotNull(sut);
