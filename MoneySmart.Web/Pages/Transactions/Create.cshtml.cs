@@ -23,7 +23,7 @@ namespace MoneySmart.Pages.Transactions
         }
 
         public SelectList Accounts { get; private set; }
-        public SelectList TransactionTypes => new(TransactionType.Values);
+        public SelectList TransactionTypes => new(TransactionType.Values, TransactionType.Expense);
 
         public async Task<IActionResult> OnGet()
         {
