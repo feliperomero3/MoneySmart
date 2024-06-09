@@ -70,10 +70,10 @@ public abstract class Entity
 
     private Type GetRealType()
     {
-        const string EfCoreProxyPrefix = "Castle.Proxies.";
+        const string efCoreProxyPrefix = "Castle.Proxies.";
 
         var type = GetType();
 
-        return type.ToString().Contains(EfCoreProxyPrefix) ? type.BaseType : type;
+        return type.ToString().Contains(efCoreProxyPrefix) ? type.BaseType : type;
     }
 }

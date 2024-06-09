@@ -146,13 +146,13 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
 
     internal static Type GetUnproxiedType(object obj)
     {
-        const string EFCoreProxyPrefix = "Castle.Proxies.";
-        const string NHibernateProxyPostfix = "Proxy";
+        const string efCoreProxyPrefix = "Castle.Proxies.";
+        const string nHibernateProxyPostfix = "Proxy";
 
         var type = obj.GetType();
         var typeString = type.ToString();
 
-        if (typeString.Contains(EFCoreProxyPrefix) || typeString.EndsWith(NHibernateProxyPostfix))
+        if (typeString.Contains(efCoreProxyPrefix) || typeString.EndsWith(nHibernateProxyPostfix))
         {
             return type.BaseType;
         }
