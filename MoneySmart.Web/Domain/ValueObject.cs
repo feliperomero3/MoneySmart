@@ -16,10 +16,14 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
     public override bool Equals(object obj)
     {
         if (obj == null)
+        {
             return false;
+        }
 
         if (GetUnproxiedType(this) != GetUnproxiedType(obj))
+        {
             return false;
+        }
 
         var valueObject = (ValueObject)obj;
 
@@ -67,7 +71,9 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
         {
             var comparison = CompareComponents(components[i], otherComponents[i]);
             if (comparison != 0)
+            {
                 return comparison;
+            }
         }
 
         return 0;
@@ -76,16 +82,24 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
     private int CompareComponents(object object1, object object2)
     {
         if (object1 is null && object2 is null)
+        {
             return 0;
+        }
 
         if (object1 is null)
+        {
             return -1;
+        }
 
         if (object2 is null)
+        {
             return 1;
+        }
 
         if (object1 is not IComparable component1 || object2 is not IComparable component2)
+        {
             throw new InvalidOperationException($"Not all components in {GetUnproxiedType(this)} implement IComparable");
+        }
 
         return component1.CompareTo(component2);
     }
@@ -93,10 +107,14 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
     public static bool operator ==(ValueObject a, ValueObject b)
     {
         if (a is null && b is null)
+        {
             return true;
+        }
 
         if (a is null || b is null)
+        {
             return false;
+        }
 
         return a.Equals(b);
     }
@@ -135,7 +153,9 @@ public abstract class ValueObject : IComparable, IComparable<ValueObject>
         var typeString = type.ToString();
 
         if (typeString.Contains(EFCoreProxyPrefix) || typeString.EndsWith(NHibernateProxyPostfix))
+        {
             return type.BaseType;
+        }
 
         return type;
     }
