@@ -18,8 +18,20 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col"><a asp-page="./Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.DateTime)</a></div>
-                            <div class="col">@Html.DisplayFor(modelItem => item.Description)</div>
+                            <div class="col">
+                                <div class="row">
+                                    <span class="col">
+                                        <a asp-page="./Details" asp-route-id="@item.Id">
+                                            <small>
+                                                @Html.DisplayFor(modelItem => item.DateTime)
+                                            </small>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="row">
+                                    <div class="col">@Html.DisplayFor(modelItem => item.Description)</div>
+                                </div>
+                            </div>
                             <div class="col text-right">
                                 <div class="row">
                                     <span class="col">
