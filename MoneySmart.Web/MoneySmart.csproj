@@ -8,6 +8,7 @@
     <VersionSuffix Condition="'$(BuildNumber)' != ''">$(BuildNumber)</VersionSuffix>
     <PreserveCompilationContext Condition="'$(Configuration)' == 'Debug'">true</PreserveCompilationContext>
     <SatelliteResourceLanguages>none</SatelliteResourceLanguages>
+    <LibraryRestore Condition="'$(BuildNumber)' == ''">false</LibraryRestore>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -29,6 +30,7 @@
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="6.0.33" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.33" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.33" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
   </ItemGroup>
 
   <PropertyGroup>
