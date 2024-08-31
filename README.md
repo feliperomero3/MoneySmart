@@ -33,6 +33,7 @@ A very simple Web Application to capture everyday income and expenses.
 1. In the Publish dialog click "Load Profile..." and select the `MoneySmart.Database.publish.xml` file.
 1. Confirm the loaded connection string matches your target instance e. g. `(localdb)\MSSQLLocalDB` and click "Publish".
 1. Open the solution file `MoneySmart.sln` on Visual Studio.
+1. In the Solution Explorer right-click the solution `MoneySmart` and click "Restore Client-Side Libraries".
 1. Press F5 to build and run the web application.
 1. Wait for your default browser to be automatically launched into <https://localhost:5000>
 
