@@ -3,6 +3,21 @@
   "libraries": [
     {
       "provider": "cdnjs",
+      "library": "admin-lte@3.2.0",
+      "destination": "wwwroot/lib/adminlte",
+      "files": [
+        "css/adminlte.css",
+        "css/adminlte.css.map",
+        "css/adminlte.min.css",
+        "css/adminlte.min.css.map",
+        "js/adminlte.min.js",
+        "js/adminlte.min.js.map",
+        "js/adminlte.js.map",
+        "js/adminlte.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
       "library": "font-awesome@5.15.4",
       "destination": "wwwroot/lib/fontawesome",
       "files": [
