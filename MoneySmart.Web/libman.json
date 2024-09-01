@@ -18,6 +18,17 @@
     },
     {
       "provider": "cdnjs",
+      "library": "bootstrap@4.6.2",
+      "destination": "wwwroot/lib/bootstrap",
+      "files": [
+        "js/bootstrap.bundle.js",
+        "js/bootstrap.bundle.js.map",
+        "js/bootstrap.bundle.min.js",
+        "js/bootstrap.bundle.min.js.map"
+      ]
+    },
+    {
+      "provider": "cdnjs",
       "library": "font-awesome@5.15.4",
       "destination": "wwwroot/lib/fontawesome",
       "files": [
