@@ -32,4 +32,10 @@
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="libman.json">
+      <CopyToPublishDirectory>never</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
