@@ -13,8 +13,11 @@ namespace MoneySmart.IntegrationTests.Extensions
         {
             return builder.ConfigureTestServices(services =>
             {
-                services.AddAuthentication("Test")
-                        .AddScheme<AuthenticationSchemeOptions, TestAuthenticationHandler>("Test", options => { });
+                services.AddAuthentication(options =>
+                    {
+                        options.DefaultAuthenticateScheme = "Test";
+                    })
+                    .AddScheme<AuthenticationSchemeOptions, TestAuthenticationHandler>("Test", options => { });
             });
         }
 

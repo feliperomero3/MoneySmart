@@ -4,10 +4,10 @@
 {
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Hello @(User.Identity.Name)!">Manage</a>
+            <a class="nav-link" asp-page="/Identity/Account/Manage/Index" title="Hello @(User.Identity.Name)!">Manage</a>
         </li>
         <li class="nav-item ">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post">
+            <form class="form-inline" asp-page="/Identity/Account/Logout" method="post">
                 <button class="nav-link btn btn-link" type="submit">Logout</button>
             </form>
         </li>
@@ -17,10 +17,10 @@ else
 {
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="nav-link" asp-page="/Identity/Account/Register">Register</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="nav-link" asp-page="/Identity/Account/Login">Login</a>
         </li>
     </ul>
 }

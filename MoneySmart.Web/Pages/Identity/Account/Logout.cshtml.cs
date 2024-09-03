@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace MoneySmart.Areas.Identity.Pages.Account
+namespace MoneySmart.Pages.Identity.Account
 {
     [AllowAnonymous]
     public class LogoutModel : PageModel
@@ -28,7 +28,7 @@ namespace MoneySmart.Areas.Identity.Pages.Account
             await _signInManager.SignOutAsync();
 
             _logger.LogInformation("User logged out.");
-            
+
             // This needs to be a redirect so that the browser performs a new
             // request and the identity for the user gets updated.
             return RedirectToPage();
