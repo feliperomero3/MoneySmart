@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
 using MoneySmart.Data;
 using MoneySmart.Domain;
 
@@ -9,7 +10,10 @@ namespace MoneySmart.IntegrationTests.Helpers
         private static readonly object _lock = new object();
         private static bool _databaseInitialized;
 
-        public static void InitializeTestDatabase(ApplicationDbContext context)
+        private const string AdminUser = "admin@example.com";
+        private const string AdminPassword = "Secret123$";
+
+        public static void InitializeTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             lock (_lock)
             {
@@ -18,15 +22,18 @@ namespace MoneySmart.IntegrationTests.Helpers
                     context.Database.EnsureDeleted();
                     context.Database.EnsureCreated();
 
-                    SeedTestDatabase(context);
+                    SeedTestDatabase(context, userManager);
 
                     _databaseInitialized = true;
                 }
             }
         }
 
-        private static void SeedTestDatabase(ApplicationDbContext context)
+        private static void SeedTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
+            var user = new IdentityUser(AdminUser) { Email = AdminUser };
+            userManager.CreateAsync(user, AdminPassword).GetAwaiter().GetResult();
+
             var account1 = new Account(5221, "Savings");
             var account2 = new Account(2152, "Expenses");
             var account3 = new Account(9999, "Throwaway");
@@ -40,9 +47,9 @@ namespace MoneySmart.IntegrationTests.Helpers
             context.SaveChanges();
         }
 
-        public static void ResetTestDatabase(ApplicationDbContext context)
+        public static void ResetTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
-            InitializeTestDatabase(context);
+            InitializeTestDatabase(context, userManager);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using MoneySmart.Data;
@@ -32,8 +33,9 @@ namespace MoneySmart.IntegrationTests.Extensions
                 var provider = scope.ServiceProvider;
 
                 var context = provider.GetRequiredService<ApplicationDbContext>();
+                var userManager = provider.GetRequiredService<UserManager<IdentityUser>>();
 
-                DatabaseHelper.ResetTestDatabase(context);
+                DatabaseHelper.ResetTestDatabase(context, userManager);
             });
         }
     }

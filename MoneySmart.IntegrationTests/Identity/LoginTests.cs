@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using AngleSharp.Html.Dom;
+using MoneySmart.IntegrationTests.Extensions;
+using MoneySmart.IntegrationTests.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -45,6 +48,28 @@ namespace MoneySmart.IntegrationTests.Identity
             _output.WriteLine(response.StatusCode.ToString());
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task Post_Login_Page_Successful_Login_Returns_Redirect()
+        {
+            var client = _factory.CreateClient();
+
+            var defaultPage = await client.GetAsync("Identity/Account/Login");
+
+            var content = await HtmlDocumentHelper.GetDocumentAsync(defaultPage);
+
+            var form = (IHtmlFormElement)content.QuerySelector("form");
+            var submit = (IHtmlElement)content.QuerySelector("[type='submit']");
+
+            var response = await client.SendAsync(form, submit,
+                new Dictionary<string, string>
+                {
+                    ["Input.Email"] = "admin@example.com",
+                    ["Input.Password"] = "Secret123$"
+                });
+
+            Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
         }
     }
 }

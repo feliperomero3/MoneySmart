@@ -14,6 +14,26 @@ namespace MoneySmart.IntegrationTests.Extensions
             IHtmlElement submitButton,
             IEnumerable<KeyValuePair<string, string>> formValues)
         {
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
+            if (form == null)
+            {
+                throw new ArgumentNullException(nameof(form));
+            }
+
+            if (submitButton == null)
+            {
+                throw new ArgumentNullException(nameof(submitButton));
+            }
+
+            if (formValues == null)
+            {
+                throw new ArgumentNullException(nameof(formValues));
+            }
+
             foreach (var kvp in formValues)
             {
                 if (form[kvp.Key] is IHtmlInputElement inputElement)
