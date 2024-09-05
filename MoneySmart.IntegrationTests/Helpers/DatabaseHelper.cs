@@ -7,7 +7,7 @@ namespace MoneySmart.IntegrationTests.Helpers
 {
     public static class DatabaseHelper
     {
-        private static readonly object _lock = new object();
+        private static readonly object Lock = new();
         private static bool _databaseInitialized;
 
         private const string AdminUser = "admin@example.com";
@@ -15,7 +15,7 @@ namespace MoneySmart.IntegrationTests.Helpers
 
         public static void InitializeTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
-            lock (_lock)
+            lock (Lock)
             {
                 if (!_databaseInitialized)
                 {
