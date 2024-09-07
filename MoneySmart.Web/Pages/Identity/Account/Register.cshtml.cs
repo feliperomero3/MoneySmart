@@ -15,16 +15,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using MoneySmart.Services;
 
 namespace MoneySmart.Pages.Identity.Account
 {
     public class RegisterModel : PageModel
     {
-        public interface IEmailSender
-        {
-            Task SendEmailAsync(string inputEmail, string confirmYourEmail, string s);
-        }
-
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IUserStore<IdentityUser> _userStore;

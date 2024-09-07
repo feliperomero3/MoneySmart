@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using MoneySmart.Data;
 using MoneySmart.Extensions;
 using MoneySmart.Telemetry;
+using MoneySmart.Services;
 
 namespace MoneySmart
 {
@@ -59,7 +60,8 @@ namespace MoneySmart
             });
 
             services.AddSingleton<ITelemetryService, ApplicationTelemetry>()
-                    .AddSingleton<UserTelemetryMiddleware>();
+                    .AddSingleton<UserTelemetryMiddleware>()
+                    .AddSingleton<IEmailSender, EmailSender>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
