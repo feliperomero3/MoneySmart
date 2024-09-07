@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Data.SqlClient;
@@ -19,7 +18,7 @@ namespace MoneySmart.IntegrationTests
             var projectDir = Directory.GetCurrentDirectory();
             var configPath = Path.Combine(projectDir, "appsettings.json");
 
-            builder.ConfigureAppConfiguration((context, config) =>
+            builder.ConfigureAppConfiguration((_, config) =>
             {
                 config.AddJsonFile(configPath);
             });
@@ -33,12 +32,10 @@ namespace MoneySmart.IntegrationTests
                 var provider = scope.ServiceProvider;
 
                 var context = provider.GetRequiredService<ApplicationDbContext>();
-                var userManager = provider.GetRequiredService<UserManager<IdentityUser>>();
 
                 try
                 {
                     DatabaseHelper.InitializeTestDatabase(context);
-                    DatabaseHelper.SeedIdentity(userManager);
                 }
                 catch (SqlException sqlException)
                 {

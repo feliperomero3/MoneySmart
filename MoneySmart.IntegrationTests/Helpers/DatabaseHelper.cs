@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.AspNetCore.Identity;
 using MoneySmart.Data;
 using MoneySmart.Domain;
 
@@ -9,9 +8,6 @@ namespace MoneySmart.IntegrationTests.Helpers
     {
         private static readonly object Lock = new();
         private static bool _databaseInitialized;
-
-        private const string AdminUser = "admin@example.com";
-        private const string AdminPassword = "Secret123$";
 
         public static void InitializeTestDatabase(ApplicationDbContext context)
         {
@@ -42,21 +38,6 @@ namespace MoneySmart.IntegrationTests.Helpers
             context.Transactions.Add(transaction1);
 
             context.SaveChanges();
-        }
-
-        public static void SeedIdentity(UserManager<IdentityUser> userManager)
-        {
-            lock (Lock)
-            {
-                var user = userManager.FindByEmailAsync(AdminUser).GetAwaiter().GetResult();
-
-                if (user == null)
-                {
-                    user = new IdentityUser(AdminUser) { Email = AdminUser };
-                    userManager.CreateAsync(user, AdminPassword).GetAwaiter().GetResult();
-                }
-            }
-
         }
 
         public static void ResetTestDatabase(ApplicationDbContext context)
