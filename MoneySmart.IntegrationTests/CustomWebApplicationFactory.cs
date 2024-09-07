@@ -24,8 +24,6 @@ namespace MoneySmart.IntegrationTests
                 config.AddJsonFile(configPath);
             });
 
-            builder.UseEnvironment("Development");
-
             builder.ConfigureTestServices(services =>
             {
                 var sp = services.BuildServiceProvider();
@@ -39,7 +37,8 @@ namespace MoneySmart.IntegrationTests
 
                 try
                 {
-                    DatabaseHelper.InitializeTestDatabase(context, userManager);
+                    DatabaseHelper.InitializeTestDatabase(context);
+                    DatabaseHelper.SeedIdentity(userManager);
                 }
                 catch (SqlException sqlException)
                 {
@@ -50,6 +49,8 @@ namespace MoneySmart.IntegrationTests
                     throw;
                 }
             });
+
+            builder.UseEnvironment("Development");
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using MoneySmart.Data;
 using MoneySmart.Domain;
@@ -14,7 +13,7 @@ namespace MoneySmart.IntegrationTests.Helpers
         private const string AdminUser = "admin@example.com";
         private const string AdminPassword = "Secret123$";
 
-        public static void InitializeTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public static void InitializeTestDatabase(ApplicationDbContext context)
         {
             lock (Lock)
             {
@@ -23,18 +22,15 @@ namespace MoneySmart.IntegrationTests.Helpers
                     context.Database.EnsureDeleted();
                     context.Database.EnsureCreated();
 
-                    SeedTestDatabase(context, userManager).GetAwaiter().GetResult();
+                    SeedTestDatabase(context);
 
                     _databaseInitialized = true;
                 }
             }
         }
 
-        private static async Task SeedTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        private static void SeedTestDatabase(ApplicationDbContext context)
         {
-            var user = new IdentityUser(AdminUser) { Email = AdminUser };
-            await userManager.CreateAsync(user, AdminPassword);
-
             var account1 = new Account(5221, "Savings");
             var account2 = new Account(2152, "Expenses");
             var account3 = new Account(9999, "Throwaway");
@@ -45,12 +41,27 @@ namespace MoneySmart.IntegrationTests.Helpers
             context.Accounts.AddRange(account1, account2, account3);
             context.Transactions.Add(transaction1);
 
-            await context.SaveChangesAsync();
+            context.SaveChanges();
         }
 
-        public static void ResetTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public static void SeedIdentity(UserManager<IdentityUser> userManager)
         {
-            InitializeTestDatabase(context, userManager);
+            lock (Lock)
+            {
+                var user = userManager.FindByEmailAsync(AdminUser).GetAwaiter().GetResult();
+
+                if (user == null)
+                {
+                    user = new IdentityUser(AdminUser) { Email = AdminUser };
+                    userManager.CreateAsync(user, AdminPassword).GetAwaiter().GetResult();
+                }
+            }
+
+        }
+
+        public static void ResetTestDatabase(ApplicationDbContext context)
+        {
+            InitializeTestDatabase(context);
         }
     }
 }

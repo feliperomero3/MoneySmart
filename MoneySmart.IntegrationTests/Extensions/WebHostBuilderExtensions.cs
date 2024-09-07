@@ -35,7 +35,7 @@ namespace MoneySmart.IntegrationTests.Extensions
                 var context = provider.GetRequiredService<ApplicationDbContext>();
                 var userManager = provider.GetRequiredService<UserManager<IdentityUser>>();
 
-                DatabaseHelper.ResetTestDatabase(context, userManager);
+                DatabaseHelper.ResetTestDatabase(context);
             });
         }
     }
