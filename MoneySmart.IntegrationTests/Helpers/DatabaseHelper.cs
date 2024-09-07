@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using MoneySmart.Data;
 using MoneySmart.Domain;
@@ -13,7 +14,7 @@ namespace MoneySmart.IntegrationTests.Helpers
         private const string AdminUser = "admin@example.com";
         private const string AdminPassword = "Secret123$";
 
-        public static void InitializeTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public static async Task InitializeTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             lock (Lock)
             {
@@ -22,17 +23,18 @@ namespace MoneySmart.IntegrationTests.Helpers
                     context.Database.EnsureDeleted();
                     context.Database.EnsureCreated();
 
-                    SeedTestDatabase(context, userManager);
 
                     _databaseInitialized = true;
                 }
             }
+
+            await SeedTestDatabase(context, userManager);
         }
 
-        private static void SeedTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        private static async Task SeedTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             var user = new IdentityUser(AdminUser) { Email = AdminUser };
-            userManager.CreateAsync(user, AdminPassword).GetAwaiter().GetResult();
+            await userManager.CreateAsync(user, AdminPassword);
 
             var account1 = new Account(5221, "Savings");
             var account2 = new Account(2152, "Expenses");
@@ -44,12 +46,12 @@ namespace MoneySmart.IntegrationTests.Helpers
             context.Accounts.AddRange(account1, account2, account3);
             context.Transactions.Add(transaction1);
 
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
 
         public static void ResetTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
-            InitializeTestDatabase(context, userManager);
+            InitializeTestDatabase(context, userManager).GetAwaiter().GetResult();
         }
     }
 }
