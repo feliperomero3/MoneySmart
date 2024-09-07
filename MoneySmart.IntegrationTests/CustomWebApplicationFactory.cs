@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MoneySmart.Data;
 using MoneySmart.IntegrationTests.Helpers;
+using MoneySmart.IntegrationTests.Identity;
+using MoneySmart.Services;
 
 namespace MoneySmart.IntegrationTests
 {
@@ -25,6 +27,8 @@ namespace MoneySmart.IntegrationTests
 
             builder.ConfigureTestServices(services =>
             {
+                services.AddSingleton<IEmailSender, TestEmailSender>();
+
                 var sp = services.BuildServiceProvider();
 
                 using var scope = sp.CreateScope();
