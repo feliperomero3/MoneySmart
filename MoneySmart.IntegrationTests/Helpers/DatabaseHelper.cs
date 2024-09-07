@@ -14,7 +14,7 @@ namespace MoneySmart.IntegrationTests.Helpers
         private const string AdminUser = "admin@example.com";
         private const string AdminPassword = "Secret123$";
 
-        public static async Task InitializeTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public static void InitializeTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             lock (Lock)
             {
@@ -23,12 +23,11 @@ namespace MoneySmart.IntegrationTests.Helpers
                     context.Database.EnsureDeleted();
                     context.Database.EnsureCreated();
 
+                    SeedTestDatabase(context, userManager).GetAwaiter().GetResult();
 
                     _databaseInitialized = true;
                 }
             }
-
-            await SeedTestDatabase(context, userManager);
         }
 
         private static async Task SeedTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
@@ -51,7 +50,7 @@ namespace MoneySmart.IntegrationTests.Helpers
 
         public static void ResetTestDatabase(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
-            InitializeTestDatabase(context, userManager).GetAwaiter().GetResult();
+            InitializeTestDatabase(context, userManager);
         }
     }
 }
