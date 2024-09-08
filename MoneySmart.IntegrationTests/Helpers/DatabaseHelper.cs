@@ -27,6 +27,19 @@ namespace MoneySmart.IntegrationTests.Helpers
 
         private static void SeedTestDatabase(ApplicationDbContext context)
         {
+            var user = new Microsoft.AspNetCore.Identity.IdentityUser
+            {
+                UserName = "admin@example.com",
+                NormalizedUserName = "ADMIN@EXAMPLE.COM",
+                Email = "admin@example.com",
+                NormalizedEmail = "ADMIN@EXAMPLE.COM"
+            };
+
+            var passwordHasher = new Microsoft.AspNetCore.Identity.PasswordHasher<Microsoft.AspNetCore.Identity.IdentityUser>();
+            user.PasswordHash = passwordHasher.HashPassword(user, "Secret123$");
+
+            context.Users.Add(user);
+
             var account1 = new Account(5221, "Savings");
             var account2 = new Account(2152, "Expenses");
             var account3 = new Account(9999, "Throwaway");
