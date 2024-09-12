@@ -17,7 +17,7 @@ namespace MoneySmart.IntegrationTests.Helpers
             var document = await browser.OpenAsync(virtualResponse =>
             {
                 virtualResponse.Content(contentStream, shouldDispose: true);
-                virtualResponse.Address(response.RequestMessage.RequestUri).Status(response.StatusCode);
+                virtualResponse.Address(response.RequestMessage!.RequestUri).Status(response.StatusCode);
 
                 MapHeaders(response.Headers);
                 MapHeaders(response.Content.Headers);

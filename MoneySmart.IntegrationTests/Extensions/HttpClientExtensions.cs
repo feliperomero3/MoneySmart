@@ -51,7 +51,7 @@ namespace MoneySmart.IntegrationTests.Extensions
             }
 
             var submit = form.GetSubmission();
-            var target = (Uri)submit.Target;
+            var target = (Uri)submit!.Target;
 
             if (submitButton.HasAttribute("formaction"))
             {
