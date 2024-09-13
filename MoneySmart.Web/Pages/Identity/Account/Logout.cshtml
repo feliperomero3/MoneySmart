@@ -1,5 +1,5 @@
 ﻿@page
-@model LogoutModel
+@model MoneySmart.Pages.Identity.Account.LogoutModel
 @{
     ViewData["Title"] = "Log out";
 }
@@ -9,7 +9,7 @@
     @{
         if (User.Identity.IsAuthenticated)
         {
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post">
+            <form class="form-inline" asp-page="/Account/Logout" method="post">
                 <button class="btn btn-primary" type="submit">Click here to Logout</button>
             </form>
         }
