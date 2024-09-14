@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Domain;
 
@@ -6,6 +7,7 @@ namespace MoneySmart.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        [ExcludeFromCodeCoverage]
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }

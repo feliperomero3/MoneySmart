@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.StaticFiles;
@@ -7,6 +8,7 @@ using Microsoft.Net.Http.Headers;
 
 namespace MoneySmart.Extensions;
 
+[ExcludeFromCodeCoverage]
 public static class ApplicationBuilderExtensions
 {
     public static IApplicationBuilder UseStaticFilesDefaultCache(this IApplicationBuilder app)

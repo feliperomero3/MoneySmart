@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using MoneySmart.Domain;
 
 namespace MoneySmart.Data
 {
+    [ExcludeFromCodeCoverage]
     public static class ApplicationDbSeedData
     {
         private const string AdminUser = "admin@example.com";
