@@ -32,6 +32,9 @@ namespace MoneySmart.IntegrationTests.Pages
             using var content = await HtmlDocumentHelper.GetDocumentAsync(response);
 
             var transactions = content.QuerySelector("#Transactions");
+
+            Assert.NotNull(transactions);
+
             var rows = transactions.QuerySelectorAll(".row");
 
             Assert.NotEmpty(rows);
@@ -70,7 +73,7 @@ namespace MoneySmart.IntegrationTests.Pages
 
             Assert.Equal(HttpStatusCode.OK, defaultPage.StatusCode);
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
-            Assert.Equal("/Transactions", response.Headers.Location.OriginalString);
+            Assert.Equal("/Transactions", response.Headers.Location?.OriginalString);
         }
 
         [Fact]
@@ -105,7 +108,7 @@ namespace MoneySmart.IntegrationTests.Pages
 
             Assert.Equal(HttpStatusCode.OK, defaultPage.StatusCode);
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
-            Assert.Equal("/Transactions", response.Headers.Location.OriginalString);
+            Assert.Equal("/Transactions", response.Headers.Location!.OriginalString);
         }
 
         [Fact]
@@ -117,9 +120,22 @@ namespace MoneySmart.IntegrationTests.Pages
 
             var select = (IHtmlSelectElement)content.QuerySelector("#TransactionCreateModel_TransactionType");
 
+            Assert.NotNull(select);
+
             var selectedOption = select.Options[select.Options.SelectedIndex];
 
             Assert.Equal("Expense", selectedOption.Value);
+        }
+
+        [Fact]
+        public async Task Get_Transaction_Details()
+        {
+            var client = _factory.CreateClientWithAuthenticatedUser();
+
+            var response = await client.GetAsync("Details/1");
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
         }
     }
 }
