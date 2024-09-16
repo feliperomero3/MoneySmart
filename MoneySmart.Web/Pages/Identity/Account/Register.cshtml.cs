@@ -125,7 +125,7 @@ namespace MoneySmart.Pages.Identity.Account
             return Page();
         }
 
-        private IdentityUser CreateUser()
+        private static IdentityUser CreateUser()
         {
             try
             {
