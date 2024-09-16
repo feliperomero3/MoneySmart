@@ -63,6 +63,8 @@ namespace MoneySmart
             services.AddSingleton<ITelemetryService, ApplicationTelemetry>()
                     .AddSingleton<UserTelemetryMiddleware>()
                     .AddSingleton<IEmailSender, EmailSender>();
+
+            services.AddResponseCaching();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -75,6 +77,7 @@ namespace MoneySmart
             {
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
+                app.UseResponseCaching();
             }
 
             app.UseHttpsRedirection();
