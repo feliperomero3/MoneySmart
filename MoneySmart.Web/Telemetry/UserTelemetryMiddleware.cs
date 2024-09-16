@@ -6,20 +6,23 @@ using Microsoft.AspNetCore.Http;
 namespace MoneySmart.Telemetry;
 
 /// <summary>
-/// Add an application-defined property for the signed-in user.
+/// Add an Applications Insights 'application-defined' property for the signed-in user for each web request.
 /// </summary>
 /// <remarks>
-/// It defines a User property which will be used to store the user's identity in the telemetry.
+/// Defines a User property which will be used to store the user's identity in Applications Insights.
 /// If the user is authenticated, it sets the value to the user's name; otherwise, it sets the value to Anonymous.
 /// </remarks>
 public class UserTelemetryMiddleware : IMiddleware
 {
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
-        var key = "User";
-        var value = context.User.Identity.IsAuthenticated
-            ? context.User.Identity.Name
+        const string key = "User";
+
+        var user = context.User;
+        var value = user.Identity is { IsAuthenticated: true }
+            ? user.Identity.Name
             : "Anonymous";
+
         var requestTelemetry = context.Features.Get<RequestTelemetry>();
 
         requestTelemetry?.Properties.Add(key, value);
