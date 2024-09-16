@@ -29,5 +29,19 @@ namespace MoneySmart.Pages.Transactions
                 .Select(t => TransactionModel.MapFromTransaction(t))
                 .ToListAsync();
         }
+
+        public async Task<ActionResult> OnGetTransactionDetails(long id)
+        {
+            var transaction = await _context.Transactions
+                .AsNoTracking()
+                .Include(t => t.Account)
+                .Where(t => t.Id == id)
+                .Select(t => TransactionModel.MapFromTransaction(t))
+                .FirstOrDefaultAsync();
+
+            return transaction == null
+                ? Partial("_TransactionDetails")
+                : Partial("_TransactionDetails", transaction);
+        }
     }
 }

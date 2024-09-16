@@ -11,6 +11,7 @@
     <a asp-page="Create">Create New</a>
 </p>
 <div id="Transactions">
+    <partial name="_TransactionModal" />
     @foreach (var item in Model.Transactions)
     {
         <div class="row">
@@ -20,3 +21,7 @@
         </div>
     }
 </div>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}
