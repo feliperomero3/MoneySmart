@@ -43,6 +43,7 @@ namespace MoneySmart
                 };
             });
 
+            services.AddControllers();
             services.AddRazorPages();
 
             services.AddAuthorization(config =>
