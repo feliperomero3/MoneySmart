@@ -128,14 +128,33 @@ namespace MoneySmart.IntegrationTests.Pages
         }
 
         [Fact]
-        public async Task Get_Transaction_Details()
+        public async Task Get_Transaction_Details_Returns_Transaction_Details_Page()
         {
             var client = _factory.CreateClientWithAuthenticatedUser();
 
             var response = await client.GetAsync("Details/1");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
 
+        [Fact]
+        public async Task Get_Transaction_Details_Returns_NotFound()
+        {
+            var client = _factory.CreateClientWithAuthenticatedUser();
+
+            var response = await client.GetAsync("Details/0");
+
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task Get_Transactions_Returns_TransactionDetails_PartialView()
+        {
+            var client = _factory.CreateClientWithAuthenticatedUser();
+
+            var response = await client.GetAsync("?handler=TransactionDetails&id=1");
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
     }
 }
