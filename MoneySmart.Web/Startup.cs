@@ -77,13 +77,13 @@ namespace MoneySmart
             {
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
-                app.UseResponseCaching();
             }
 
             app.UseHttpsRedirection();
 
             app.UseStaticFilesDefaultCache();
 
+            app.UseResponseCaching();
             app.UseRouting();
 
             app.UseHealthChecks("/health");
