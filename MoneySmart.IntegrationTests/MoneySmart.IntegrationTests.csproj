@@ -24,11 +24,4 @@
     <ProjectReference Include="..\MoneySmart.Web\MoneySmart.csproj" />
   </ItemGroup>
 
-  <Target Name="CopyDepsJsonFiles" AfterTargets="Publish">
-    <ItemGroup>
-      <DepsJsonFiles Include="$(TargetDir)*.deps.json" />
-    </ItemGroup>
-    <Copy SourceFiles="@(DepsJsonFiles)" DestinationFolder="$(PublishDir)" />
-  </Target>
-
 </Project>
