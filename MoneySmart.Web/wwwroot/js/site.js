@@ -2,7 +2,7 @@
 
 $(function() {
     console.log('Hello from site.js');
-    $('.card a').on('click', function(e) {
+    $('#transactions').on('click', '.card a', function(e) {
         e.preventDefault();
         console.log('clicked the transaction card');
         const id = $(this).data('id');
