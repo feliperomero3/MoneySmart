@@ -6,7 +6,7 @@
             <div class="col">
                 <div class="row">
                     <span class="col">
-                        <a href="#" data-id="@Model.Id">
+                        <a asp-page="./Details" asp-route-id="@Model.Id" data-id="@Model.Id">
                             <small>
                                 @Html.DisplayFor(modelItem => Model.DateTime)
                             </small>
