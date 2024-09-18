@@ -8,7 +8,7 @@ using MoneySmart.Data;
 
 namespace MoneySmart.Pages.Transactions
 {
-    [ResponseCache(Duration = 60)]
+    [ResponseCache(VaryByQueryKeys = new[] { "id" }, Duration = 60)]
     public class IndexModel : PageModel
     {
         private readonly ApplicationDbContext _context;
