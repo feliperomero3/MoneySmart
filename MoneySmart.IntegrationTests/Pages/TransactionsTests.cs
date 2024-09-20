@@ -31,7 +31,7 @@ namespace MoneySmart.IntegrationTests.Pages
 
             using var content = await HtmlDocumentHelper.GetDocumentAsync(response);
 
-            var transactions = content.QuerySelector("#Transactions");
+            var transactions = content.QuerySelector("#transactions");
 
             Assert.NotNull(transactions);
 

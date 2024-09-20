@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>6ef9bf26-3265-49fb-b48f-8996eb20e2ad</UserSecretsId>
-    <VersionPrefix>0.6.5-preview</VersionPrefix>
+    <VersionPrefix>0.6.6-preview</VersionPrefix>
     <VersionSuffix Condition="'$(BuildNumber)' == ''"></VersionSuffix>
     <VersionSuffix Condition="'$(BuildNumber)' != ''">$(BuildNumber)</VersionSuffix>
     <PreserveCompilationContext Condition="'$(Configuration)' == 'Debug'">true</PreserveCompilationContext>
