@@ -11,6 +11,7 @@ public class AccountModel
     [Required]
     public string Name { get; init; }
 
+    [DataType(DataType.Currency)]
     public decimal Balance { get; private set; }
 
     public static AccountModel MapFromAccount(Account account)
