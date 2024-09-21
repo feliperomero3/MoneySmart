@@ -11,7 +11,7 @@ public class TransactionModel
     public long Id { get; set; }
 
     [DisplayName("Date")]
-    [DisplayFormat(DataFormatString = "{0:g}")]
+    [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
     public DateTime DateTime { get; set; }
 
     [DisplayName("Account")]
