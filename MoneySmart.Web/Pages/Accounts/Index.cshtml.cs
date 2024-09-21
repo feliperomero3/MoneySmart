@@ -20,12 +20,11 @@ namespace MoneySmart.Pages.Accounts
 
         public async Task OnGetAsync()
         {
-            var accounts = await _context.Accounts
+            Accounts = await _context.Accounts
                 .AsNoTracking()
                 .OrderBy(a => a.Name)
+                .Select(a => AccountModel.MapFromAccount(a))
                 .ToListAsync();
-
-            Accounts = accounts.ConvertAll(AccountModel.FromAccount);
         }
     }
 }

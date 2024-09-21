@@ -31,7 +31,7 @@ namespace MoneySmart.Pages.Accounts
                 return NotFound();
             }
 
-            Account = AccountModel.FromAccount(account);
+            Account = AccountModel.MapFromAccount(account);
 
             return Page();
         }

@@ -11,7 +11,7 @@ public class AccountModel
     [Required]
     public string Name { get; init; }
 
-    public static AccountModel FromAccount(Account account)
+    public static AccountModel MapFromAccount(Account account)
     {
         return new AccountModel
         {
