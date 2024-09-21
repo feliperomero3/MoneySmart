@@ -5,10 +5,8 @@ namespace MoneySmart.Pages.Accounts;
 
 public class AccountModel
 {
-    [Required]
     public long Number { get; init; }
 
-    [Required]
     public string Name { get; init; }
 
     [DataType(DataType.Currency)]
