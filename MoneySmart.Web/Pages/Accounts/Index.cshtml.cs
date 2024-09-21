@@ -22,6 +22,7 @@ namespace MoneySmart.Pages.Accounts
         {
             Accounts = await _context.Accounts
                 .AsNoTracking()
+                .Include(t => t.Transactions)
                 .OrderBy(a => a.Name)
                 .Select(a => AccountModel.MapFromAccount(a))
                 .ToListAsync();
