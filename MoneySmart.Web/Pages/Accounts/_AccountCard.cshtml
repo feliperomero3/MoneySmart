@@ -1,0 +1,39 @@
+﻿@model MoneySmart.Pages.Accounts.AccountModel
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <span class="col">
+                        <a asp-page="./Details" asp-route-number="@Model.Number" data-id="@Model.Number">
+                            <small>
+                                @Html.DisplayFor(modelItem => Model.Name)
+                            </small>
+                        </a>
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="col">@Html.DisplayFor(modelItem => Model.Number)</span>
+                </div>
+            </div>
+            <div class="col text-right">
+                <div class="row">
+                    <span class="col">
+                        <strong>
+                            @Html.DisplayFor(modelItem => Model.Balance)
+                        </strong>
+                    </span>
+                </div>
+                <div class="row">
+                    <span class="col">
+                        <small>
+
+                        </small>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

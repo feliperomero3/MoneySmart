@@ -28,6 +28,16 @@ namespace MoneySmart.IntegrationTests.Pages
             var response = await client.GetAsync("");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            using var content = await HtmlDocumentHelper.GetDocumentAsync(response);
+
+            var transactions = content.QuerySelector("#accounts");
+
+            Assert.NotNull(transactions);
+
+            var rows = transactions.QuerySelectorAll(".row");
+
+            Assert.NotEmpty(rows);
         }
 
         [Fact]
@@ -98,7 +108,7 @@ namespace MoneySmart.IntegrationTests.Pages
                 });
 
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
-            Assert.Equal("/Accounts", response.Headers.Location.OriginalString);
+            Assert.Equal("/Accounts", response.Headers.Location!.OriginalString);
         }
 
         [Fact]
@@ -119,7 +129,7 @@ namespace MoneySmart.IntegrationTests.Pages
                 });
 
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
-            Assert.Equal("/Accounts", response.Headers.Location.OriginalString);
+            Assert.Equal("/Accounts", response.Headers.Location!.OriginalString);
         }
 
         [Fact]
@@ -149,7 +159,7 @@ namespace MoneySmart.IntegrationTests.Pages
                 });
 
             Assert.Equal(HttpStatusCode.Redirect, response.StatusCode);
-            Assert.Equal("/Accounts", response.Headers.Location.OriginalString);
+            Assert.Equal("/Accounts", response.Headers.Location!.OriginalString);
         }
     }
 }

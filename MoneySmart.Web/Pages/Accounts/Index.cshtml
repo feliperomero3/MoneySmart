@@ -10,34 +10,13 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<div class="table-responsive">
-    <table class="table table-sm table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Accounts[0].Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Accounts[0].Number)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Accounts)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        <a asp-page="./Details" asp-route-number="@item.Number">@Html.DisplayFor(modelItem => item.Number)</a>
-                    </td>
-                    <td>
-                        <a asp-page="./Delete" asp-route-number="@item.Number">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<div id="accounts">
+    <div class="row">
+        @foreach (var account in Model.Accounts)
+        {
+            <div class="col-md-4">
+                <partial name="_AccountCard" model="account" />
+            </div>
+        }
+    </div>
 </div>
