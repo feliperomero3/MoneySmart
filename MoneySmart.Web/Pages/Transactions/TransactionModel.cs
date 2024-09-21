@@ -8,23 +8,23 @@ namespace MoneySmart.Pages.Transactions;
 public class TransactionModel
 {
     [DisplayName("Number")]
-    public long Id { get; set; }
+    public long Id { get; init; }
 
     [DisplayName("Date")]
     [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
-    public DateTime DateTime { get; set; }
+    public DateTime DateTime { get; init; }
 
     [DisplayName("Account")]
-    public string AccountName { get; set; }
+    public string AccountName { get; init; }
 
     [DisplayName("Description")]
-    public string Description { get; set; }
+    public string Description { get; init; }
 
     [DisplayName("Type")]
-    public string TransactionType { get; set; }
+    public string TransactionType { get; init; }
 
     [DataType(DataType.Currency)]
-    public decimal Amount { get; set; }
+    public decimal Amount { get; init; }
 
     public static TransactionModel MapFromTransaction(Transaction transaction)
     {
