@@ -1,0 +1,11 @@
+﻿@model decimal
+@{
+    if (@Model < 0)
+    {
+        <span class="text-danger">@Model</span>
+    }
+    else
+    {
+        @Model
+    }
+}
