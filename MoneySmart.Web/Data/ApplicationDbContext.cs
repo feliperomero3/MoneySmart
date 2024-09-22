@@ -5,9 +5,9 @@ using MoneySmart.Domain;
 
 namespace MoneySmart.Data
 {
+    [ExcludeFromCodeCoverage]
     public class ApplicationDbContext : IdentityDbContext
     {
-        [ExcludeFromCodeCoverage]
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
