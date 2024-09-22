@@ -1,4 +1,5 @@
-﻿@model MoneySmart.Pages.Transactions.TransactionModel
+﻿@using MoneySmart.Domain
+@model MoneySmart.Pages.Transactions.TransactionModel
 
 <div class="card">
     <div class="card-body">
@@ -21,7 +22,14 @@
                 <div class="row">
                     <span class="col">
                         <strong>
-                            @Html.DisplayFor(modelItem => Model.Amount)
+                            @if (Model.TransactionType == TransactionType.Expense.ToString())
+                            {
+                                <span class="text-danger">@Model.Amount</span>
+                            }
+                            else
+                            {
+                                <span>@Model.Amount</span>
+                            }
                         </strong>
                     </span>
                 </div>
