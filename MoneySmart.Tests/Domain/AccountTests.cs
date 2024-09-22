@@ -1,4 +1,5 @@
-﻿using MoneySmart.Domain;
+﻿using System;
+using MoneySmart.Domain;
 using Xunit;
 
 namespace MoneySmart.Tests.Domain
@@ -37,6 +38,66 @@ namespace MoneySmart.Tests.Domain
             // Assert
             Assert.Equal(newNumber, sut.Number);
             Assert.Equal(newName, sut.Name);
+        }
+
+        [Fact]
+        public void Account_balance_is_sum_of_transactions()
+        {
+            // Arrange
+            var sut = new Account(5575, "TestAccount");
+
+            // Act
+            sut.Transactions.Add(TransactionBuilder.GetTransaction(sut, TransactionType.Expense,  100m));
+            sut.Transactions.Add(TransactionBuilder.GetTransaction(sut, TransactionType.Expense,  300m));
+
+            // Assert
+            Assert.Equal(-400, sut.Balance);
+        }
+
+        [Fact]
+        public void Account_balance_is_zero_when_no_transactions()
+        {
+            // Arrange
+            var sut = new Account(5575, "TestAccount");
+
+            // Assert
+            Assert.Equal(0, sut.Balance);
+        }
+
+        [Fact]
+        public void Account_balance_is_sum_of_income_transactions()
+        {
+            // Arrange
+            var sut = new Account(5575, "TestAccount");
+
+            // Act
+            sut.Transactions.Add(TransactionBuilder.GetTransaction(sut, TransactionType.Income, 100m));
+            sut.Transactions.Add(TransactionBuilder.GetTransaction(sut, TransactionType.Income, 300m));
+
+            // Assert
+            Assert.Equal(400, sut.Balance);
+        }
+
+        [Fact]
+        public void Account_balance_is_sum_of_expense_and_income_transactions()
+        {
+            // Arrange
+            var sut = new Account(5575, "TestAccount");
+
+            // Act
+            sut.Transactions.Add(TransactionBuilder.GetTransaction(sut, TransactionType.Expense, 100m));
+            sut.Transactions.Add(TransactionBuilder.GetTransaction(sut, TransactionType.Income, 300m));
+
+            // Assert
+            Assert.Equal(200, sut.Balance);
+        }
+    }
+
+    internal static class TransactionBuilder
+    {
+        public static Transaction GetTransaction(Account account, TransactionType type, decimal amount)
+        {
+            return new Transaction(DateTime.Now, account, $"Transaction {DateTime.Now}", type, amount);
         }
     }
 }
