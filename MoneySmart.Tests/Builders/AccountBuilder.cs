@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MoneySmart.Domain;
 
-namespace MoneySmart.Tests.Domain.Helpers;
+namespace MoneySmart.Tests.Builders;
+
 internal class AccountBuilder
 {
     public static Transaction GetTransaction(decimal amount)

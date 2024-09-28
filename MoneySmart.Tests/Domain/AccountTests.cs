@@ -1,11 +1,13 @@
-﻿using System;
-using MoneySmart.Domain;
+﻿using MoneySmart.Domain;
+using MoneySmart.Tests.Builders;
 using Xunit;
 
 namespace MoneySmart.Tests.Domain
 {
     public class AccountTests
     {
+        private readonly TransactionBuilder _transactionBuilder = new();
+
         [Fact]
         public void Create_account()
         {
@@ -46,9 +48,19 @@ namespace MoneySmart.Tests.Domain
             // Arrange
             var sut = new Account(5575, "TestAccount");
 
+            var transaction1 = _transactionBuilder
+                .WithAccount(sut)
+                .WithAmount(100m)
+                .Build();
+
+            var transaction2 = _transactionBuilder
+                .WithAccount(sut)
+                .WithAmount(300m)
+                .Build();
+
             // Act
-            sut.Transactions.Add(TransactionBuilder.GetTransaction(sut, TransactionType.Expense,  100m));
-            sut.Transactions.Add(TransactionBuilder.GetTransaction(sut, TransactionType.Expense,  300m));
+            sut.Transactions.Add(transaction1);
+            sut.Transactions.Add(transaction2);
 
             // Assert
             Assert.Equal(-400, sut.Balance);
@@ -70,9 +82,21 @@ namespace MoneySmart.Tests.Domain
             // Arrange
             var sut = new Account(5575, "TestAccount");
 
+            var transaction1 = _transactionBuilder
+                .WithAccount(sut)
+                .WithAmount(100m)
+                .WithTransactionType(TransactionType.Income)
+                .Build();
+
+            var transaction2 = _transactionBuilder
+                .WithAccount(sut)
+                .WithAmount(300m)
+                .WithTransactionType(TransactionType.Income)
+                .Build();
+
             // Act
-            sut.Transactions.Add(TransactionBuilder.GetTransaction(sut, TransactionType.Income, 100m));
-            sut.Transactions.Add(TransactionBuilder.GetTransaction(sut, TransactionType.Income, 300m));
+            sut.Transactions.Add(transaction1);
+            sut.Transactions.Add(transaction2);
 
             // Assert
             Assert.Equal(400, sut.Balance);
@@ -84,20 +108,24 @@ namespace MoneySmart.Tests.Domain
             // Arrange
             var sut = new Account(5575, "TestAccount");
 
+            var transaction1 = _transactionBuilder
+                .WithAccount(sut)
+                .WithTransactionType(TransactionType.Expense)
+                .WithAmount(100m)
+                .Build();
+
+            var transaction2 = _transactionBuilder
+                .WithAccount(sut)
+                .WithTransactionType(TransactionType.Income)
+                .WithAmount(300m)
+                .Build();
+
             // Act
-            sut.Transactions.Add(TransactionBuilder.GetTransaction(sut, TransactionType.Expense, 100m));
-            sut.Transactions.Add(TransactionBuilder.GetTransaction(sut, TransactionType.Income, 300m));
+            sut.Transactions.Add(transaction1);
+            sut.Transactions.Add(transaction2);
 
             // Assert
             Assert.Equal(200, sut.Balance);
-        }
-    }
-
-    internal static class TransactionBuilder
-    {
-        public static Transaction GetTransaction(Account account, TransactionType type, decimal amount)
-        {
-            return new Transaction(DateTime.Now, account, $"Transaction {DateTime.Now}", type, amount);
         }
     }
 }
