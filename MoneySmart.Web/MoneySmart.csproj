@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <NoWarn>1701;1702;S1118;S2328</NoWarn>
+    <NoWarn>1701;1702;S1118;S2328;S2325</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
