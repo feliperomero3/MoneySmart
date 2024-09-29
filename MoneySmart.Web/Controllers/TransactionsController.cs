@@ -37,7 +37,7 @@ public class TransactionsController : ControllerBase
             return NotFound();
         }
 
-        _logger.LogInformation("Transaction {id} found.", id);
+        _logger.LogInformation("Transaction {Id} found.", id);
 
         return Ok(transaction);
     }
