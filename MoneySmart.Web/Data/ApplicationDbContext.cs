@@ -19,7 +19,7 @@ namespace MoneySmart.Data
         {
             builder.Entity<Account>(a =>
             {
-                a.HasIndex("Number");
+                a.HasIndex(new[] { "Number" }, "IX_Accounts_Number").IsUnique();
                 a.ToTable("Accounts").HasKey(k => k.Id);
                 a.Property(p => p.Id).HasColumnName("AccountId");
                 a.Property(p => p.Name).HasMaxLength(255).IsRequired();
