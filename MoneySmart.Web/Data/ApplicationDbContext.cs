@@ -37,6 +37,7 @@ namespace MoneySmart.Data
                     .HasMaxLength(7);
                 t.Property(p => p.Amount).HasColumnType("decimal(8, 2)").IsRequired();
                 t.HasIndex(new[] { "AccountId" }, "IX_Transactions_AccountId");
+                t.HasIndex(p => new { p.DateTime }, "IX_Transactions_DateTime");
                 t.HasOne(p => p.Account).WithMany(p => p.Transactions)
                     .HasForeignKey("AccountId").OnDelete(DeleteBehavior.Restrict);
                 t.HasOne(p => p.Transfer).WithMany(p => p.Transactions)
