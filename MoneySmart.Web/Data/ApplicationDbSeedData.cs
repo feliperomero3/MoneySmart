@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -29,25 +28,28 @@ namespace MoneySmart.Data
                 return;
             }
 
-            var account1 = new Account(5221, "Savings");
-            var account2 = new Account(7551, "Checking");
-            var account3 = new Account(8661, "Money Market");
+            var accounts = new[]
+            {
+                new Account(5221, "Savings"),
+                new Account(7551, "Checking"),
+                new Account(8661, "Money Market"),
+                new Account(9009, "Business")
+            };
 
-            await context.Accounts.AddRangeAsync(account1, account2, account3);
+            await context.Accounts.AddRangeAsync(accounts);
 
-            var transaction1 = new Transaction(DateTime.Parse("2020-08-08T10:00:00", CultureInfo.InvariantCulture), account1, "First Deposit",
-                TransactionType.Income, 1000);
+            var now = DateTime.Now;
 
-            var transaction2 = new Transaction(DateTime.Parse("2020-08-08T10:00:00", CultureInfo.InvariantCulture), account2, "First Deposit (C)",
-                TransactionType.Income, 10000);
+            var transactions = new[]
+            {
+                new Transaction(now - TimeSpan.FromMinutes(90), accounts[0], "First Deposit", TransactionType.Income, 1000),
+                new Transaction(now - TimeSpan.FromMinutes(60), accounts[1], "First Deposit (C)", TransactionType.Income, 10000),
+                new Transaction(now - TimeSpan.FromMinutes(30), accounts[1], "House Maintenance", TransactionType.Expense, 900),
+                new Transaction(now - TimeSpan.FromMinutes(16), accounts[3], "Car Payment", TransactionType.Expense, 1500),
+                new Transaction(now - TimeSpan.FromMinutes(12), accounts[3], "Withdrawal", TransactionType.Expense, 600)
+            };
 
-            var transaction3 = new Transaction(DateTime.Parse("2020-08-10T12:00:00", CultureInfo.InvariantCulture), account1, "Groceries",
-                TransactionType.Expense, 64);
-
-            var transaction4 = new Transaction(DateTime.Parse("2020-08-15T16:00:00", CultureInfo.InvariantCulture), account2, "Car Payment",
-                TransactionType.Expense, 250);
-
-            await context.Transactions.AddRangeAsync(transaction1, transaction2, transaction3, transaction4);
+            await context.Transactions.AddRangeAsync(transactions);
 
             await context.SaveChangesAsync();
         }
