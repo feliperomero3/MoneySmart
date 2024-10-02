@@ -44,6 +44,11 @@
                 <span asp-validation-for="TransactionEditModel.Amount" class="text-danger"></span>
             </div>
             <div class="mb-3">
+                <label asp-for="TransactionEditModel.Note"></label>
+                <input asp-for="TransactionEditModel.Note" class="form-control" />
+                <span asp-validation-for="TransactionEditModel.Note" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

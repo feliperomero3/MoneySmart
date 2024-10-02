@@ -75,8 +75,8 @@ namespace MoneySmart.Pages.Transfers
                 Notes = TransferModel.Notes
             };
 
-            var transaction1 = new Transaction(TransferModel.DateTime, sourceAccount, TransferModel.Description, TransactionType.Expense, TransferModel.Amount, transfer);
-            var transaction2 = new Transaction(TransferModel.DateTime, destinationAccount, TransferModel.Description, TransactionType.Income, TransferModel.Amount, transfer);
+            var transaction1 = new Transaction(TransferModel.DateTime, sourceAccount, TransferModel.Description, TransactionType.Expense, TransferModel.Amount, null, transfer);
+            var transaction2 = new Transaction(TransferModel.DateTime, destinationAccount, TransferModel.Description, TransactionType.Income, TransferModel.Amount, null, transfer);
 
             _context.Transactions.AddRange(transaction1, transaction2);
             _context.SaveChanges();

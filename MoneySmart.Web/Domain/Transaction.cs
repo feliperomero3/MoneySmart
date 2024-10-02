@@ -9,6 +9,7 @@ public class Transaction : Entity
     public string Description { get; private set; }
     public TransactionType TransactionType { get; private set; }
     public decimal Amount { get; private set; }
+    public string Note { get; private set; }
     public Transfer Transfer { get; private set; }
 
     private Transaction()
@@ -16,13 +17,14 @@ public class Transaction : Entity
     }
 
     public Transaction(DateTime dateTime, Account account, string description,
-        TransactionType transactionType, decimal amount, Transfer transfer = null) : this()
+        TransactionType transactionType, decimal amount, string note = null, Transfer transfer = null) : this()
     {
         DateTime = dateTime;
         Account = account;
         Description = description;
         TransactionType = transactionType;
         Amount = amount;
+        Note = note;
         Transfer = transfer;
     }
 
@@ -33,5 +35,6 @@ public class Transaction : Entity
         Description = transaction.Description;
         TransactionType = transaction.TransactionType;
         Amount = transaction.Amount;
+        Note = transaction.Note;
     }
 }

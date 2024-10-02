@@ -63,9 +63,7 @@ namespace MoneySmart.Pages.Transactions
                 .Include(t => t.Account)
                 .FirstOrDefaultAsync(t => t.Id == TransactionEditModel.Id);
 
-            var account = await _context.Accounts.FindAsync(TransactionEditModel.AccountId);
-
-            var modifiedTransaction = TransactionEditModel.MapToTransaction(account);
+            var modifiedTransaction = TransactionEditModel.MapToTransaction(transaction.Account);
 
             transaction.EditTransaction(modifiedTransaction);
 

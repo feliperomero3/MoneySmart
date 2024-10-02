@@ -26,6 +26,8 @@ public class TransactionModel
     [DataType(DataType.Currency)]
     public decimal Amount { get; init; }
 
+    public string Note { get; init; }
+
     public static TransactionModel MapFromTransaction(Transaction transaction)
     {
         return new TransactionModel
@@ -35,7 +37,8 @@ public class TransactionModel
             AccountName = transaction.Account.Name,
             Description = transaction.Description,
             TransactionType = transaction.TransactionType.ToString(),
-            Amount = transaction.Amount
+            Amount = transaction.Amount,
+            Note = transaction.Note
         };
     }
 }

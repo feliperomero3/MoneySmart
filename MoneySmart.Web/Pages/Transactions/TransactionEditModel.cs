@@ -9,27 +9,29 @@ public class TransactionEditModel
 {
     [Required]
     [DisplayName("Number")]
-    public long Id { get; set; }
+    public long Id { get; init; }
 
     [Required]
     [DisplayName("Date")]
-    public DateTime DateTime { get; set; }
+    public DateTime DateTime { get; init; }
 
     [Required]
     [DisplayName("Account")]
-    public long AccountId { get; set; }
+    public long AccountId { get; init; }
 
     [Required]
     [DisplayName("Description")]
-    public string Description { get; set; }
+    public string Description { get; init; }
 
     [Required]
     [DisplayName("Type")]
-    public string TransactionType { get; set; }
+    public string TransactionType { get; init; }
 
     [Required]
     [DataType(DataType.Currency)]
-    public decimal Amount { get; set; }
+    public decimal Amount { get; init; }
+
+    public string Note { get; init; }
 
     public static TransactionEditModel MapFromTransaction(Transaction transaction)
     {
@@ -40,13 +42,14 @@ public class TransactionEditModel
             AccountId = transaction.Account.Id,
             Description = transaction.Description,
             TransactionType = transaction.TransactionType.ToString(),
-            Amount = transaction.Amount
+            Amount = transaction.Amount,
+            Note = transaction.Note
         };
     }
 
     public Transaction MapToTransaction(Account account)
     {
         return new Transaction(DateTime, account, Description,
-            (TransactionType)TransactionType, Amount);
+            (TransactionType)TransactionType, Amount, Note);
     }
 }
