@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Domain;
 
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+
 namespace MoneySmart.Data
 {
     [ExcludeFromCodeCoverage]
