@@ -17,14 +17,9 @@ namespace MoneySmart.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Account>(a =>
-            {
-                a.HasIndex(new[] { "Number" }, "IX_Accounts_Number").IsUnique();
-                a.ToTable("Accounts").HasKey(k => k.Id);
-                a.Property(p => p.Id).HasColumnName("AccountId");
-                a.Property(p => p.Name).HasMaxLength(255).IsRequired();
-                a.Property(p => p.Number).IsRequired();
-            });
+            base.OnModelCreating(builder);
+
+            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
             builder.Entity<Transaction>(t =>
             {
@@ -50,8 +45,6 @@ namespace MoneySmart.Data
                 t.Property(p => p.Id).HasColumnName("TransferId");
                 t.Property(p => p.Notes).HasMaxLength(4096);
             });
-
-            base.OnModelCreating(builder);
         }
     }
 }
