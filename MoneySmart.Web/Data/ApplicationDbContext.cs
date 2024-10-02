@@ -21,24 +21,6 @@ namespace MoneySmart.Data
 
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
-            builder.Entity<Transaction>(t =>
-            {
-                t.ToTable("Transactions").HasKey(k => k.Id);
-                t.Property(p => p.Id).HasColumnName("TransactionId");
-                t.Property(p => p.DateTime).IsRequired();
-                t.Property(p => p.Description).HasMaxLength(255).IsRequired();
-                t.Property(p => p.TransactionType)
-                    .HasConversion(type => (string)type, type => (TransactionType)type)
-                    .HasMaxLength(7);
-                t.Property(p => p.Amount).HasColumnType("decimal(8, 2)").IsRequired();
-                t.HasIndex(new[] { "AccountId" }, "IX_Transactions_AccountId");
-                t.HasIndex(p => new { p.DateTime }, "IX_Transactions_DateTime");
-                t.HasOne(p => p.Account).WithMany(p => p.Transactions)
-                    .HasForeignKey("AccountId").OnDelete(DeleteBehavior.Restrict);
-                t.HasOne(p => p.Transfer).WithMany(p => p.Transactions)
-                    .HasForeignKey("TransferId").OnDelete(DeleteBehavior.Restrict);
-            });
-
             builder.Entity<Transfer>(t =>
             {
                 t.ToTable("Transfers").HasKey(k => k.Id);
