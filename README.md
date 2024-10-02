@@ -19,6 +19,7 @@ A very simple Web Application to capture everyday income and expenses.
 1. [x] Transfer money between accounts.
 1. [ ] Add comments or notes to transactions.
 1. [ ] Classify your transactions in categories.
+1. [ ] Set up recurring transactions.
 1. [ ] More to come...
 
 ## Prerequisites
