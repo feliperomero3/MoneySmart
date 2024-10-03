@@ -54,16 +54,20 @@ namespace MoneySmart.Pages.Transfers
 
         public void OnGet()
         {
-            SourceAccounts = new SelectList(_context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToList(), "Id", "Name");
-            DestinationAccounts = new SelectList(_context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToList(), "Id", "Name");
+            var accounts = _context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToList();
+
+            SourceAccounts = new SelectList(accounts, "Id", "Name");
+            DestinationAccounts = new SelectList(accounts, "Id", "Name");
         }
 
         public ActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
-                SourceAccounts = new SelectList(_context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToList(), "Id", "Name", TransferModel.SourceAccountId);
-                DestinationAccounts = new SelectList(_context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToList(), "Id", "Name", TransferModel.DestinationAccountId);
+                var accounts = _context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToList();
+
+                SourceAccounts = new SelectList(accounts, "Id", "Name", TransferModel.SourceAccountId);
+                DestinationAccounts = new SelectList(accounts, "Id", "Name", TransferModel.DestinationAccountId);
 
                 return Page();
             }
