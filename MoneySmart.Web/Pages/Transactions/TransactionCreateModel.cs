@@ -27,6 +27,7 @@ public class TransactionCreateModel
     [DataType(DataType.Currency)]
     public decimal Amount { get; init; }
 
+    [DataType(DataType.MultilineText)]
     public string Note { get; init; }
 
     public Transaction MapToTransaction(Account account)

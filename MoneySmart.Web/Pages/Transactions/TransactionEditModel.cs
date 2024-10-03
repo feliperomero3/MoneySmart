@@ -31,6 +31,7 @@ public class TransactionEditModel
     [DataType(DataType.Currency)]
     public decimal Amount { get; init; }
 
+    [DataType(DataType.MultilineText)]
     public string Note { get; init; }
 
     public static TransactionEditModel MapFromTransaction(Transaction transaction)
