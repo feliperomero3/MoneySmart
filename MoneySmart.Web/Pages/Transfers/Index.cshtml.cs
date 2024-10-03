@@ -34,21 +34,22 @@ namespace MoneySmart.Pages.Transfers
         {
             [Required]
             [DisplayName("Date")]
-            public DateTime DateTime { get; set; } = DateTime.Now;
+            public DateTime DateTime { get; init; } = DateTime.Now;
 
             [DisplayName("Source Account")]
-            public long SourceAccountId { get; set; }
+            public long SourceAccountId { get; init; }
 
             [DisplayName("Destination Account")]
-            public long DestinationAccountId { get; set; }
+            public long DestinationAccountId { get; init; }
 
             [Required]
-            public string Description { get; set; }
+            public string Description { get; init; }
 
             [Required]
-            public decimal Amount { get; set; }
+            public decimal Amount { get; init; }
 
-            public string Notes { get; set; }
+            [DataType(DataType.MultilineText)]
+            public string Notes { get; init; }
         }
 
         public void OnGet()
