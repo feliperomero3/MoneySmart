@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MoneySmart.Data;
 using MoneySmart.Domain;
+using MoneySmart.Telemetry;
 
 namespace MoneySmart.Pages.Accounts
 {
@@ -39,7 +40,7 @@ namespace MoneySmart.Pages.Accounts
 
             await _context.SaveChangesAsync();
 
-            _telemetryClient.TrackEvent("AccountCreatedSuccessfully");
+            _telemetryClient.TrackEvent(TelemetryConstants.AccountCreatedSuccessfully);
 
             return RedirectToPage("./Index");
         }

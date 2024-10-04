@@ -86,7 +86,7 @@ namespace MoneySmart.Pages.Transfers
             _context.Transactions.AddRange(transaction1, transaction2);
             _context.SaveChanges();
 
-            _telemetry.TrackEvent("TransferCreatedSuccessfully", new Dictionary<string, string>() { { "User", User.Identity.Name } });
+            _telemetry.TrackEvent(TelemetryConstants.TransferCreatedSuccessfully, new Dictionary<string, string>() { { "User", User.Identity.Name } });
 
             return RedirectToPage("../Transactions/Index");
         }

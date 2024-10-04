@@ -58,7 +58,7 @@ namespace MoneySmart.Pages.Transactions
 
                 await _context.SaveChangesAsync();
 
-                _telemetry.TrackEvent("TransactionDeletedSuccessfully", new Dictionary<string, string>() { { "User", User.Identity.Name } });
+                _telemetry.TrackEvent(TelemetryConstants.TransactionDeletedSuccessfully, new Dictionary<string, string>() { { "User", User.Identity.Name } });
             }
 
             return RedirectToPage("./Index");
