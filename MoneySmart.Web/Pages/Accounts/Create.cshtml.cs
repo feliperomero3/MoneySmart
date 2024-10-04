@@ -19,13 +19,24 @@ namespace MoneySmart.Pages.Accounts
             _telemetryClient = telemetryClient;
         }
 
+        [BindProperty]
+        public AccountInputModel Account { get; set; }
+
+        public class AccountInputModel
+        {
+            public long Number { get; set; }
+            public string Name { get; set; }
+
+            public Account MapToAccount()
+            {
+                return new Account(Number, Name);
+            }
+        }
+
         public IActionResult OnGet()
         {
             return Page();
         }
-
-        [BindProperty]
-        public AccountInputModel Account { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -34,7 +45,7 @@ namespace MoneySmart.Pages.Accounts
                 return Page();
             }
 
-            var account = Account.ToAccount();
+            var account = Account.MapToAccount();
 
             await _context.Accounts.AddAsync(account);
 
@@ -43,17 +54,6 @@ namespace MoneySmart.Pages.Accounts
             _telemetryClient.TrackEvent(TelemetryConstants.AccountCreatedSuccessfully);
 
             return RedirectToPage("./Index");
-        }
-    }
-
-    public class AccountInputModel
-    {
-        public long Number { get; set; }
-        public string Name { get; set; }
-
-        public Account ToAccount()
-        {
-            return new Account(Number, Name);
         }
     }
 }
