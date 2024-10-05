@@ -26,7 +26,9 @@ namespace MoneySmart.Pages.Transactions
             _telemetryClient = telemetryClient;
         }
 
-        public SelectList Accounts { get; private set; }
+        public SelectList Accounts =>
+            new(_context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToList(), "Id", "Name", TransactionCreateModel?.AccountId);
+
         public SelectList TransactionTypes => new(TransactionType.Values, TransactionType.Expense);
 
         [BindProperty]
@@ -64,10 +66,8 @@ namespace MoneySmart.Pages.Transactions
             }
         }
 
-        public async Task<IActionResult> OnGet()
+        public IActionResult OnGet()
         {
-            Accounts = new SelectList(await _context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToListAsync(), "Id", "Name");
-
             return Page();
         }
 
@@ -75,9 +75,6 @@ namespace MoneySmart.Pages.Transactions
         {
             if (!ModelState.IsValid)
             {
-                Accounts = new SelectList(await _context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToListAsync(), "Id", "Name",
-                    TransactionCreateModel.AccountId);
-
                 return Page();
             }
 
