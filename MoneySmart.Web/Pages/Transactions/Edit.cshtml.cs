@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -18,11 +21,61 @@ namespace MoneySmart.Pages.Transactions
             _context = context;
         }
 
-        [BindProperty]
-        public TransactionEditModel TransactionEditModel { get; set; }
-
         public SelectList Accounts { get; private set; }
         public SelectList TransactionTypes => new(TransactionType.Values);
+
+        [BindProperty]
+        public TransactionInputModel TransactionEditModel { get; set; }
+
+        public class TransactionInputModel
+        {
+            [Required]
+            [DisplayName("Number")]
+            public long Id { get; init; }
+
+            [Required]
+            [DisplayName("Date")]
+            public DateTime DateTime { get; init; }
+
+            [Required]
+            [DisplayName("Account")]
+            public long AccountId { get; init; }
+
+            [Required]
+            [DisplayName("Description")]
+            public string Description { get; init; }
+
+            [Required]
+            [DisplayName("Type")]
+            public string TransactionType { get; init; }
+
+            [Required]
+            [DataType(DataType.Currency)]
+            public decimal Amount { get; init; }
+
+            [DataType(DataType.MultilineText)]
+            public string Note { get; init; }
+
+            public static TransactionInputModel MapFromTransaction(Transaction transaction)
+            {
+                return new TransactionInputModel
+                {
+                    Id = transaction.Id,
+                    DateTime = transaction.DateTime,
+                    AccountId = transaction.Account.Id,
+                    Description = transaction.Description,
+                    TransactionType = transaction.TransactionType.ToString(),
+                    Amount = transaction.Amount,
+                    Note = transaction.Note
+                };
+            }
+
+            public Transaction MapToTransaction(Account account)
+            {
+                return new Transaction(DateTime, account, Description,
+                    (TransactionType)TransactionType, Amount, Note);
+            }
+        }
 
         public async Task<IActionResult> OnGetAsync(long? id)
         {
@@ -41,7 +94,7 @@ namespace MoneySmart.Pages.Transactions
                 return NotFound();
             }
 
-            TransactionEditModel = TransactionEditModel.MapFromTransaction(transaction);
+            TransactionEditModel = TransactionInputModel.MapFromTransaction(transaction);
 
             Accounts = new SelectList(await _context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToListAsync(), "Id", "Name",
                 TransactionEditModel.AccountId);
