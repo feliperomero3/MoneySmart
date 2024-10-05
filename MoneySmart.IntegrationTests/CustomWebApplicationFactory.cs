@@ -18,7 +18,7 @@ namespace MoneySmart.IntegrationTests
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             var projectDir = Directory.GetCurrentDirectory();
-            var configPath = Path.Combine(projectDir, "appsettings.json");
+            var configPath = Path.Combine(projectDir, "appsettings.IntegrationTests.json");
 
             builder.ConfigureAppConfiguration((_, config) =>
             {
