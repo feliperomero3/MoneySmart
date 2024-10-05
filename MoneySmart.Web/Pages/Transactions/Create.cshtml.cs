@@ -14,7 +14,6 @@ using MoneySmart.Telemetry;
 
 namespace MoneySmart.Pages.Transactions
 {
-    [ResponseCache(Duration = 60)]
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
