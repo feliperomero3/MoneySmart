@@ -15,8 +15,8 @@ public class TransactionEntityConfiguration : IEntityTypeConfiguration<Transacti
         builder.Property(p => p.TransactionType)
             .HasConversion(type => (string)type, type => (TransactionType)type)
             .HasMaxLength(7);
-        builder.Property(p => p.Amount).HasColumnType("decimal(8, 2)").IsRequired();
-        builder.Property(p => p.Note).HasColumnType("varchar(255)");
+        builder.Property(p => p.Amount).HasPrecision(8, 2).IsRequired();
+        builder.Property(p => p.Note).HasMaxLength(255).IsUnicode(false);
         builder.HasIndex(new[] { "AccountId" }, "IX_Transactions_AccountId");
         builder.HasIndex(p => new { p.DateTime }, "IX_Transactions_DateTime");
         builder.HasOne(p => p.Account).WithMany(p => p.Transactions)
