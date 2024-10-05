@@ -20,8 +20,8 @@ public class TransactionEntityConfiguration : IEntityTypeConfiguration<Transacti
         builder.HasIndex(new[] { "AccountId" }, "IX_Transactions_AccountId");
         builder.HasIndex(p => new { p.DateTime }, "IX_Transactions_DateTime");
         builder.HasOne(p => p.Account).WithMany(p => p.Transactions)
-            .HasForeignKey("AccountId").OnDelete(DeleteBehavior.Restrict);
+            .HasForeignKey("AccountId").OnDelete(DeleteBehavior.NoAction);
         builder.HasOne(p => p.Transfer).WithMany(p => p.Transactions)
-            .HasForeignKey("TransferId").OnDelete(DeleteBehavior.Restrict);
+            .HasForeignKey("TransferId").OnDelete(DeleteBehavior.NoAction);
     }
 }
