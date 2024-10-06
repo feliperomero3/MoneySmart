@@ -16,8 +16,8 @@ public interface ITelemetryService
 
     /// <summary>
     /// Track an event with the username and the event name.
+    /// </summary>
     /// <param name="eventName">The event name.</param>
     /// <param name="username">The username.</param>
-    /// </summary>
     void TrackEvent(string eventName, string username);
 }
