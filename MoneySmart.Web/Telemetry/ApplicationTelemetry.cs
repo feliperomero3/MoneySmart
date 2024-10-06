@@ -17,11 +17,28 @@ public class ApplicationTelemetry : ITelemetryService
     /// <param name="telemetryClient">The telemetry client</param>
     /// <exception cref="ArgumentNullException">Throws if telemetryClient is null</exception>
     /// <remarks>
-    /// This class is a thin wrapper around the Application Insights TelemetryClient.
+    /// This class is a thin wrapper around the Application Insights <see cref="TelemetryClient"/>.
     /// </remarks>
     public ApplicationTelemetry(TelemetryClient telemetryClient)
     {
         _telemetryClient = telemetryClient ?? throw new ArgumentNullException(nameof(telemetryClient));
+    }
+
+    /// <summary>
+    /// Track an event with the username and the event name.
+    /// <param name="eventName">The event name.</param>
+    /// <param name="username">The username.</param>
+    /// </summary>
+    public void TrackEvent(string eventName, string username)
+    {
+        if (eventName == null)
+        {
+            throw new ArgumentNullException(nameof(eventName));
+        }
+
+        var properties = new Dictionary<string, string> { { TelemetryConstants.UsernameKey, username } };
+
+       TrackEvent(eventName, properties);
     }
 
     /// <summary>

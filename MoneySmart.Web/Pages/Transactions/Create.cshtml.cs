@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -85,7 +84,7 @@ namespace MoneySmart.Pages.Transactions
 
             await _context.SaveChangesAsync();
 
-            _telemetryClient.TrackEvent(TelemetryConstants.TransactionCreatedSuccessfully, new Dictionary<string, string>() { { "User", User.Identity.Name } });
+            _telemetryClient.TrackEvent(TelemetryConstants.TransactionCreatedSuccessfully, User.Identity?.Name );
 
             return RedirectToPage("./Index");
         }

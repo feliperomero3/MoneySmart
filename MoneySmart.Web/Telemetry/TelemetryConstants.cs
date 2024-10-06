@@ -1,10 +1,15 @@
 ﻿namespace MoneySmart.Telemetry;
 
 /// <summary>
-/// Holds telemetry event names.
+/// Holds telemetry constants.
 /// </summary>
 public class TelemetryConstants
 {
+    /// <summary>
+    /// The key for the username telemetry property.
+    /// </summary>
+    public const string UsernameKey = "Username";
+
     /// <summary>
     /// The event name for a transaction created successfully.
     /// </summary>
