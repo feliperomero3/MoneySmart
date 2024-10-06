@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MoneySmart.Data;
@@ -11,12 +11,12 @@ namespace MoneySmart.Pages.Accounts
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        private readonly TelemetryClient _telemetryClient;
+        private readonly ITelemetryService _telemetryClient;
 
-        public CreateModel(ApplicationDbContext context, TelemetryClient telemetryClient)
+        public CreateModel(ApplicationDbContext context, ITelemetryService telemetryClient)
         {
-            _context = context;
-            _telemetryClient = telemetryClient;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _telemetryClient = telemetryClient ?? throw new ArgumentNullException(nameof(telemetryClient));
         }
 
         [BindProperty]
@@ -51,7 +51,7 @@ namespace MoneySmart.Pages.Accounts
 
             await _context.SaveChangesAsync();
 
-            _telemetryClient.TrackEvent(TelemetryConstants.AccountCreatedSuccessfully);
+            _telemetryClient.TrackEvent(TelemetryConstants.AccountCreatedSuccessfully, User.Identity?.Name);
 
             return RedirectToPage("./Index");
         }
