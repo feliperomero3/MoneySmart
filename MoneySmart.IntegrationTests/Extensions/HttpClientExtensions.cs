@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 
 namespace MoneySmart.IntegrationTests.Extensions
@@ -50,13 +51,21 @@ namespace MoneySmart.IntegrationTests.Extensions
                 }
             }
 
+            foreach (var element in form.Elements)
+            {
+                if (element.HasAttribute(AttributeNames.Disabled))
+                {
+                    element.RemoveAttribute(AttributeNames.Disabled);
+                }
+            }
+
             var submit = form.GetSubmission();
             var target = (Uri)submit!.Target;
 
-            if (submitButton.HasAttribute("formaction"))
+            if (submitButton.HasAttribute(AttributeNames.FormAction))
             {
-                var formaction = submitButton.GetAttribute("formaction");
-                target = new Uri(formaction, UriKind.Relative);
+                var formaction = submitButton.GetAttribute(AttributeNames.FormAction);
+                target = new Uri(formaction!, UriKind.Relative);
             }
 
             var submission = new HttpRequestMessage(new HttpMethod(submit.Method.ToString()), target)
