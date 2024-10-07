@@ -100,7 +100,7 @@ namespace MoneySmart.IntegrationTests.Pages
                 new Dictionary<string, string>
                 {
                     ["TransactionEditModel.DateTime"] = "2020-11-28 10:00",
-                    ["TransactionEditModel.AccountId"] = "1",
+                    ["TransactionEditModel.AccountId"] = "2",
                     ["TransactionEditModel.Description"] = "Coffee",
                     ["TransactionEditModel.TransactionType"] = "Expense",
                     ["TransactionEditModel.Amount"] = "4.5"
