@@ -21,7 +21,9 @@ namespace MoneySmart.Pages.Transactions
             _context = context;
         }
 
-        public SelectList Accounts { get; private set; }
+        public SelectList Accounts =>
+            new(_context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToList(), "Id", "Name", TransactionEditModel?.AccountId);
+
         public SelectList TransactionTypes => new(TransactionType.Values);
 
         [BindProperty]
@@ -96,9 +98,6 @@ namespace MoneySmart.Pages.Transactions
 
             TransactionEditModel = TransactionInputModel.MapFromTransaction(transaction);
 
-            Accounts = new SelectList(await _context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToListAsync(), "Id", "Name",
-                TransactionEditModel.AccountId);
-
             return Page();
         }
 
@@ -106,9 +105,6 @@ namespace MoneySmart.Pages.Transactions
         {
             if (!ModelState.IsValid)
             {
-                Accounts = new SelectList(await _context.Accounts.AsNoTracking().OrderBy(a => a.Name).ToListAsync(), "Id", "Name",
-                    TransactionEditModel.AccountId);
-
                 return Page();
             }
 
