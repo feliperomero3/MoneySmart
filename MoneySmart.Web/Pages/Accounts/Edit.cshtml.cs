@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Data;
-using MoneySmart.Domain;
 
 namespace MoneySmart.Pages.Accounts
 {
@@ -20,8 +19,6 @@ namespace MoneySmart.Pages.Accounts
         [BindProperty]
         public AccountEditModel AccountModel { get; set; }
 
-        private Account Account { get; set; }
-
         public async Task<IActionResult> OnGetAsync(long? number)
         {
             if (number == null)
@@ -29,33 +26,36 @@ namespace MoneySmart.Pages.Accounts
                 return NotFound();
             }
 
-            Account = await _context.Accounts.AsNoTracking().FirstOrDefaultAsync(m => m.Number == number);
+            var account = await _context.Accounts
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.Number == number);
 
-            if (Account == null)
+            if (account == null)
             {
                 return NotFound();
             }
 
-            AccountModel = AccountEditModel.FromAccount(Account);
+            AccountModel = AccountEditModel.MapFromAccount(account);
 
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(long number)
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            Account = await _context.Accounts.FirstOrDefaultAsync(a => a.Number == number);
+            var account = await _context.Accounts
+                .FirstOrDefaultAsync(a => a.Number == AccountModel.Number);
 
-            if (Account == null)
+            if (account == null)
             {
-                return new UnprocessableEntityResult();
+                return NotFound();
             }
 
-            Account.EditAccount(AccountModel.ToAccount());
+            account.EditAccount(AccountModel.MapToAccount());
 
             try
             {
@@ -63,7 +63,7 @@ namespace MoneySmart.Pages.Accounts
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AccountExists(Account.Id))
+                if (!AccountExists(account.Id))
                 {
                     return NotFound();
                 }

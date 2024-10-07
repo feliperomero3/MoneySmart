@@ -11,7 +11,7 @@ public class AccountEditModel
     [Required]
     public string Name { get; init; }
 
-    public static AccountEditModel FromAccount(Account account)
+    public static AccountEditModel MapFromAccount(Account account)
     {
         return new AccountEditModel
         {
@@ -20,7 +20,7 @@ public class AccountEditModel
         };
     }
 
-    public Account ToAccount()
+    public Account MapToAccount()
     {
         return new Account(Number, Name);
     }
