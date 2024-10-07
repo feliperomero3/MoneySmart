@@ -49,6 +49,7 @@ namespace MoneySmart.Pages.Transfers
             public decimal Amount { get; init; }
 
             [DataType(DataType.MultilineText)]
+            [MaxLength(4096)]
             public string Notes { get; init; }
         }
 
