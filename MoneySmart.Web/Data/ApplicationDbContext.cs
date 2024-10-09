@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MoneySmart.Domain;
 
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-
 namespace MoneySmart.Data
 {
     [ExcludeFromCodeCoverage]
@@ -14,8 +12,8 @@ namespace MoneySmart.Data
         {
         }
 
-        public DbSet<Account> Accounts { get; set; }
-        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Account> Accounts => Set<Account>();
+        public DbSet<Transaction> Transactions => Set<Transaction>();
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
