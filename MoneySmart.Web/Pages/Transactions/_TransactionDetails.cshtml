@@ -1,4 +1,5 @@
-﻿@model MoneySmart.Pages.Transactions.TransactionModel
+﻿@using MoneySmart.Domain
+@model MoneySmart.Pages.Transactions.TransactionModel
 
 <dl class="row">
     <dt class="col-sm-4">
@@ -35,7 +36,16 @@
         @Html.DisplayNameFor(model => model.Amount)
     </dt>
     <dd class="col-sm-8">
-        @Html.DisplayFor(model => model.Amount)
+        <strong>
+            @if (Model.TransactionType == TransactionType.Expense.ToString())
+            {
+                <span class="text-danger">@Html.DisplayFor(model => model.Amount)</span>
+            }
+            else
+            {
+                <span>@Html.DisplayFor(model => model.Amount)</span>
+            }
+        </strong>
     </dd>
     <dt class="col-sm-4">
         @Html.DisplayNameFor(model => model.Note)
