@@ -24,11 +24,11 @@
                         <strong>
                             @if (Model.TransactionType == TransactionType.Expense.ToString())
                             {
-                                <span class="text-danger">@Model.Amount</span>
+                                <span class="text-danger">@Html.DisplayFor(model => model.Amount)</span>
                             }
                             else
                             {
-                                <span>@Model.Amount</span>
+                                <span>@Html.DisplayFor(model => model.Amount)</span>
                             }
                         </strong>
                     </span>
