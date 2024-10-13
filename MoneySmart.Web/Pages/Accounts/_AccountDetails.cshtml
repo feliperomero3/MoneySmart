@@ -17,6 +17,15 @@
         @Html.DisplayNameFor(model => model.Balance)
     </dt>
     <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Balance)
+        <strong>
+            @if (Model.Balance >= 0)
+            {
+                <span>@Html.DisplayFor(model => model.Balance)</span>
+            }
+            else
+            {
+                <span class="text-danger">@Html.DisplayFor(model => model.Balance)</span>
+            }
+        </strong>
     </dd>
 </dl>
