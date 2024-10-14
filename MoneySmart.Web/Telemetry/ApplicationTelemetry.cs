@@ -36,6 +36,11 @@ public class ApplicationTelemetry : ITelemetryService
             throw new ArgumentNullException(nameof(eventName));
         }
 
+        if (username == null)
+        {
+            throw new ArgumentNullException(nameof(username));
+        }
+
         var properties = new Dictionary<string, string> { { TelemetryConstants.UsernameKey, username } };
 
        TrackEvent(eventName, properties);
