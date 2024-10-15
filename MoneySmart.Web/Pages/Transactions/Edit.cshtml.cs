@@ -133,10 +133,8 @@ namespace MoneySmart.Pages.Transactions
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
 
             return RedirectToPage("./Index");
