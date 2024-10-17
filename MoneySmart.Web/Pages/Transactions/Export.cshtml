@@ -1,0 +1,19 @@
+﻿@page "{handler?}"
+@model MoneySmart.Pages.Transactions.ExportModel
+@{
+    ViewData["Title"] = "Export Transactions";
+}
+
+<h1>Export Transactions</h1>
+<hr/>
+
+<div class="row">
+    <div class="col">
+        <form asp-page-handler="File" method="get">
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-file-download"></i>
+                Download Transactions
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 ﻿@inject SignInManager<IdentityUser> SignInManager
 
 @{
-    string IsLinkActive(string viewDataTitle, string linkTitle) => viewDataTitle.Contains(linkTitle) ? "active" : string.Empty;
+    string IsLinkActive(string viewDataTitle, string linkTitle) => viewDataTitle.StartsWith(linkTitle) ? "active" : string.Empty;
 }
 
 @if (SignInManager.IsSignedIn(User))
@@ -25,7 +25,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @IsLinkActive(ViewData["Title"]!.ToString(), "Transfer")" asp-page="/Transfers/Index">
+                <a class="nav-link @IsLinkActive(ViewData["Title"]!.ToString(), "Create Transfer")" asp-page="/Transfers/Index">
                     <i class="nav-icon fas fa-exchange-alt"></i>
                     <p>
                         Transfers

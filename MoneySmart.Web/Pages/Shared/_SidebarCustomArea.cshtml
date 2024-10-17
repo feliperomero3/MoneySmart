@@ -1,0 +1,23 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+
+@{
+    string IsLinkActive(string viewDataTitle, string linkTitle) => viewDataTitle.StartsWith(linkTitle) ? "active" : string.Empty;
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="sidebar-custom">
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column">
+                <li class="nav-item">
+                    <a class="nav-link @IsLinkActive(ViewData["Title"]!.ToString(), "Export")" asp-page="/Transactions/Export" title="Export Transactions">
+                        <i class="nav-icon fas fa-file-export"></i>
+                        <p>
+                            Export
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+}
