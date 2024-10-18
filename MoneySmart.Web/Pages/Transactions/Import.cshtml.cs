@@ -89,7 +89,7 @@ public class ImportModel : PageModel
 
         using (var reader = new StreamReader(filePath, Encoding.UTF8))
         {
-            var firstLine = await reader.ReadLineAsync();
+            _ = await reader.ReadLineAsync();
 
             _logger.LogDebug("Started processing the CSV file.");
             _logger.LogDebug("Reading the file line by line...");
