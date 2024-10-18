@@ -22,7 +22,7 @@ public class ExportModel : PageModel
         _logger = logger;
     }
 
-    private class TransactionOutputModel
+    private class TransactionExportModel
     {
         public DateTime DateTime { get; set; }
 
@@ -38,9 +38,9 @@ public class ExportModel : PageModel
 
         public string Note { get; set; }
 
-        public static TransactionOutputModel MapToTransactionOutputModel(Transaction transaction)
+        public static TransactionExportModel MapToTransactionOutputModel(Transaction transaction)
         {
-            return new TransactionOutputModel
+            return new TransactionExportModel
             {
                 DateTime = transaction.DateTime,
                 AccountId = transaction.Account.Id,
@@ -61,14 +61,13 @@ public class ExportModel : PageModel
     /// Export transactions to a file.
     /// </summary>
     /// <returns>A file with all the transactions.</returns>
-    /// <exception cref="NotImplementedException"></exception>
     public async Task<FileResult> OnGetFileAsync()
     {
         var transactions = await _context.Transactions
             .AsNoTracking()
             .Include(t => t.Account)
             .OrderByDescending(t => t.DateTime)
-            .Select(t => TransactionOutputModel.MapToTransactionOutputModel(t))
+            .Select(t => TransactionExportModel.MapToTransactionOutputModel(t))
             .ToListAsync();
 
         _logger.LogDebug("Found {Count} transactions available to export.", transactions.Count);
