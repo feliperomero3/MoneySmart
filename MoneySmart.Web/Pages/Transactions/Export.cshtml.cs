@@ -82,8 +82,8 @@ public class ExportModel : PageModel
                 $"{transaction.DateTime},{transaction.AccountId},{transaction.AccountName},{transaction.Description},{transaction.TransactionType},{transaction.Amount},{transaction.Note}");
         }
 
-        var bytes = Encoding.Unicode.GetBytes(csv.ToString());
+        var bytes = Encoding.UTF8.GetBytes(csv.ToString());
 
-        return File(bytes, "text/csv;charset=utf-16", "transactions.csv");
+        return File(bytes, "text/csv;charset=utf-8", "transactions.csv");
     }
 }

@@ -1,0 +1,29 @@
+﻿@page
+@model MoneySmart.Pages.Transactions.ImportModel
+@{
+    ViewData["Title"] = "Import Transactions";
+}
+
+<h1>Import Transactions</h1>
+<hr />
+
+<div class="row">
+    <div class="col">
+        <p>
+            The file should be in CSV format with the following columns:
+            DateTime, AccountId, AccountName, Description, TransactionType, Amount and Note.
+        </p>
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label asp-for="UploadedFile"></label>
+                <input class="form-control" asp-for="UploadedFile" type="file" />
+                <span asp-validation-for="UploadedFile" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

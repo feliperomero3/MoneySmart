@@ -17,6 +17,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link @IsLinkActive(ViewData["Title"]!.ToString(), "Import")" asp-page="/Transactions/Import" title="Import Transactions">
+                        <i class="nav-icon fas fa-file-import"></i>
+                        <p>
+                            Import
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
