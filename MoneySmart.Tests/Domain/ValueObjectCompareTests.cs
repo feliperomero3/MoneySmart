@@ -71,7 +71,7 @@ public class ValueObjectCompareTests
     }
 
     [Fact]
-    public void Sorting_value_objects_throws_if_one_of_properties_doesnt_implement_IComparable()
+    public void Sorting_value_objects_throws_if_one_of_properties_does_not_implement_IComparable()
     {
         var vo1 = new ValueObjectWithObjectProperty(new object());
         var vo2 = new ValueObjectWithObjectProperty(new object());

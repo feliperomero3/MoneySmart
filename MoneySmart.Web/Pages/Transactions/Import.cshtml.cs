@@ -80,7 +80,7 @@ public class ImportModel : PageModel
 
         await using (var stream = System.IO.File.Create(filePath))
         {
-            _logger.LogDebug("Uploaded file '{UploadedFileName}' is {Lenght} bytes.", UploadedFile.FileName, UploadedFile.Length);
+            _logger.LogDebug("Uploaded file '{UploadedFileName}' is {Length} bytes.", UploadedFile.FileName, UploadedFile.Length);
 
             await UploadedFile.CopyToAsync(stream);
         }
