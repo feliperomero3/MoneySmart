@@ -25,8 +25,8 @@ A very simple Web Application to capture everyday income and expenses.
 
 ## Prerequisites
 
+- .NET 8
 - Visual Studio 2022
-- ASP.NET Core 6
 
 ## Getting started
 
