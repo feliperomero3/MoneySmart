@@ -66,6 +66,8 @@ namespace MoneySmart.Pages.Transactions
 
         public IActionResult OnGet()
         {
+            TransactionCreateModel = new TransactionInputModel { DateTime = DateTime.Now };
+
             return Page();
         }
 
