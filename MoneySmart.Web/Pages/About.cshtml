@@ -1,0 +1,12 @@
+﻿@page
+@model MoneySmart.Pages.AboutModel
+@{
+    ViewData["Title"] = "About";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    MoneySmart v<AssemblyInformationalVersion />
+    on&nbsp;<a href="https://dotnet.microsoft.com/en-us/learn/aspnet/what-is-aspnet-core" class="text-muted" target="_blank">@System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription</a>
+</div>
