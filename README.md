@@ -64,6 +64,19 @@ A very simple Web Application to capture everyday income and expenses.
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
+# Appendix
+
+## How to release a new version
+
+Install the dotnet-version-cli tool:
+```bash
+dotnet tool install -g dotnet-version-cli --version 3.0.3
+```
+And run:
+```bash
+dotnet version --prefix preview --message 'Bump version to $newVer' prepatch
+```
+
 [build-status-badge]: https://dev.azure.com/feliperomeromx/Projects/_apis/build/status/feliperomero3.MoneySmart?branchName=master
 [build-status]: https://dev.azure.com/feliperomeromx/Projects/_build/latest?definitionId=9&branchName=master
 [quality-gate-status-badge]: https://sonarcloud.io/api/project_badges/measure?project=feliperomero3_MoneySmart&metric=alert_status
