@@ -25,6 +25,8 @@ public class Account : Entity
         }
     }
 
+    public string UserId { get; set; }
+
     public ICollection<Transaction> Transactions { get; }
 
     private Account()
@@ -32,7 +34,7 @@ public class Account : Entity
         Transactions = new List<Transaction>();
     }
 
-    public Account(long number, string name) : this()
+    public Account(long number, string name, string userId = null) : this()
     {
         Number = number;
         Name = name;

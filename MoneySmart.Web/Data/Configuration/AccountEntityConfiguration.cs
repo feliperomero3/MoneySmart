@@ -12,6 +12,7 @@ public class AccountEntityConfiguration : IEntityTypeConfiguration<Account>
         builder.Property(p => p.Id).HasColumnName("AccountId");
         builder.Property(p => p.Name).HasMaxLength(256).IsRequired().IsUnicode(false);
         builder.Property(p => p.Number).IsRequired();
+        builder.Property(p => p.UserId).HasMaxLength(450).IsRequired(false).IsUnicode(false);
         builder.HasIndex(p => new { p.Number }, "IX_Accounts_Number").IsUnique();
     }
 }

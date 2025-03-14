@@ -30,10 +30,10 @@ namespace MoneySmart.Data
 
             var accounts = new[]
             {
-                new Account(5221, "Savings"),
-                new Account(7551, "Checking"),
-                new Account(8661, "Money Market"),
-                new Account(9009, "Business")
+                new Account(5221, "Savings", user.Id),
+                new Account(7551, "Checking", user.Id),
+                new Account(8661, "Money Market", user.Id),
+                new Account(9009, "Business", user.Id)
             };
 
             await context.Accounts.AddRangeAsync(accounts);
