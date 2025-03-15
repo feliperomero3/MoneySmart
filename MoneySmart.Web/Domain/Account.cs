@@ -38,6 +38,7 @@ public class Account : Entity
     {
         Number = number;
         Name = name;
+        UserId = userId;
     }
 
     public void EditAccount(Account account)
