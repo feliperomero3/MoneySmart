@@ -74,7 +74,7 @@ dotnet tool install -g dotnet-version-cli --version 3.0.3
 ```
 And run:
 ```bash
-dotnet version --prefix preview --message 'Bump version to $newVer' prepatch
+dotnet version --prefix preview --message 'Bump version to v$newVer.' --project-file 'MoneySmart.Web\MoneySmart.csproj' prepatch
 ```
 
 [build-status-badge]: https://dev.azure.com/feliperomeromx/Projects/_apis/build/status/feliperomero3.MoneySmart?branchName=master
