@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <UserSecretsId>6ef9bf26-3265-49fb-b48f-8996eb20e2ad</UserSecretsId>
-    <Version>0.9.1-preview.0</Version>
+    <Version>0.9.2-preview.0</Version>
     <PreserveCompilationContext Condition="'$(Configuration)' == 'Debug'">true</PreserveCompilationContext>
     <SatelliteResourceLanguages>none</SatelliteResourceLanguages>
     <LibraryRestore Condition="'$(BuildNumber)' == ''">false</LibraryRestore>
