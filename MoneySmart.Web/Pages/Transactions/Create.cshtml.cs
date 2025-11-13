@@ -36,7 +36,7 @@ namespace MoneySmart.Pages.Transactions
         {
             [Required]
             [Display(Name = "Date")]
-            public DateTime DateTime { get; init; }
+            public DateTime? DateTime { get; init; }
 
             [Required]
             [DisplayName("Account")]
@@ -52,22 +52,20 @@ namespace MoneySmart.Pages.Transactions
 
             [Required]
             [DataType(DataType.Currency)]
-            public decimal Amount { get; init; }
+            public decimal? Amount { get; init; }
 
             [DataType(DataType.MultilineText)]
             public string Note { get; init; }
 
             public Transaction MapToTransaction(Account account)
             {
-                return new Transaction(DateTime, account, Description,
-                    (TransactionType)TransactionType, Amount, Note);
+                return new Transaction((DateTime)DateTime, account, Description,
+                    (TransactionType)TransactionType, (decimal)Amount, Note);
             }
         }
 
         public IActionResult OnGet()
         {
-            TransactionCreateModel = new TransactionInputModel { DateTime = DateTime.Now };
-
             return Page();
         }
 
